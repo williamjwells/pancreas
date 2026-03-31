@@ -1,2 +1,3 @@
 {"ts": "2026-03-31T13:15:09Z", "type": "insulin", "note": "10 units", "glucose_at_time": null}
 {"ts": "2026-03-31T13:16:29Z", "type": "insulin", "note": "", "glucose_at_time": 111}
+{"ts": "2026-03-31T13:31:30Z", "type": "note", "note": "test log entry", "glucose_at_time": null}
