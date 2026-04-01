@@ -1,10 +1,12 @@
 
 {"ts": "2026-03-31T13:31:30Z", "type": "note", "note": "test log entry", "glucose_at_time": null}
 {"ts": "2026-03-31T16:22:50Z", "type": "meal", "note": "", "glucose_at_time": 135}
-comment need to revise to properlyu log meal of 90 grams cho with serum glucose of 90m given 30um, next entry serum glucose 150 gave 20u 
-808pm gave additional 20 units humalog for glucose of 163
-0040 ate 145g gyozam took recommended 21 u humalog, 106 at mealtime, now 117am glu flattening at 165
-
-
+{"ts":"2026-03-31T13:31:30Z","type":"note","note":"system test begin, mounjaro day 3, resistance medium","glucose_at_time":null}
+{"ts":"2026-03-31T15:15:00Z","type":"meal","food":"unknown","carbs_g":90,"insulin_units":30,"glucose_at_time":90}
+{"ts":"2026-03-31T17:00:00Z","type":"insulin","units":20,"glucose_at_time":150,"note":"correction dose"}
+{"ts":"2026-03-31T20:08:00Z","type":"insulin","units":20,"glucose_at_time":163,"note":"additional correction"}
+{"ts":"2026-04-01T00:40:00Z","type":"meal","food":"gyoza","carbs_g":145,"insulin_units":21,"glucose_at_time":106}
+{"ts":"2026-04-01T01:17:00Z","type":"note","note":"glucose flattening at 165 post gyoza","glucose_at_time":165}
+{"ts":"2026-04-01T06:35:27Z","type":"note","note":"test","glucose_at_time":null}
 {"ts": "2026-04-01T06:35:27Z", "type": "note", "note": "test"}
 {"ts": "2026-04-01T06:41:45Z", "type": "meal", "food": "coffee with 20ml cream", "carbs_g": 0.0, "insulin_units": null, "glucose_at_time": 139}
