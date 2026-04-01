@@ -7,3 +7,4 @@ comment need to revise to properlyu log meal of 90 grams cho with serum glucose 
 
 
 {"ts": "2026-04-01T06:35:27Z", "type": "note", "note": "test"}
+{"ts": "2026-04-01T06:41:45Z", "type": "meal", "food": "coffee with 20ml cream", "carbs_g": 0.0, "insulin_units": null, "glucose_at_time": 139}
