@@ -17,3 +17,4 @@
 {"ts": "2026-04-01T13:11:36Z", "type": "insulin", "units": 5, "glucose_at_time": 131, "note": "post-lunch correction"}
 {"ts": "2026-04-01T17:14:47Z", "type": "meal", "food": "half marshmallow", "carbs_g": 2, "insulin_units": null, "glucose_at_time": 115}
 {"ts": "2026-04-01T19:41:09Z", "type": "meal", "food": "sucrose candy", "carbs_g": 5, "insulin_units": null, "glucose_at_time": 94}
+{"ts": "2026-04-01T20:11:46Z", "type": "insulin", "units": 10, "glucose_at_time": 113, "note": "beer/pistachios test dose"}
