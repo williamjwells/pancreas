@@ -12,3 +12,4 @@
 {"ts": "2026-04-01T06:41:45Z", "type": "meal", "food": "coffee with 20ml cream", "carbs_g": 0.0, "insulin_units": null, "glucose_at_time": 139}
 {"ts": "2026-04-01T07:03:28Z", "type": "meal", "food": "1 frito", "carbs_g": 2, "insulin_units": null, "glucose_at_time": 138}
 {"ts": "2026-04-01T07:20:25Z", "type": "meal", "food": "1 Frito", "carbs_g": 2, "insulin_units": null, "glucose_at_time": 134}
+{"ts": "2026-04-01T07:33:13Z", "type": "meal", "food": "coffee with 5ml cream", "carbs_g": 0, "insulin_units": null, "glucose_at_time": 140}
