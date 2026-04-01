@@ -14,3 +14,4 @@
 {"ts": "2026-04-01T07:20:25Z", "type": "meal", "food": "1 Frito", "carbs_g": 2, "insulin_units": null, "glucose_at_time": 134}
 {"ts": "2026-04-01T07:33:13Z", "type": "meal", "food": "coffee with 5ml cream", "carbs_g": 0, "insulin_units": null, "glucose_at_time": 140}
 {"ts": "2026-04-01T07:37:25Z", "type": "meal", "food": "gazpacho", "carbs_g": 5, "insulin_units": null, "glucose_at_time": 138}
+{"ts": "2026-04-01T13:11:36Z", "type": "insulin", "units": 5, "glucose_at_time": 131, "note": "post-lunch correction"}
