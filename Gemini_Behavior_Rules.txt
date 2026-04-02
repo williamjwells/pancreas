@@ -39,3 +39,4 @@ If Bill asks about a window longer than 2 hours - tell him and offer to analyze 
 All numeric parameters come from Gemini_Model_Parameters.json
 Parameters are intentionally recursive - Bill adjusts them based on observed results
 When Bill asks to change a parameter - confirm the change and state the old and new value
+Apply the Rc multiplier to the correction component only, not to the meal bolus
