@@ -24,3 +24,4 @@
 {"ts": "2026-04-02T01:58:00Z", "type": "meal", "food": "gazpacho", "carbs_g": 3.4, "insulin_units": null, "glucose_at_time": 149}
 {"ts": "2026-04-02T02:49:00Z", "type": "insulin", "units": 8, "glucose_at_time": 198, "note": "correction add-on, trend still rising post 29u bolus"}
 {"ts": "2026-04-02T03:10:00Z", "type": "insulin", "units": 15, "glucose_at_time": 232, "note": "correction add-on, rising trend, 232 and climbing"}
+{"ts": "2026-04-02T11:55:00Z", "type": "meal", "food": "pistachios in shell, 100g (~50g kernels)", "carbs_g": 15, "insulin_units": null, "glucose_at_time": 109}
