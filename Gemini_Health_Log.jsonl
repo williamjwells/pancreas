@@ -19,3 +19,4 @@
 {"ts": "2026-04-01T19:41:09Z", "type": "meal", "food": "sucrose candy", "carbs_g": 5, "insulin_units": null, "glucose_at_time": 94}
 {"ts": "2026-04-01T20:11:46Z", "type": "insulin", "units": 10, "glucose_at_time": 113, "note": "beer/pistachios test dose"}
 {"ts": "2026-04-01T20:37:18Z", "type": "insulin", "units": 3, "glucose_at_time": 142, "note": "pre-dinner add-on"}
+{"ts": "2026-04-02T01:38:00Z", "type": "meal", "food": "meal", "carbs_g": 44, "insulin_units": null, "glucose_at_time": 145}
