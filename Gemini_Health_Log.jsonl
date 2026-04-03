@@ -33,3 +33,4 @@
 {"ts": "2026-04-02T23:10:10Z", "type": "insulin", "units": 32, "glucose_at_time": 210, "note": "Correction dose. Mounjaro day 4, Rc=1.22. IOB=10.7u (30u@21:00, 4u@21:56). Gross=43.0u minus IOB=32.3u net. Trend climbing 192\u2192196\u2192207\u2192210."}
 {"ts": "2026-04-03T02:27:00Z", "type": "meal", "food": "bread", "carbs_g": 19, "insulin_units": null, "glucose_at_time": 102}
 {"ts": "2026-04-03T07:40:00Z", "type": "insulin", "units": 3, "glucose_at_time": 163, "note": "add-on to 3u @ 07:29Z, trend rising 155\u2192161\u2192163, Mounjaro day 6 Rc=1.45, model suggested ~17.6u net"}
+{"ts": "2026-04-03T06:00:00Z", "type": "note", "note": "mounjaro 15mg injection - new cycle start, 15mg dose", "glucose_at_time": 121}
