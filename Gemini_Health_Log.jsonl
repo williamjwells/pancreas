@@ -31,3 +31,4 @@
 {"ts": "2026-04-02T21:38:14Z", "type": "meal", "food": "unknown", "carbs_g": 63, "insulin_units": 30, "glucose_at_time": 174}
 {"ts": "2026-04-02T21:56:00Z", "type": "insulin", "units": 4, "glucose_at_time": 179, "note": "correction add-on, model-suggested, 20.7u IOB remaining from meal bolus, Humalog"}
 {"ts": "2026-04-02T23:10:10Z", "type": "insulin", "units": 32, "glucose_at_time": 210, "note": "Correction dose. Mounjaro day 4, Rc=1.22. IOB=10.7u (30u@21:00, 4u@21:56). Gross=43.0u minus IOB=32.3u net. Trend climbing 192\u2192196\u2192207\u2192210."}
+{"ts": "2026-04-03T02:27:00Z", "type": "meal", "food": "bread", "carbs_g": 19, "insulin_units": null, "glucose_at_time": 102}
