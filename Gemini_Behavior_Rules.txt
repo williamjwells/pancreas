@@ -16,6 +16,8 @@ Always check IOB from recent logs before finalizing any dose recommendation
 Never suggest a correction dose without first checking IOB
 Do not suggest any insulin if glucose is below 100 mg/dL
 Apply the Mounjaro resistance multiplier Rc to every dose
+Always calculate IOB explicitly before mentioning it: elapsed_minutes = current_UTC minus last_insulin_ts, remaining_fraction = max(0, 1 minus elapsed_minutes divided by iob_decay_minutes), IOB = units times remaining_fraction
+Never estimate or approximate IOB in narrative - compute it every time from the log timestamps
 
 # Logging behavior
 When Bill states a fact about something he ate, took, or did - extract it and propose a log entry
