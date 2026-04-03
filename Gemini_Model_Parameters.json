@@ -12,7 +12,7 @@
   "gsf_correction_ratio": 3.7,
   "hsf": 0.05,
   "icr_meal_ratio": 1.5,
-  "iob_decay_minutes": 180,
+  "iob_decay_minutes": 220,
   "insulin_type": "Humalog",
   "mounjaro_injection_day": "Friday",
   "mounjaro_injection_time": "08:00",
