@@ -35,3 +35,4 @@
 {"ts": "2026-04-03T07:40:00Z", "type": "insulin", "units": 3, "glucose_at_time": 163, "note": "add-on to 3u @ 07:29Z, trend rising 155\u2192161\u2192163, Mounjaro day 6 Rc=1.45, model suggested ~17.6u net"}
 {"ts": "2026-04-03T06:00:00Z", "type": "note", "note": "mounjaro 15mg injection - new cycle start, 15mg dose", "glucose_at_time": 121}
 {"ts": "2026-04-04T08:37:00Z", "type": "meal", "food": "croissant + 2 large strawberries", "carbs_g": 45, "insulin_units": 30, "glucose_at_time": 114}
+{"ts": "2026-04-04T08:53:20Z", "type": "note", "note": "Correction to entry 2026-04-04T08:37Z: insulin_units should be 20u (not 30u). Humalog 20u given for croissant + 2 large strawberries (~45g carbs), glucose 114 mg/dL at time of dose, Mounjaro Day 0 Rc=1.0. Glucose trending up 114->116->123, monitor 30-45min for possible add-on dose.", "glucose_at_time": 122}
