@@ -38,3 +38,4 @@
 {"ts": "2026-04-04T08:53:20Z", "type": "note", "note": "Correction to entry 2026-04-04T08:37Z: insulin_units should be 20u (not 30u). Humalog 20u given for croissant + 2 large strawberries (~45g carbs), glucose 114 mg/dL at time of dose, Mounjaro Day 0 Rc=1.0. Glucose trending up 114->116->123, monitor 30-45min for possible add-on dose.", "glucose_at_time": 122}
 {"ts": "2026-04-04T11:20:16Z", "type": "meal", "food": "sausage + ~10 crackers worth of crunchy bread + 2 large strawberries", "carbs_g": 30, "insulin_units": 20, "glucose_at_time": 154}
 {"ts": "2026-04-04T14:12:00Z", "type": "insulin", "units": 3, "glucose_at_time": 145, "note": "Humalog correction dose, IOB 4.5u, Mounjaro Day 0 Rc=1.0, net model recommendation 3.1u"}
+{"ts": "2026-04-04T16:46:10Z", "type": "meal", "food": "small sandwich (20g bread, 30g ham, mustard, tomato)", "carbs_g": 16, "insulin_units": null, "glucose_at_time": 101}
