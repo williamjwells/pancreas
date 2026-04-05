@@ -40,3 +40,4 @@
 {"ts": "2026-04-04T14:12:00Z", "type": "insulin", "units": 3, "glucose_at_time": 145, "note": "Humalog correction dose, IOB 4.5u, Mounjaro Day 0 Rc=1.0, net model recommendation 3.1u"}
 {"ts": "2026-04-04T16:46:10Z", "type": "meal", "food": "small sandwich (20g bread, 30g ham, mustard, tomato)", "carbs_g": 16, "insulin_units": null, "glucose_at_time": 101}
 {"ts": "2026-04-05T00:48:48Z", "type": "insulin", "units": 20, "glucose_at_time": 212, "note": "Humalog correction, Mounjaro Day 0 Rc=1.0, IOB=0u, model gross=36u, conservative dose due to suspected delayed gastric emptying (naan/tikka masala meal ~4h prior), plan to recheck in 45 min"}
+{"ts": "2026-04-05T09:30:00Z", "type": "meal", "food": "bread", "carbs_g": 15, "insulin_units": null, "glucose_at_time": null}
