@@ -45,3 +45,4 @@
 {"ts": "2026-04-05T13:00:00Z", "type": "meal", "food": "hypo treatment - juice box (45 kcal, ~11g carbs) + 15g bread", "carbs_g": 26, "insulin_units": null, "glucose_at_time": 197}
 {"ts": "2026-04-05T23:10:53Z", "type": "meal", "food": "20g bread, 20g tomato, 30g mozzarella pearls, 15ml olive oil", "carbs_g": 14, "insulin_units": null, "glucose_at_time": 103}
 {"ts": "2026-04-06T00:28:00Z", "type": "meal", "food": "snack - mixed nuts and fats, carbs likely overestimated", "carbs_g": 40, "insulin_units": 25, "glucose_at_time": 121}
+{"ts": "2026-04-06T06:34:48Z", "type": "meal", "food": "Danone Cremosa Coco yogurt (small ~100g)", "carbs_g": 14, "insulin_units": null, "glucose_at_time": 110}
