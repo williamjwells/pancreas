@@ -48,3 +48,4 @@
 {"ts": "2026-04-06T06:34:48Z", "type": "meal", "food": "Danone Cremosa Coco yogurt (small ~100g)", "carbs_g": 14, "insulin_units": null, "glucose_at_time": 110}
 {"ts": "2026-04-06T08:37:00Z", "type": "insulin", "units": 11, "glucose_at_time": 154, "note": "Humalog correction, IOB=0u, model recommended 11u, Mounjaro Day 2 Rc=1.04"}
 {"ts": "2026-04-06T13:44:00Z", "type": "meal", "food": "30g Iberico sausage, 30g gouda, 40g lean ham, 12oz gazpacho", "carbs_g": 14, "insulin_units": 7, "glucose_at_time": 105}
+{"ts": "2026-04-06T19:30:00Z", "type": "meal", "food": "small plate nachos (chips, beans, ground beef, cheese, sour cream) + 2x Negra Modelo (355ml each)", "carbs_g": 78, "insulin_units": 15, "glucose_at_time": 140}
