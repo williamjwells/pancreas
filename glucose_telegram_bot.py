@@ -8,7 +8,63 @@ from datetime import datetime, timezone
 # === CREDENTIALS - read from environment variables ===
 GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
 GITHUB_REPO = "williamjwells/pancreas"
-GITHUB_FILE = "timeseries.jsonl"
+NIGHTSCOUT_URL = "https://billwells.ns.10be.de"
+
+TREND_LABELS = {
+    "DoubleUp": "rising fast (↑↑)",
+    "SingleUp": "rising (↑)",
+    "FortyFiveUp": "rising slowly (↗)",
+    "Flat": "flat (→)",
+    "FortyFiveDown": "falling slowly (↘)",
+    "SingleDown": "falling (↓)",
+    "DoubleDown": "falling fast (↓↓)",
+    "NONE": "no trend",
+    "NOT COMPUTABLE": "no trend",
+}
+
+def get_latest_glucose():
+    try:
+        r = requests.get(f"{NIGHTSCOUT_URL}/api/v1/entries.json?count=1", timeout=10)
+        if r.status_code != 200:
+            print(f"Nightscout latest: HTTP {r.status_code}")
+            return None
+        data = r.json()
+        if not data:
+            return None
+        entry = data[0]
+        trend = TREND_LABELS.get(entry.get("direction", ""), entry.get("direction", ""))
+        return {
+            "val": entry.get("sgv"),
+            "ts": datetime.fromtimestamp(entry["date"] / 1000, tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "trend": trend,
+            "trend_raw": entry.get("direction", "")
+        }
+    except Exception as e:
+        print(f"Nightscout latest error: {e}")
+        return None
+
+def get_recent_glucose(hours=2):
+    try:
+        since_ms = int((datetime.now(timezone.utc).timestamp() - hours * 3600) * 1000)
+        r = requests.get(
+            f"{NIGHTSCOUT_URL}/api/v1/entries.json?count=200&find[date][$gte]={since_ms}",
+            timeout=10
+        )
+        if r.status_code != 200:
+            print(f"Nightscout history: HTTP {r.status_code}")
+            return []
+        entries = r.json()
+        result = []
+        for e in entries:
+            result.append({
+                "val": e.get("sgv"),
+                "ts": datetime.fromtimestamp(e["date"] / 1000, tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "trend": TREND_LABELS.get(e.get("direction", ""), e.get("direction", ""))
+            })
+        return result
+    except Exception as e:
+        print(f"Nightscout history error: {e}")
+        return []
 ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 TELEGRAM_TOKEN = os.environ["TELEGRAM_TOKEN"]
 ALLOWED_USER_ID = 8753341324  # Only Bill can use this bot
@@ -92,32 +148,6 @@ def log_to_github(entry):
     put = requests.put(url, headers={**headers, "Content-Type": "application/json"},
                        data=json.dumps(payload))
     return put.status_code in [200, 201]
-
-# === GLUCOSE DATA ===
-
-def get_latest_glucose():
-    content = github_get_text(GITHUB_FILE)
-    if not content:
-        return None
-    lines = [l for l in content.strip().split("\n") if l]
-    return json.loads(lines[-1])
-
-def get_recent_glucose(hours=2):
-    content = github_get_text(GITHUB_FILE)
-    if not content:
-        return []
-    lines = [l for l in content.strip().split("\n") if l]
-    cutoff = datetime.now(timezone.utc).timestamp() - (hours * 3600)
-    recent = []
-    for line in lines[-200:]:
-        try:
-            entry = json.loads(line)
-            ts = datetime.fromisoformat(entry["ts"].replace("Z", "+00:00"))
-            if ts.timestamp() >= cutoff:
-                recent.append(entry)
-        except Exception:
-            pass
-    return recent
 
 def get_recent_logs():
     content = github_get_text("Gemini_Health_Log.jsonl")
@@ -348,9 +378,10 @@ def handle_message(user_id, chat_id, text):
 
     if glucose_data:
         now_utc = datetime.now(timezone.utc)
+        trend_str = f", trend: {glucose_data.get('trend', 'unknown')}" if glucose_data.get('trend') else ""
         context = (
             f"\n\n[GLUCOSE DATA] Latest reading: {glucose_data.get('val')} mg/dL "
-            f"at {glucose_data.get('ts')} UTC. "
+            f"at {glucose_data.get('ts')} UTC{trend_str}. "
             f"Current UTC time: {now_utc.strftime('%Y-%m-%d %H:%M')}."
         )
     else:
