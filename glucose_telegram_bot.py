@@ -48,10 +48,19 @@ def tg_get_updates(offset=None):
 def github_get_text(filename):
     url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{filename}"
     headers = {"Authorization": f"token {GITHUB_TOKEN}"}
-    response = requests.get(url, headers=headers)
-    if response.status_code != 200:
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        print(f"GitHub GET {filename}: HTTP {response.status_code}")
+        if response.status_code != 200:
+            print(f"GitHub error body: {response.text[:200]}")
+            return None
+        return base64.b64decode(response.json()["content"]).decode("utf-8")
+    except requests.exceptions.Timeout:
+        print(f"GitHub GET {filename}: TIMED OUT after 10s")
         return None
-    return base64.b64decode(response.json()["content"]).decode("utf-8")
+    except Exception as e:
+        print(f"GitHub GET {filename}: ERROR {e}")
+        return None
 
 def log_to_github(entry):
     url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/Gemini_Health_Log.jsonl"
