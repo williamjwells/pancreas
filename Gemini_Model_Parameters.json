@@ -1,17 +1,39 @@
 {
-  "version": "1.3",
-  "updated": "2026-04-01",
-  "change_note": "Initial structured version, split from monolithic parameters file",
+  "version": "1.4",
+  "updated": "2026-04-07",
+  "change_note": "ICR updated 1.5->1.2 based on observed underdosing. Bilinear IOB decay adopted. GSF compression k added (dormant, pending calibration). Rc scope clarified to correction-only.",
   "history": [
-    {"version": "1.0", "date": "2026-03-25", "change": "baseline target 110, GSF 10, ICR 2.0"},
-    {"version": "1.1", "date": "2026-03-26", "change": "GSF changed to 4.0, ICR to 1.5, baseline to 120"},
-    {"version": "1.2", "date": "2026-03-26", "change": "GSF changed to 3.7"},
-    {"version": "1.3", "date": "2026-04-01", "change": "Split into parameters and behavior rules files"}
+    {
+      "version": "1.0",
+      "date": "2026-03-25",
+      "change": "baseline target 110, GSF 10, ICR 2.0"
+    },
+    {
+      "version": "1.1",
+      "date": "2026-03-26",
+      "change": "GSF changed to 4.0, ICR to 1.5, baseline to 120"
+    },
+    {
+      "version": "1.2",
+      "date": "2026-03-26",
+      "change": "GSF changed to 3.7"
+    },
+    {
+      "version": "1.3",
+      "date": "2026-04-01",
+      "change": "Split into parameters and behavior rules files. ICR 1.5, GSF 3.7, baseline 120 carried forward."
+    },
+    {
+      "version": "1.4",
+      "date": "2026-04-07",
+      "change": "ICR 1.5->1.2 (underdosing observed across multiple meals). Bilinear IOB decay adopted (fast phase 0-90min, slow phase 90-220min). gsf_sensitivity_compression_k=0.02 added dormant for future glucose-dependent GSF calibration. Rc scope hardened to correction-only - was incorrectly applied to full dose sum in some calculations."
+    }
   ],
   "baseline_target_mg_dl": 120,
   "gsf_correction_ratio": 3.7,
+  "gsf_sensitivity_compression_k": 0.02,
   "hsf": 0.05,
-  "icr_meal_ratio": 1.5,
+  "icr_meal_ratio": 1.2,
   "iob_decay_minutes": 220,
   "insulin_type": "Humalog",
   "mounjaro_injection_day": "Friday",
