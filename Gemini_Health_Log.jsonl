@@ -58,3 +58,4 @@
 {"ts": "2026-04-07T13:55:34Z", "type": "meal", "food": "1 Frito corn chip", "carbs_g": 0, "insulin_units": null, "glucose_at_time": 118}
 {"ts": "2026-04-07T14:36:03Z", "type": "meal", "food": "200g cooked pinto beans, broth with chicken powder, tomate frito, 30g cr\u00e8me fra\u00eeche", "carbs_g": 30, "insulin_units": 25, "glucose_at_time": 113}
 {"ts": "2026-04-07T15:02:16Z", "type": "meal", "food": "Gal\u00f3n Zero sin az\u00facares a\u00f1adidos cookies (39g)", "carbs_g": 23, "insulin_units": null, "glucose_at_time": 115}
+{"ts": "2026-04-07T16:25:22Z", "type": "insulin", "units": 7, "glucose_at_time": 159, "note": "Humalog correction, Mounjaro Day 3, Rc=1.135, IOB=8.54u at time of calculation"}
