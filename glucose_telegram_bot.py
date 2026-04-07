@@ -26,12 +26,19 @@ CONFIRMATIONS = [
 # === TELEGRAM HELPERS ===
 
 def tg_send(chat_id, text):
-    """Send a message via Telegram."""
-    requests.post(f"{TELEGRAM_API}/sendMessage", json={
+    """Send a message via Telegram. Falls back to plain text if Markdown fails."""
+    r = requests.post(f"{TELEGRAM_API}/sendMessage", json={
         "chat_id": chat_id,
         "text": text,
         "parse_mode": "Markdown"
     })
+    if r.status_code != 200:
+        # Markdown parse error - retry as plain text
+        print(f"tg_send Markdown failed ({r.status_code}), retrying as plain text")
+        requests.post(f"{TELEGRAM_API}/sendMessage", json={
+            "chat_id": chat_id,
+            "text": text
+        })
 
 def tg_get_updates(offset=None):
     params = {"timeout": 30, "allowed_updates": ["message"]}
@@ -198,13 +205,30 @@ Timezone: Bill is UTC+{params['timezone_offset_utc']}. Glucose timestamps are UT
 
 # === LOG ENTRY EXTRACTION ===
 
+def extract_logging_line(text):
+    """Pull just the 'Logging: ...' line from the assistant message.
+    This prevents the extraction LLM from hallucinating values from dose math."""
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped.lower().startswith("logging:"):
+            return stripped
+    return None
+
 def extract_log_entry(text, glucose_data):
+    # Only extract from the Logging: line, never from the full message.
+    # This prevents picking up numbers from dose calculations.
+    logging_line = extract_logging_line(text)
+    if not logging_line:
+        print("extract_log_entry: no Logging: line found")
+        return None
+    print(f"extract_log_entry: parsing line: {logging_line[:120]}")
+
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
     now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     current_glucose = glucose_data.get("val") if glucose_data else None
-    extraction_prompt = f"""Extract a log entry from this text and return ONLY valid JSON, nothing else.
+    extraction_prompt = f"""Extract a log entry from this single line and return ONLY valid JSON, nothing else.
 
-Text: {text}
+Line: {logging_line}
 
 Current UTC time: {now_utc}
 Current glucose: {current_glucose}
@@ -224,9 +248,12 @@ Return ONLY the JSON object, no explanation."""
     try:
         result = json.loads(response.content[0].text.strip())
         if result.get("type") == "none":
+            print("extract_log_entry: extraction returned none")
             return None
+        print(f"extract_log_entry: extracted {result.get('type')} entry")
         return result
-    except Exception:
+    except Exception as e:
+        print(f"extract_log_entry: JSON parse failed: {e}")
         return None
 
 # === HELPERS ===
@@ -286,19 +313,32 @@ def handle_message(user_id, chat_id, text):
         tg_send(chat_id, "Conversation reset. Parameters unchanged.")
         return
 
-    # Handle confirmation of pending log
-    if session["pending_log"] and is_confirmation(text):
-        success = log_to_github(session["pending_log"])
-        if success:
-            tg_send(chat_id, "Saved.")
-            session["history"].append({"role": "assistant", "content": "Saved to GitHub."})
-        else:
-            tg_send(chat_id, "Save failed - check GitHub token and network.")
+    # Handle /cancel command to drop pending log explicitly
+    if text.strip().lower() == "/cancel":
         session["pending_log"] = None
+        tg_send(chat_id, "Pending log entry cancelled.")
         return
 
-    # New input - clear pending log
-    session["pending_log"] = None
+    # Handle confirmation of pending log
+    # Confirmation is ONLY triggered if there is a pending log AND the message is a clear yes.
+    # Any other message (including questions or new topics) clears the pending log and continues.
+    if session["pending_log"]:
+        if is_confirmation(text):
+            entry_summary = f"{session['pending_log'].get('type')} - {session['pending_log'].get('food') or session['pending_log'].get('note') or str(session['pending_log'].get('units','')) + 'u'}"
+            success = log_to_github(session["pending_log"])
+            if success:
+                print(f"Saved to GitHub: {entry_summary}")
+                tg_send(chat_id, f"Saved: {entry_summary}")
+                session["history"].append({"role": "assistant", "content": f"Saved to GitHub: {entry_summary}"})
+            else:
+                tg_send(chat_id, "Save failed - check GitHub token and network.")
+            session["pending_log"] = None
+            return
+        else:
+            # Not a confirmation - clear pending log and treat as new message
+            print("Pending log cleared - user sent non-confirmation")
+            session["pending_log"] = None
+            # Fall through to handle as normal message
 
     # Fetch live data
     glucose_data = get_latest_glucose()
@@ -354,7 +394,17 @@ def handle_message(user_id, chat_id, text):
         pending = extract_log_entry(assistant_message, glucose_data)
         if pending:
             session["pending_log"] = pending
-            tg_send(chat_id, "_(yes/sure/go ahead to save, or just keep talking to skip)_")
+            entry_type = pending.get("type", "entry")
+            units = pending.get("units")
+            food = pending.get("food")
+            carbs = pending.get("carbs_g")
+            if entry_type == "insulin" and units:
+                summary = f"{units}u insulin"
+            elif entry_type == "meal" and food:
+                summary = f"{food} ({carbs}g carbs)" if carbs else food
+            else:
+                summary = entry_type
+            tg_send(chat_id, f"Ready to save: {summary}\nReply yes/sure/ok to confirm, or keep talking to cancel.")
 
 # === MAIN POLLING LOOP ===
 
