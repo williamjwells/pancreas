@@ -56,3 +56,4 @@
 {"ts": "2026-04-07T10:54:14Z", "type": "insulin", "units": 23, "glucose_at_time": 106, "note": "Recommended dose confirmed. Day 3 post-Mounjaro (injected Friday 08:00 local), Rc=1.135. Day-of-week label was incorrect but math was already correct."}
 {"ts": "2026-04-07T12:13:00Z", "type": "note", "note": "Model updated to version 1.4. Key changes: GSF sensitivity compression parameter k=0.02 added (currently dormant); Rc rule clarified \u2014 applies to correction component only, never to meal bolus.", "glucose_at_time": 108}
 {"ts": "2026-04-07T13:55:34Z", "type": "meal", "food": "1 Frito corn chip", "carbs_g": 0, "insulin_units": null, "glucose_at_time": 118}
+{"ts": "2026-04-07T14:36:03Z", "type": "meal", "food": "200g cooked pinto beans, broth with chicken powder, tomate frito, 30g cr\u00e8me fra\u00eeche", "carbs_g": 30, "insulin_units": 25, "glucose_at_time": 113}
