@@ -2,15 +2,15 @@ import anthropic
 import requests
 import json
 import base64
+import os
 from datetime import datetime, timezone
-from http.server import HTTPServer, BaseHTTPRequestHandler
 
-# === CREDENTIALS ===
-GITHUB_TOKEN = "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"
+# === CREDENTIALS - read from environment variables ===
+GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
 GITHUB_REPO = "williamjwells/pancreas"
 GITHUB_FILE = "timeseries.jsonl"
-ANTHROPIC_API_KEY = "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"
-TELEGRAM_TOKEN = "8655626434:AAE8WqZrpN5r8eHM6qCuXKqkQiq-2BoveSY"
+ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
+TELEGRAM_TOKEN = os.environ["TELEGRAM_TOKEN"]
 ALLOWED_USER_ID = 8753341324  # Only Bill can use this bot
 MODEL = "claude-sonnet-4-6"
 MAX_HISTORY_EXCHANGES = 6
