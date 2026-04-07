@@ -64,3 +64,4 @@
 {"ts": "2026-04-07T20:04:56Z", "type": "meal", "food": "salad with Thousand Island dressing (30g), Gouda (40g), cherry tomatoes (3 large), turkey breast (30g)", "carbs_g": 13, "insulin_units": 27, "glucose_at_time": 166}
 {"ts": "2026-04-07T20:20:21Z", "type": "insulin", "units": 27, "glucose_at_time": 161, "note": "Humalog, glucose 165, salad bolus + correction, Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-04-07T22:04:46Z", "type": "meal", "food": "3 medium strawberries and 1 kiwi", "carbs_g": 13, "insulin_units": null, "glucose_at_time": 134}
+{"ts": "2026-04-07T22:33:24Z", "type": "meal", "food": "H\u00e4agen-Dazs Belgian Chocolate ice cream", "carbs_g": 22, "insulin_units": null, "glucose_at_time": 132}
