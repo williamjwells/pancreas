@@ -326,6 +326,7 @@ def handle_message(user_id, chat_id, text):
 
     trimmed = trim_history(session["history"], MAX_HISTORY_EXCHANGES)
 
+    print(f"Calling Anthropic API ({len(trimmed)} messages)...")
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
     try:
         response = client.messages.create(
@@ -334,14 +335,19 @@ def handle_message(user_id, chat_id, text):
             system=session["system_prompt"],
             messages=trimmed
         )
+        print("Anthropic API responded OK")
     except Exception as e:
+        print(f"Anthropic API error: {e}")
         tg_send(chat_id, f"API error: {e}")
         return
 
     assistant_message = response.content[0].text
+    print(f"Sending reply ({len(assistant_message)} chars)")
     session["history"].append({"role": "assistant", "content": assistant_message})
 
+    print("Calling tg_send...")
     tg_send(chat_id, assistant_message)
+    print("tg_send done")
 
     # Check if assistant proposed a log entry
     if "confirm?" in assistant_message.lower() or "logging:" in assistant_message.lower():
