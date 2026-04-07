@@ -51,3 +51,4 @@
 {"ts": "2026-04-06T19:30:00Z", "type": "meal", "food": "small plate nachos (chips, beans, ground beef, cheese, sour cream) + 2x Negra Modelo (355ml each)", "carbs_g": 78, "insulin_units": 15, "glucose_at_time": 140}
 {"ts": "2026-04-06T19:30:00Z", "type": "insulin", "units": 15, "glucose_at_time": 140, "note": "Humalog, retroactive log entry, associated with nachos/Negra Modelo meal (~78g carbs), Mounjaro Day 2 Rc=1.04"}
 {"ts": "2026-04-07T01:07:00Z", "type": "meal", "food": "H\u00e4agen-Dazs Belgian Chocolate ice cream (less than \u00bd serving, precautionary glucose support, Mounjaro Day 2 Rc=1.04, alcohol hypo risk context)", "carbs_g": 7, "insulin_units": null, "glucose_at_time": 103}
+{"ts": "2026-04-07T01:37:00Z", "type": "meal", "food": "corn chips", "carbs_g": 37, "insulin_units": null, "glucose_at_time": 99}
