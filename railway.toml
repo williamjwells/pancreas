@@ -1,0 +1,3 @@
+[build]
+watchPatterns = ["glucose_telegram_bot.py", "requirements.txt", "Procfile", "Gemini_Behavior_Rules.txt", "Gemini_Model_Parameters.json"]
+ 
