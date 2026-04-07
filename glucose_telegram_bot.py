@@ -253,15 +253,35 @@ def extract_log_entry(text, glucose_data):
         return None
     print(f"extract_log_entry: parsing line: {logging_line[:120]}")
 
-    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
     now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     current_glucose = glucose_data.get("val") if glucose_data else None
+
+    # Detect note entries directly without calling LLM.
+    # This prevents the LLM from misclassifying notes containing numbers as insulin entries.
+    line_lower = logging_line.lower()
+    if line_lower.startswith("logging: note"):
+        note_text = logging_line[logging_line.lower().find("note -") + 6:].strip()
+        note_text = note_text.rstrip(" .Confirm?").strip()
+        entry = {
+            "ts": now_utc,
+            "type": "note",
+            "note": note_text,
+            "glucose_at_time": current_glucose
+        }
+        print(f"extract_log_entry: direct note extraction: {note_text[:60]}")
+        return entry
+
+    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
     extraction_prompt = f"""Extract a log entry from this single line and return ONLY valid JSON, nothing else.
 
 Line: {logging_line}
 
 Current UTC time: {now_utc}
 Current glucose: {current_glucose}
+
+IMPORTANT: Only return type "insulin" if the line explicitly describes insulin units being injected.
+If the line describes food or a meal, return type "meal".
+If the line describes a note, correction, or annotation, return type "note" with no units field.
 
 Return one of these formats:
 For insulin: {{"ts":"{now_utc}","type":"insulin","units":NUMBER,"glucose_at_time":{current_glucose},"note":"any extra info"}}
@@ -280,6 +300,12 @@ Return ONLY the JSON object, no explanation."""
         if result.get("type") == "none":
             print("extract_log_entry: extraction returned none")
             return None
+        # Safety check: if result claims insulin but logging line says note, override
+        if result.get("type") == "insulin" and "note" in line_lower and "insulin" not in line_lower:
+            print("extract_log_entry: overriding spurious insulin classification to note")
+            result["type"] = "note"
+            result["note"] = result.get("note", logging_line)
+            result.pop("units", None)
         print(f"extract_log_entry: extracted {result.get('type')} entry")
         return result
     except Exception as e:
