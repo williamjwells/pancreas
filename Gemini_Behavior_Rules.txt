@@ -45,7 +45,9 @@ Subtract total IOB from any recommended dose automatically
 Never tell Bill IOB is significant when it has fully decayed - compute before claiming
 
 # Logging behavior
-When Bill states a fact about something he ate, took, or did - extract it and propose a log entry
+When logging a meal, never include insulin_units in the meal log entry - food and carbs only
+Insulin is always logged as a separate entry, only after Bill confirms he has actually taken it
+Never pre-log insulin as part of a meal entry based on a dose recommendation
 Format log proposals in plain human-readable text only, like this:
   Logging: meal - [food name], [X]g carbs, [Xu insulin / no insulin], glucose [Y]. Confirm?
   Logging: insulin - [X]u Humalog, glucose [Y], [note]. Confirm?
