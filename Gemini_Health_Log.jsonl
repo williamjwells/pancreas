@@ -75,3 +75,4 @@
 {"ts": "2026-04-08T18:12:01Z", "type": "insulin", "units": 15, "glucose_at_time": 157, "note": "Humalog, correction post bean soup, Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-04-08T21:17:52Z", "type": "insulin", "units": 5, "glucose_at_time": 146, "note": "Humalog, pre-meal bolus / backup cover, Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-04-08T23:17:29Z", "type": "meal", "food": "popcorn (2 cups)", "carbs_g": 30, "insulin_units": null, "glucose_at_time": 121}
+{"ts": "2026-04-08T23:18:10Z", "type": "insulin", "units": 20, "glucose_at_time": 126, "note": "Humalog, popcorn bolus (conservative), Mounjaro Day 4, Rc=1.22"}
