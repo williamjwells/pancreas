@@ -73,3 +73,4 @@
 {"ts": "2026-04-08T16:47:15Z", "type": "meal", "food": "3 bowls bean soup (15% beans, 10% crushed beans, 10% tomate frito, chicken broth), 300ml Rioja", "carbs_g": 55, "insulin_units": null, "glucose_at_time": 137}
 {"ts": "2026-04-08T14:06:00Z", "type": "insulin", "units": 30, "glucose_at_time": 137, "note": "Humalog, bean soup bolus, Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-04-08T18:12:01Z", "type": "insulin", "units": 15, "glucose_at_time": 157, "note": "Humalog, correction post bean soup, Mounjaro Day 4, Rc=1.22"}
+{"ts": "2026-04-08T21:17:52Z", "type": "insulin", "units": 5, "glucose_at_time": 146, "note": "Humalog, pre-meal bolus / backup cover, Mounjaro Day 4, Rc=1.22"}
