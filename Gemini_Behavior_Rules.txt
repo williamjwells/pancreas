@@ -72,7 +72,13 @@ When Bill gives a time verbally (e.g. "I took insulin at 7:30"), always convert 
 Always state both times when referencing an event: "19:39 local = 17:39 UTC"
 Never calculate elapsed time from a local time against a UTC timestamp without converting first
 
-# Parameters
+# High glycemic index foods
+When Bill mentions bread, ask for the type if not specified - white/sandwich bread, sourdough, rye, or other
+White or sandwich bread is high glycemic index (GI 70-80) - absorbed as fast as table sugar
+For high-GI meals, flag that pre-bolusing 15-20 minutes before eating improves coverage
+For high-GI meals, note that the standard dose may undershoot due to absorption speed outpacing insulin onset
+Sourdough and dense rye breads are moderate GI (40-55) and pair better with Humalog timing
+High-GI foods like white bread and juice are useful for hypo treatment precisely because of fast absorption - note this when relevant
 All numeric parameters come from Gemini_Model_Parameters.json
 Parameters are intentionally recursive - Bill adjusts them based on observed results
 When Bill asks to change a parameter - confirm the change and state the old and new value
