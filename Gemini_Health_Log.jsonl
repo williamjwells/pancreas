@@ -69,3 +69,4 @@
 {"ts": "2026-04-08T06:02:52Z", "type": "insulin", "units": 7, "glucose_at_time": 129, "note": "Humalog, sandwich bolus, Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-04-08T08:31:16Z", "type": "insulin", "units": 23, "glucose_at_time": 191, "note": "Humalog, correction, Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-04-08T11:14:14Z", "type": "insulin", "units": 3, "glucose_at_time": 165, "note": "Humalog, Mounjaro Day 3, Rc=1.135"}
+{"ts": "2026-04-08T15:20:01Z", "type": "meal", "food": "lean ham, ib\u00e9rico sausage, Swiss cheese, olives, 120ml Rioja", "carbs_g": 7, "insulin_units": null, "glucose_at_time": 124}
