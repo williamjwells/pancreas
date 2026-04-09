@@ -84,3 +84,4 @@
 {"ts": "2026-04-09T09:02:00Z", "type": "insulin", "units": 20, "glucose_at_time": 195, "note": "Humalog, correction, Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-04-09T15:33:28Z", "type": "meal", "food": "IKEA hotdog combo (hotdog + fries, sugar-free drink)", "carbs_g": 62, "insulin_units": null, "glucose_at_time": 89}
 {"ts": "2026-04-09T18:34:25Z", "type": "insulin", "units": 28, "glucose_at_time": 179, "note": "Humalog, correction post-IKEA meal (partial bolus 14u at 15:33 UTC, now full correction), Mounjaro Day 5, Rc=1.325"}
+{"ts": "2026-04-09T19:54:00Z", "type": "meal", "food": "hypo treatment (Coke ~25g + candy ~15g)", "carbs_g": 40, "insulin_units": null, "glucose_at_time": 74}
