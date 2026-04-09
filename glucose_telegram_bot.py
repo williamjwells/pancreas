@@ -65,11 +65,13 @@ def get_recent_glucose(hours=2):
     except Exception as e:
         print(f"Nightscout history error: {e}")
         return []
+
 ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 TELEGRAM_TOKEN = os.environ["TELEGRAM_TOKEN"]
 ALLOWED_USER_ID = 8753341324  # Only Bill can use this bot
 MODEL = "claude-sonnet-4-6"
-MAX_HISTORY_EXCHANGES = 6
+MAX_HISTORY_EXCHANGES = 4   # Reduced from 6 to limit payload size
+MAX_GLUCOSE_HISTORY = 24    # Reduced from 200 - send one reading per 5 min = ~24 for 2hrs
 
 TELEGRAM_API = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}"
 
@@ -89,7 +91,6 @@ def tg_send(chat_id, text):
         "parse_mode": "Markdown"
     })
     if r.status_code != 200:
-        # Markdown parse error - retry as plain text
         print(f"tg_send Markdown failed ({r.status_code}), retrying as plain text")
         requests.post(f"{TELEGRAM_API}/sendMessage", json={
             "chat_id": chat_id,
@@ -162,6 +163,32 @@ def get_recent_logs():
             pass
     return recent
 
+def summarise_glucose_history(entries):
+    """Convert raw CGM list into a compact summary to reduce payload size.
+    Instead of sending up to 200 raw JSON objects, send a small readable summary."""
+    if not entries:
+        return "No recent history."
+    # Entries come newest-first from Nightscout
+    newest = entries[0]
+    oldest = entries[-1]
+    vals = [e["val"] for e in entries if e.get("val")]
+    if not vals:
+        return "No valid readings."
+    lo = min(vals)
+    hi = max(vals)
+    # Sample evenly spaced points for trend context (max MAX_GLUCOSE_HISTORY points)
+    step = max(1, len(entries) // MAX_GLUCOSE_HISTORY)
+    sampled = entries[::step][:MAX_GLUCOSE_HISTORY]
+    sample_str = ", ".join(
+        f"{e['val']}@{e['ts'][11:16]}" for e in reversed(sampled) if e.get("val")
+    )
+    return (
+        f"Range: {lo}-{hi} mg/dL over last 2h. "
+        f"Oldest: {oldest['val']}@{oldest['ts'][11:16]}UTC, "
+        f"Newest: {newest['val']}@{newest['ts'][11:16]}UTC. "
+        f"Sampled readings (old→new): {sample_str}"
+    )
+
 # === SYSTEM PROMPT ===
 
 def build_system_prompt():
@@ -175,6 +202,9 @@ def build_system_prompt():
         if line.strip() and not line.strip().startswith("#")
     )
     gsf_k = params.get("gsf_sensitivity_compression_k", 0.02)
+    hsf_max = params.get("hsf_max", 0.30)
+    sanity_abs = params.get("sanity_check_absolute_threshold_units", 60)
+    sanity_rel = params.get("sanity_check_relative_multiplier", 2.0)
     prompt = f"""You are a glucose monitoring assistant for Bill. Use the parameters and rules below.
 
 === CURRENT MODEL PARAMETERS (version {params.get('version', 'unknown')}) ===
@@ -182,10 +212,12 @@ Baseline target: {params['baseline_target_mg_dl']} mg/dL
 Insulin type: {params['insulin_type']}
 IOB decay: {params['iob_decay_minutes']} minutes (bilinear: fast phase 0-90 min, slow phase 90-220 min)
 GSF correction ratio: {params['gsf_correction_ratio']} base (glucose-dependent, see formula below)
-GSF sensitivity compression k: {gsf_k} (dormant - increases GSF effect at high glucose)
+GSF sensitivity compression k: {gsf_k}
 HSF scaling factor: {params['hsf']} per 10 mg/dL above target
+HSF maximum cap: {hsf_max} (HSF term never exceeds this value regardless of delta)
 ICR meal ratio: {params['icr_meal_ratio']} (1 unit per {params['icr_meal_ratio']}g carbs)
 Resistance state: {params['resistance_state']}
+Sanity check threshold: flag only if dose > {sanity_abs}u OR > {sanity_rel}x largest dose in past 7 days
 
 Mounjaro injection: {params['mounjaro_injection_day']} at {params['mounjaro_injection_time']}
 GLP activation delay: {params['mounjaro_glp_activation_delay_hours']} hours (Day 0 = Saturday after Friday shot)
@@ -200,7 +232,8 @@ Step 1 - Glucose-dependent GSF:
   Note: if delta <= 0, correction component = 0 (never correct when below target)
 
 Step 2 - Correction component (Rc applies HERE ONLY):
-  correction_raw = (delta / GSF(g)) * (1 + HSF * delta / 10)
+  HSF_term = min(hsf * delta / 10, hsf_max)   ← ALWAYS apply the cap
+  correction_raw = (delta / GSF(g)) * (1 + HSF_term)
   correction = correction_raw * Rc
   (If delta <= 0, correction = 0)
 
@@ -212,6 +245,7 @@ Step 4 - IOB subtraction:
   net_dose = max(0, net_dose)
 
 RULE: Rc NEVER multiplies the meal bolus. Rc ONLY multiplies the correction component.
+RULE: Always show the capped HSF_term value in step-by-step workings.
 
 === IOB CALCULATION (CRITICAL - always compute explicitly, never estimate) ===
 
@@ -236,8 +270,7 @@ Timezone: Bill is UTC+{params['timezone_offset_utc']}. Glucose timestamps are UT
 # === LOG ENTRY EXTRACTION ===
 
 def extract_logging_line(text):
-    """Pull just the 'Logging: ...' line from the assistant message.
-    This prevents the extraction LLM from hallucinating values from dose math."""
+    """Pull just the 'Logging: ...' line from the assistant message."""
     for line in text.splitlines():
         stripped = line.strip()
         if stripped.lower().startswith("logging:"):
@@ -245,8 +278,6 @@ def extract_logging_line(text):
     return None
 
 def extract_log_entry(text, glucose_data):
-    # Only extract from the Logging: line, never from the full message.
-    # This prevents picking up numbers from dose calculations.
     logging_line = extract_logging_line(text)
     if not logging_line:
         print("extract_log_entry: no Logging: line found")
@@ -256,8 +287,6 @@ def extract_log_entry(text, glucose_data):
     now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     current_glucose = glucose_data.get("val") if glucose_data else None
 
-    # Detect note entries directly without calling LLM.
-    # This prevents the LLM from misclassifying notes containing numbers as insulin entries.
     line_lower = logging_line.lower()
     if line_lower.startswith("logging: note"):
         note_text = logging_line[logging_line.lower().find("note -") + 6:].strip()
@@ -300,7 +329,6 @@ Return ONLY the JSON object, no explanation."""
         if result.get("type") == "none":
             print("extract_log_entry: extraction returned none")
             return None
-        # Safety check: if result claims insulin but logging line says note, override
         if result.get("type") == "insulin" and "note" in line_lower and "insulin" not in line_lower:
             print("extract_log_entry: overriding spurious insulin classification to note")
             result["type"] = "note"
@@ -325,7 +353,7 @@ def is_confirmation(text):
     return any(t == c or t.startswith(c + " ") for c in CONFIRMATIONS)
 
 # === SESSION STATE ===
-# Stored per user_id (only one user expected but keeping it clean)
+
 sessions = {}
 
 def get_session(user_id):
@@ -343,7 +371,6 @@ def get_session(user_id):
 # === MESSAGE HANDLER ===
 
 def handle_message(user_id, chat_id, text):
-    # Security: only respond to Bill
     if user_id != ALLOWED_USER_ID:
         tg_send(chat_id, "Unauthorized.")
         return
@@ -354,7 +381,6 @@ def handle_message(user_id, chat_id, text):
         tg_send(chat_id, "Failed to load config from GitHub. Check token and repo.")
         return
 
-    # Handle /reload command to refresh system prompt mid-session
     if text.strip().lower() == "/reload":
         session["system_prompt"] = build_system_prompt()
         session["history"] = []
@@ -362,22 +388,17 @@ def handle_message(user_id, chat_id, text):
         tg_send(chat_id, "Parameters reloaded and conversation reset.")
         return
 
-    # Handle /reset command to clear conversation history
     if text.strip().lower() == "/reset":
         session["history"] = []
         session["pending_log"] = None
         tg_send(chat_id, "Conversation reset. Parameters unchanged.")
         return
 
-    # Handle /cancel command to drop pending log explicitly
     if text.strip().lower() == "/cancel":
         session["pending_log"] = None
         tg_send(chat_id, "Pending log entry cancelled.")
         return
 
-    # Handle confirmation of pending log
-    # Confirmation is ONLY triggered if there is a pending log AND the message is a clear yes.
-    # Any other message (including questions or new topics) clears the pending log and continues.
     if session["pending_log"]:
         if is_confirmation(text):
             entry_summary = f"{session['pending_log'].get('type')} - {session['pending_log'].get('food') or session['pending_log'].get('note') or str(session['pending_log'].get('units','')) + 'u'}"
@@ -391,10 +412,8 @@ def handle_message(user_id, chat_id, text):
             session["pending_log"] = None
             return
         else:
-            # Not a confirmation - clear pending log and treat as new message
             print("Pending log cleared - user sent non-confirmation")
             session["pending_log"] = None
-            # Fall through to handle as normal message
 
     # Fetch live data
     glucose_data = get_latest_glucose()
@@ -406,15 +425,17 @@ def handle_message(user_id, chat_id, text):
         now_utc = datetime.now(timezone.utc)
         trend_str = f", trend: {glucose_data.get('trend', 'unknown')}" if glucose_data.get('trend') else ""
         context = (
-            f"\n\n[GLUCOSE DATA] Latest reading: {glucose_data.get('val')} mg/dL "
+            f"\n\n[GLUCOSE DATA] Latest: {glucose_data.get('val')} mg/dL "
             f"at {glucose_data.get('ts')} UTC{trend_str}. "
             f"Current UTC time: {now_utc.strftime('%Y-%m-%d %H:%M')}."
         )
     else:
         context = "\n\n[GLUCOSE DATA] Unable to fetch latest reading."
 
+    # Use compact summary instead of raw JSON dump for CGM history
     if glucose_history:
-        context += f"\n\n[GLUCOSE HISTORY - last 2 hours] {json.dumps(glucose_history)}"
+        context += f"\n\n[GLUCOSE HISTORY - last 2h] {summarise_glucose_history(glucose_history)}"
+
     if recent_logs:
         context += f"\n\n[RECENT LOGS] {json.dumps(recent_logs)}"
 
@@ -446,7 +467,6 @@ def handle_message(user_id, chat_id, text):
     tg_send(chat_id, assistant_message)
     print("tg_send done")
 
-    # Check if assistant proposed a log entry
     if "confirm?" in assistant_message.lower() or "logging:" in assistant_message.lower():
         pending = extract_log_entry(assistant_message, glucose_data)
         if pending:
