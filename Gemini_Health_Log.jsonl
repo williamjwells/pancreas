@@ -78,3 +78,4 @@
 {"ts": "2026-04-08T23:18:10Z", "type": "insulin", "units": 20, "glucose_at_time": 126, "note": "Humalog, popcorn bolus (conservative), Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-04-09T01:21:35Z", "type": "insulin", "units": 24, "glucose_at_time": 182, "note": "Humalog, correction post-popcorn, Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-04-09T03:16:37Z", "type": "meal", "food": "strawberries (~110g, about 4 berries)", "carbs_g": 8, "insulin_units": null, "glucose_at_time": 137}
+{"ts": "2026-04-09T04:14:15Z", "type": "meal", "food": "4 cookies and a glass of milk (~200ml)", "carbs_g": 45, "insulin_units": null, "glucose_at_time": 99}
