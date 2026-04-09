@@ -3,6 +3,7 @@ import requests
 import json
 import base64
 import os
+import time
 from datetime import datetime, timezone
 
 # === CREDENTIALS - read from environment variables ===
@@ -188,6 +189,23 @@ def summarise_glucose_history(entries):
         f"Newest: {newest['val']}@{newest['ts'][11:16]}UTC. "
         f"Sampled readings (old→new): {sample_str}"
     )
+
+# === ANTHROPIC API WITH 529 RETRY ===
+
+def call_anthropic_with_retry(client, max_retries=3, retry_delay=15, **kwargs):
+    """Call Anthropic API with automatic retry on 529 overload errors."""
+    for attempt in range(max_retries):
+        try:
+            return client.messages.create(**kwargs)
+        except anthropic.APIStatusError as e:
+            if e.status_code == 529 and attempt < max_retries - 1:
+                wait = retry_delay * (attempt + 1)  # 15s, 30s
+                print(f"API overloaded (529), retrying in {wait}s... (attempt {attempt + 1}/{max_retries})")
+                time.sleep(wait)
+            else:
+                raise
+        except Exception:
+            raise
 
 # === SYSTEM PROMPT ===
 
@@ -447,7 +465,8 @@ def handle_message(user_id, chat_id, text):
     print(f"Calling Anthropic API ({len(trimmed)} messages)...")
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
     try:
-        response = client.messages.create(
+        response = call_anthropic_with_retry(
+            client,
             model=MODEL,
             max_tokens=1024,
             system=session["system_prompt"],
