@@ -80,3 +80,4 @@
 {"ts": "2026-04-09T03:16:37Z", "type": "meal", "food": "strawberries (~110g, about 4 berries)", "carbs_g": 8, "insulin_units": null, "glucose_at_time": 137}
 {"ts": "2026-04-09T04:14:15Z", "type": "meal", "food": "4 cookies and a glass of milk (~200ml)", "carbs_g": 45, "insulin_units": null, "glucose_at_time": 99}
 {"ts": "2026-04-09T06:09:36Z", "type": "insulin", "units": 40, "glucose_at_time": 258, "note": "Humalog, correction post-cookie rebound, Mounjaro Day 4, Rc=1.22"}
+{"ts": "2026-04-09T07:33:58Z", "type": "insulin", "units": 30, "glucose_at_time": 269, "note": "Humalog, additional correction, Mounjaro Day 4, Rc=1.22"}
