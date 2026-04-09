@@ -1,7 +1,7 @@
 {
-  "version": "1.4",
-  "updated": "2026-04-07",
-  "change_note": "ICR updated 1.5->1.2 based on observed underdosing. Bilinear IOB decay adopted. GSF compression k added (dormant, pending calibration). Rc scope clarified to correction-only.",
+  "version": "1.5",
+  "updated": "2026-04-09",
+  "change_note": "HSF_max cap added at 0.30 to prevent formula runaway at high glucose values. Observed 92u output at delta=133 was clinically dangerous and caused by uncapped HSF amplification. Sanity check threshold defined explicitly.",
   "history": [
     {
       "version": "1.0",
@@ -27,12 +27,18 @@
       "version": "1.4",
       "date": "2026-04-07",
       "change": "ICR 1.5->1.2 (underdosing observed across multiple meals). Bilinear IOB decay adopted (fast phase 0-90min, slow phase 90-220min). gsf_sensitivity_compression_k=0.02 added dormant for future glucose-dependent GSF calibration. Rc scope hardened to correction-only - was incorrectly applied to full dose sum in some calculations."
+    },
+    {
+      "version": "1.5",
+      "date": "2026-04-09",
+      "change": "HSF_max=0.30 added. Uncapped HSF at delta=133 produced (1+0.665)=1.665 multiplier causing 92u output - clearly wrong. Cap limits HSF amplification to 30% maximum regardless of delta. Sanity check threshold set: flag only if single bolus exceeds 60u OR dose is more than 2x the largest dose in the past 7 days."
     }
   ],
   "baseline_target_mg_dl": 120,
   "gsf_correction_ratio": 3.7,
   "gsf_sensitivity_compression_k": 0.02,
   "hsf": 0.05,
+  "hsf_max": 0.30,
   "icr_meal_ratio": 1.2,
   "iob_decay_minutes": 220,
   "insulin_type": "Humalog",
@@ -42,6 +48,8 @@
   "mounjaro_rc_equation": "0.01d^2 + 0.015d + 1.0",
   "mounjaro_peak_resistance_baseline": 1.45,
   "resistance_state": "medium",
+  "sanity_check_absolute_threshold_units": 60,
+  "sanity_check_relative_multiplier": 2.0,
   "timezone": "Europe/Madrid",
   "timezone_offset_utc": 2
 }
