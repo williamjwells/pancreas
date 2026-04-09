@@ -87,3 +87,4 @@
 {"ts": "2026-04-09T19:54:00Z", "type": "meal", "food": "hypo treatment (Coke ~25g + candy ~15g)", "carbs_g": 40, "insulin_units": null, "glucose_at_time": 74}
 {"ts": "2026-04-09T21:00:00Z", "type": "meal", "food": "pizza (\u00bd of 14\" thin cracker crust pie) + 400ml Amstel Light draft", "carbs_g": 43, "insulin_units": null, "glucose_at_time": 192}
 {"ts": "2026-04-09T21:00:00Z", "type": "insulin", "units": 20, "glucose_at_time": 192, "note": "Humalog, pizza bolus, Mounjaro Day 5, Rc=1.325"}
+{"ts": "2026-04-09T23:33:51Z", "type": "meal", "food": "Activia Cremosa coconut yogurt (120g pot)", "carbs_g": 13, "insulin_units": null, "glucose_at_time": 156}
