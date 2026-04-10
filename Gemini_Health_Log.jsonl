@@ -91,3 +91,4 @@
 {"ts": "2026-04-09T23:35:51Z", "type": "insulin", "units": 10, "glucose_at_time": 151, "note": "Humalog, yogurt bolus (conservative, downward trend), Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-04-10T04:02:13Z", "type": "meal", "food": "beef and bean soup with chicken base (~200ml)", "carbs_g": 15, "insulin_units": null, "glucose_at_time": 115}
 {"ts": "2026-04-10T04:33:37Z", "type": "insulin", "units": 5, "glucose_at_time": 128, "note": "Humalog, soup bolus part 2 of 2, Mounjaro Day 6, Rc=1.45"}
+{"ts": "2026-04-10T05:03:36Z", "type": "insulin", "units": 10, "glucose_at_time": 140, "note": "Humalog, ice cream bolus (conservative underdose vs calculated 24u), Mounjaro Day 6, Rc=1.45"}
