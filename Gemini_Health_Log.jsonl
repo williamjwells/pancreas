@@ -97,3 +97,4 @@
 {"ts": "2026-04-10T09:20:57Z", "type": "insulin", "units": 5, "glucose_at_time": 207, "note": "Humalog, supplemental correction, Mounjaro Day 6 (final day, shot given this morning), Rc=1.45"}
 {"ts": "2026-04-10T10:58:11Z", "type": "insulin", "units": 5, "glucose_at_time": 166, "note": "Humalog, correction, Mounjaro Day 6 (final day), Rc=1.45"}
 {"ts": "2026-04-10T11:07:31Z", "type": "meal", "food": "gazpacho 120ml", "carbs_g": 6, "insulin_units": null, "glucose_at_time": 157}
+{"ts": "2026-04-10T12:01:20Z", "type": "meal", "food": "cucumber, cherry tomato, feta, vinegar and olive oil salad", "carbs_g": 5, "insulin_units": null, "glucose_at_time": 167}
