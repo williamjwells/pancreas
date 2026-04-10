@@ -93,3 +93,4 @@
 {"ts": "2026-04-10T04:33:37Z", "type": "insulin", "units": 5, "glucose_at_time": 128, "note": "Humalog, soup bolus part 2 of 2, Mounjaro Day 6, Rc=1.45"}
 {"ts": "2026-04-10T05:03:36Z", "type": "insulin", "units": 10, "glucose_at_time": 140, "note": "Humalog, ice cream bolus (conservative underdose vs calculated 24u), Mounjaro Day 6, Rc=1.45"}
 {"ts": "2026-04-10T07:54:36Z", "type": "insulin", "units": 20, "glucose_at_time": 202, "note": "Humalog, correction for ice cream undershoot, Mounjaro Day 6, Rc=1.45"}
+{"ts": "2026-04-10T08:44:23Z", "type": "note", "note": "Mounjaro weekly dose given, glucose 231, Mounjaro cycle resets (new Day 0 = Saturday 2026-04-11, GLP activation delay 24h)", "glucose_at_time": 231}
