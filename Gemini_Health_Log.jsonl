@@ -100,3 +100,4 @@
 {"ts": "2026-04-10T12:01:20Z", "type": "meal", "food": "cucumber, cherry tomato, feta, vinegar and olive oil salad", "carbs_g": 5, "insulin_units": null, "glucose_at_time": 167}
 {"ts": "2026-04-10T12:36:21Z", "type": "insulin", "units": 7, "glucose_at_time": 170, "note": "Humalog, correction (manual override, calc was 25u), Mounjaro Day 6 (final day), Rc=1.45"}
 {"ts": "2026-04-10T13:34:35Z", "type": "insulin", "units": 10, "glucose_at_time": 174, "note": "Humalog, correction (manual override, IOB 4.29u active from 12:36), Mounjaro Day 6 (final day), Rc=1.45"}
+{"ts": "2026-04-10T16:05:10Z", "type": "insulin", "units": 5, "glucose_at_time": 143, "note": "Humalog, manual bolus, flat trend, 2.36u IOB active, Mounjaro Day 6 (final day), Rc=1.45"}
