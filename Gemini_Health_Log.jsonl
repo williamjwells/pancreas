@@ -101,3 +101,4 @@
 {"ts": "2026-04-10T12:36:21Z", "type": "insulin", "units": 7, "glucose_at_time": 170, "note": "Humalog, correction (manual override, calc was 25u), Mounjaro Day 6 (final day), Rc=1.45"}
 {"ts": "2026-04-10T13:34:35Z", "type": "insulin", "units": 10, "glucose_at_time": 174, "note": "Humalog, correction (manual override, IOB 4.29u active from 12:36), Mounjaro Day 6 (final day), Rc=1.45"}
 {"ts": "2026-04-10T16:05:10Z", "type": "insulin", "units": 5, "glucose_at_time": 143, "note": "Humalog, manual bolus, flat trend, 2.36u IOB active, Mounjaro Day 6 (final day), Rc=1.45"}
+{"ts": "2026-04-10T18:59:02Z", "type": "meal", "food": "enchiladas de res en salsa roja (2 medium, veggie and steak filling, corn tortillas), 330ml Pacifico beer, 6 flour tortilla chips with queso fundido", "carbs_g": 57, "insulin_units": null, "glucose_at_time": 106}
