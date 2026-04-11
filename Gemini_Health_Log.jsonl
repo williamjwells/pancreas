@@ -113,3 +113,4 @@
 {"ts": "2026-04-11T11:39:47Z", "type": "insulin", "units": 4, "glucose_at_time": 142, "note": "Humalog, manual bolus, Mounjaro Day 1, Rc=1.0"}
 {"ts": "2026-04-11T13:07:29Z", "type": "insulin", "units": 5, "glucose_at_time": 162, "note": "Humalog, manual bolus, 1.65u IOB active, Mounjaro Day 1, Rc=1.0"}
 {"ts": "2026-04-11T13:16:16Z", "type": "meal", "food": "Leek and pasta soup (250ml serving)", "carbs_g": 10.5, "insulin_units": null, "glucose_at_time": 162}
+{"ts": "2026-04-11T13:43:21Z", "type": "meal", "food": "Leek and pasta soup (2 servings, 500ml)", "carbs_g": 21, "insulin_units": null, "glucose_at_time": 162}
