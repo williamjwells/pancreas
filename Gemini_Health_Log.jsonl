@@ -117,3 +117,4 @@
 {"ts": "2026-04-11T13:44:05Z", "type": "insulin", "units": 29, "glucose_at_time": 163, "note": "Humalog, meal bolus + correction for leek and pasta soup (2 servings, 21g carbs), Mounjaro Day 1, Rc=1.0"}
 {"ts": "2026-04-11T14:31:15Z", "type": "meal", "food": "Leek and pasta soup (1 additional serving, 250ml)", "carbs_g": 10.5, "insulin_units": null, "glucose_at_time": 172}
 {"ts": "2026-04-11T14:31:54Z", "type": "meal", "food": "leek and pasta soup (1 additional serving)", "carbs_g": 10.5, "insulin_units": 8, "glucose_at_time": 172}
+{"ts": "2026-04-11T16:28:56Z", "type": "insulin", "units": 20, "glucose_at_time": 192, "note": "20u Humalog correction bolus; formula suggested 21u; Mounjaro Day 1; Rc=1.0"}
