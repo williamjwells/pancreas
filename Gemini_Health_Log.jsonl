@@ -105,5 +105,5 @@
 {"ts": "2026-04-10T18:59:45Z", "type": "insulin", "units": 15, "glucose_at_time": 106, "note": "Humalog, meal bolus first split (enchiladas, full calc 47u, remainder to follow), Mounjaro Day 6 (final day), Rc=1.45"}
 {"ts": "2026-04-10T19:34:07Z", "type": "insulin", "units": 20, "glucose_at_time": 114, "note": "Humalog, meal bolus second split (3 corn tacos + black beans + beer + chips, 35u total for meal), Mounjaro Day 6 (final day), Rc=1.45"}
 {"ts": "2026-04-11T03:16:59Z", "type": "meal", "food": "Danone Cremoso coconut yogurt 125g", "carbs_g": 14, "insulin_units": null, "glucose_at_time": 127}
-{"ts": "2026-04-11T03:34:31Z", "type": "meal", "food": "Danone Cremoso coconut yogurt", "carbs_g": 14, "insulin_units": 4, "glucose_at_time": 117}
+
 {"ts": "2026-04-11T03:35:09Z", "type": "insulin", "units": 4, "glucose_at_time": 117, "note": "Humalog, meal bolus for coconut yogurt, Mounjaro Day 1, Rc=1.0"}
