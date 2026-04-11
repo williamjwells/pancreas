@@ -108,3 +108,4 @@
 
 {"ts": "2026-04-11T03:35:09Z", "type": "insulin", "units": 4, "glucose_at_time": 117, "note": "Humalog, meal bolus for coconut yogurt, Mounjaro Day 1, Rc=1.0"}
 {"ts": "2026-04-11T04:36:49Z", "type": "insulin", "units": 4, "glucose_at_time": 133, "note": "Humalog, correction (manual override, calc was 1.5u), Mounjaro Day 1, Rc=1.0"}
+{"ts": "2026-04-11T09:52:46Z", "type": "meal", "food": "Danone Cremoso coconut yogurt 125g", "carbs_g": 14, "insulin_units": null, "glucose_at_time": 111}
