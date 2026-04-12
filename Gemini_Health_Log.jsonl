@@ -130,3 +130,4 @@
 {"ts": "2026-04-12T15:28:24Z", "type": "meal", "food": "pimientos de Padr\u00f3n + 120ml Rioja", "carbs_g": 9, "insulin_units": 5, "glucose_at_time": 107}
 {"ts": "2026-04-12T17:02:29Z", "type": "meal", "food": "limoncello 1 shot + 3 strawberries", "carbs_g": 11, "insulin_units": null, "glucose_at_time": 99}
 {"ts": "2026-04-12T19:15:14Z", "type": "meal", "food": "KitKat 1 bar", "carbs_g": 21, "insulin_units": null, "glucose_at_time": 150}
+{"ts": "2026-04-12T19:15:47Z", "type": "insulin", "units": 27, "glucose_at_time": 151, "note": "Humalog, KitKat meal bolus + correction, Mounjaro Day 2, Rc=1.07"}
