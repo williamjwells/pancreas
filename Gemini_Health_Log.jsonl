@@ -123,3 +123,4 @@
 {"ts": "2026-04-11T20:30:00Z", "type": "meal", "food": "1 slice cracker-crust pizza + Mahou beer 200ml", "carbs_g": 31, "insulin_units": null, "glucose_at_time": 147}
 {"ts": "2026-04-11T20:30:00Z", "type": "insulin", "units": 30, "glucose_at_time": 147, "note": "Humalog, meal bolus for ceviche + 2x Mahou beer + pizza (~45g carbs), Mounjaro Day 1, Rc=1.0"}
 {"ts": "2026-04-12T01:26:27Z", "type": "meal", "food": "Leek and pasta soup (2 servings, 500ml)", "carbs_g": 21, "insulin_units": null, "glucose_at_time": 144}
+{"ts": "2026-04-12T01:26:48Z", "type": "insulin", "units": 22, "glucose_at_time": 144, "note": "Humalog, meal bolus + correction for leek and pasta soup (2 servings, 21g carbs), Mounjaro Day 2, Rc=1.07"}
