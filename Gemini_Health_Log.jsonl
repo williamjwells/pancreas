@@ -129,3 +129,4 @@
 {"ts": "2026-04-12T15:28:05Z", "type": "meal", "food": "pimientos de Padr\u00f3n 200g fried + 120ml Rioja", "carbs_g": 9, "insulin_units": null, "glucose_at_time": 108}
 {"ts": "2026-04-12T15:28:24Z", "type": "meal", "food": "pimientos de Padr\u00f3n + 120ml Rioja", "carbs_g": 9, "insulin_units": 5, "glucose_at_time": 107}
 {"ts": "2026-04-12T17:02:29Z", "type": "meal", "food": "limoncello 1 shot + 3 strawberries", "carbs_g": 11, "insulin_units": null, "glucose_at_time": 99}
+{"ts": "2026-04-12T19:15:14Z", "type": "meal", "food": "KitKat 1 bar", "carbs_g": 21, "insulin_units": null, "glucose_at_time": 150}
