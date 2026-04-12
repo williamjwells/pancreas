@@ -128,3 +128,4 @@
 {"ts": "2026-04-12T14:07:17Z", "type": "insulin", "units": 5, "glucose_at_time": 136, "note": "Humalog, correction for beer carb rise, Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-04-12T15:28:05Z", "type": "meal", "food": "pimientos de Padr\u00f3n 200g fried + 120ml Rioja", "carbs_g": 9, "insulin_units": null, "glucose_at_time": 108}
 {"ts": "2026-04-12T15:28:24Z", "type": "meal", "food": "pimientos de Padr\u00f3n + 120ml Rioja", "carbs_g": 9, "insulin_units": 5, "glucose_at_time": 107}
+{"ts": "2026-04-12T17:02:29Z", "type": "meal", "food": "limoncello 1 shot + 3 strawberries", "carbs_g": 11, "insulin_units": null, "glucose_at_time": 99}
