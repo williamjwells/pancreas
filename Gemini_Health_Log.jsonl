@@ -126,3 +126,4 @@
 {"ts": "2026-04-12T01:26:48Z", "type": "insulin", "units": 22, "glucose_at_time": 144, "note": "Humalog, meal bolus + correction for leek and pasta soup (2 servings, 21g carbs), Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-04-12T13:21:49Z", "type": "meal", "food": "Cerveza Sentir M\u00e1laga 33cl", "carbs_g": 10, "insulin_units": null, "glucose_at_time": 108}
 {"ts": "2026-04-12T14:07:17Z", "type": "insulin", "units": 5, "glucose_at_time": 136, "note": "Humalog, correction for beer carb rise, Mounjaro Day 2, Rc=1.07"}
+{"ts": "2026-04-12T15:28:05Z", "type": "meal", "food": "pimientos de Padr\u00f3n 200g fried + 120ml Rioja", "carbs_g": 9, "insulin_units": null, "glucose_at_time": 108}
