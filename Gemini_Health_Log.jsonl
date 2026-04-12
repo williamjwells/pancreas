@@ -132,3 +132,4 @@
 {"ts": "2026-04-12T19:15:14Z", "type": "meal", "food": "KitKat 1 bar", "carbs_g": 21, "insulin_units": null, "glucose_at_time": 150}
 {"ts": "2026-04-12T19:15:47Z", "type": "insulin", "units": 27, "glucose_at_time": 151, "note": "Humalog, KitKat meal bolus + correction, Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-04-12T20:21:46Z", "type": "meal", "food": "\u00bc chicken breast, stir-fried peppers/onion/garlic, 10 asparagus steamed with butter and lemon, 200g wax potatoes roasted", "carbs_g": 42, "insulin_units": null, "glucose_at_time": 126}
+{"ts": "2026-04-12T20:22:17Z", "type": "insulin", "units": 22, "glucose_at_time": 127, "note": "Humalog, dinner meal bolus + correction, Mounjaro Day 2, Rc=1.07"}
