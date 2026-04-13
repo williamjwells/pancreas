@@ -135,3 +135,4 @@
 {"ts": "2026-04-12T20:22:17Z", "type": "insulin", "units": 22, "glucose_at_time": 127, "note": "Humalog, dinner meal bolus + correction, Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-04-12T22:21:02Z", "type": "insulin", "units": 9, "glucose_at_time": 168, "note": "Humalog, correction bump, Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-04-13T12:22:06Z", "type": "insulin", "units": 24, "glucose_at_time": 95, "note": "Humalog, meal bolus for pork gyoza 160g, Mounjaro Day 3, Rc=1.135"}
+{"ts": "2026-04-13T18:24:39Z", "type": "insulin", "units": 30, "glucose_at_time": 114, "note": "Humalog, meal bolus for smash burger menu + 400ml beer, Mounjaro Day 3, Rc=1.135"}
