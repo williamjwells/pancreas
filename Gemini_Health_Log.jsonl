@@ -146,3 +146,4 @@
 {"ts": "2026-04-14T21:14:43Z", "type": "insulin", "units": 30, "glucose_at_time": 119, "note": "Humalog, first split dose, pasta dinner pre-meal bolus, Mounjaro Day 4, Rc=1.22, total calculated dose 73u"}
 {"ts": "2026-04-14T21:38:58Z", "type": "meal", "food": "pasta pomodoro (100g dry pasta, tomato sauce, basil, parmigiano reggiano) + 2 glasses Bordeaux", "carbs_g": 88, "insulin_units": null, "glucose_at_time": 113}
 {"ts": "2026-04-14T21:39:28Z", "type": "insulin", "units": 30, "glucose_at_time": 113, "note": "Humalog, second split dose, pasta dinner, Mounjaro Day 4, Rc=1.22, total now 60u of 73u calculated"}
+{"ts": "2026-04-14T22:51:20Z", "type": "meal", "food": "H\u00e4agen-Dazs Belgian chocolate ice cream, 100g", "carbs_g": 27, "insulin_units": null, "glucose_at_time": 92}
