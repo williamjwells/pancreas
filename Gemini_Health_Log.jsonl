@@ -139,3 +139,4 @@
 {"ts": "2026-04-13T19:01:36Z", "type": "insulin", "units": 8, "glucose_at_time": 187, "note": "Humalog, correction top-up, smash burger meal still absorbing, Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-04-13T19:03:39Z", "type": "insulin", "units": 30, "glucose_at_time": 209, "note": "30u Humalog, glucose at time of dose 187, correction top-up replaces incorrect 8u entry, smash burger meal still absorbing, Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-04-13T20:27:14Z", "type": "insulin", "units": 20, "glucose_at_time": 194, "note": "Humalog, third split dose of smash burger bolus (total 80u across three doses), Mounjaro Day 3, Rc=1.135"}
+{"ts": "2026-04-14T15:52:36Z", "type": "meal", "food": "Frito corn chip", "carbs_g": 1, "insulin_units": null, "glucose_at_time": 127}
