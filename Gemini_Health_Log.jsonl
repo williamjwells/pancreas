@@ -143,3 +143,4 @@
 {"ts": "2026-04-14T15:57:26Z", "type": "meal", "food": "Frito corn chip", "carbs_g": 1, "insulin_units": null, "glucose_at_time": 127}
 {"ts": "2026-04-14T18:16:02Z", "type": "meal", "food": "1 glass Sauvignon Blanc + 50g iberico sausage", "carbs_g": 4, "insulin_units": null, "glucose_at_time": 125}
 {"ts": "2026-04-14T18:16:15Z", "type": "insulin", "units": 5, "glucose_at_time": 122, "note": "Humalog, meal bolus for Sauvignon Blanc + iberico sausage, Mounjaro Day 4, Rc=1.22"}
+{"ts": "2026-04-14T21:14:43Z", "type": "insulin", "units": 30, "glucose_at_time": 119, "note": "Humalog, first split dose, pasta dinner pre-meal bolus, Mounjaro Day 4, Rc=1.22, total calculated dose 73u"}
