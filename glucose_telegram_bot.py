@@ -490,17 +490,7 @@ def handle_message(user_id, chat_id, text):
         pending = extract_log_entry(assistant_message, glucose_data)
         if pending:
             session["pending_log"] = pending
-            entry_type = pending.get("type", "entry")
-            units = pending.get("units")
-            food = pending.get("food")
-            carbs = pending.get("carbs_g")
-            if entry_type == "insulin" and units:
-                summary = f"{units}u insulin"
-            elif entry_type == "meal" and food:
-                summary = f"{food} ({carbs}g carbs)" if carbs else food
-            else:
-                summary = entry_type
-            tg_send(chat_id, f"Ready to save: {summary}\nReply yes/sure/ok to confirm, or keep talking to cancel.")
+            print(f"Pending log set: {pending.get('type')} - {pending.get('food') or pending.get('note') or str(pending.get('units','')) + 'u'}")
 
 # === MAIN POLLING LOOP ===
 
