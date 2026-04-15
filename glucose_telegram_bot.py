@@ -11,6 +11,55 @@ GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
 GITHUB_REPO = "williamjwells/pancreas"
 NIGHTSCOUT_URL = "https://billwells.ns.10be.de"
 
+LOCAL_TZ_OFFSET_HOURS = 2  # CEST (UTC+2). Update to 1 in winter (CET).
+
+def utc_to_local_str(utc_ts_str):
+    """Convert UTC ISO timestamp string to local time string for display."""
+    try:
+        dt = datetime.strptime(utc_ts_str, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+        local_minutes = int(dt.timestamp() // 60) + LOCAL_TZ_OFFSET_HOURS * 60
+        local_h = (local_minutes // 60) % 24
+        local_m = local_minutes % 60
+        return f"{local_h:02d}:{local_m:02d} local"
+    except Exception:
+        return utc_ts_str
+
+def compute_iob_from_logs(recent_logs):
+    """
+    Pre-compute total IOB in Python from recent insulin logs.
+    Returns a plain-English string describing each dose's IOB and the total.
+    This prevents Claude from doing clock arithmetic which has proven error-prone.
+    """
+    now_utc = datetime.now(timezone.utc)
+    iob_lines = []
+    total_iob = 0.0
+    insulin_logs = [l for l in recent_logs if l.get("type") == "insulin" and l.get("units") and l.get("ts")]
+    for log in insulin_logs:
+        try:
+            dose_time = datetime.strptime(log["ts"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+            elapsed = (now_utc - dose_time).total_seconds() / 60.0
+            units = float(log["units"])
+            if elapsed >= 220:
+                remaining = 0.0
+            elif elapsed <= 90:
+                remaining = 1.0 - (0.60 * elapsed / 90)
+            else:
+                remaining = 0.40 * (1.0 - (elapsed - 90) / 130)
+            iob = units * remaining
+            total_iob += iob
+            local_str = utc_to_local_str(log["ts"])
+            iob_lines.append(
+                f"  {units}u at {log['ts']} ({local_str}): elapsed={elapsed:.0f}min, remaining={remaining:.3f}, IOB={iob:.1f}u"
+            )
+        except Exception as e:
+            iob_lines.append(f"  (skipped log entry: {e})")
+    if not iob_lines:
+        return "No recent insulin logs found. IOB = 0u."
+    summary = "Pre-computed IOB (Python, use these values directly - do not recalculate elapsed time yourself):\n"
+    summary += "\n".join(iob_lines)
+    summary += f"\nTOTAL IOB = {total_iob:.1f}u"
+    return summary
+
 TREND_LABELS = {
     "DoubleUp": "rising fast (↑↑)",
     "SingleUp": "rising (↑)",
@@ -181,12 +230,14 @@ def summarise_glucose_history(entries):
     step = max(1, len(entries) // MAX_GLUCOSE_HISTORY)
     sampled = entries[::step][:MAX_GLUCOSE_HISTORY]
     sample_str = ", ".join(
-        f"{e['val']}@{e['ts'][11:16]}" for e in reversed(sampled) if e.get("val")
+        f"{e['val']}@{utc_to_local_str(e['ts'])}" for e in reversed(sampled) if e.get("val")
     )
+    oldest_local = utc_to_local_str(oldest['ts'])
+    newest_local = utc_to_local_str(newest['ts'])
     return (
         f"Range: {lo}-{hi} mg/dL over last 2h. "
-        f"Oldest: {oldest['val']}@{oldest['ts'][11:16]}UTC, "
-        f"Newest: {newest['val']}@{newest['ts'][11:16]}UTC. "
+        f"Oldest: {oldest['val']}@{oldest_local}, "
+        f"Newest: {newest['val']}@{newest_local}. "
         f"Sampled readings (old→new): {sample_str}"
     )
 
@@ -274,11 +325,15 @@ Use bilinear decay for Humalog:
   if elapsed > 90:   remaining = 0.40 * (1.0 - (elapsed - 90) / 130)
   IOB = units * remaining
 
-RULE: Before ANY response that mentions IOB - including casual narrative - compute elapsed
-time from last insulin log timestamp to current UTC, then calculate IOB using the formula
-above. Never estimate IOB by intuition. State the computed value explicitly.
+RULE: Before ANY response that mentions IOB, use the [PRE-COMPUTED IOB] values provided in
+the context. These are calculated by Python using exact timestamp arithmetic and are always
+correct. Do NOT recalculate elapsed time yourself from timestamps - use the pre-computed
+elapsed minutes and IOB values directly. Show the pre-computed values in your working so
+Bill can verify them.
 
-Timezone: Bill is UTC+{params['timezone_offset_utc']}. Glucose timestamps are UTC - add {params['timezone_offset_utc']} hours for local time.
+Timezone: Bill is in CEST (UTC+{params['timezone_offset_utc']}). All times displayed to Bill must be in local time.
+The context provides both UTC and local time for all events. Always show local time in responses.
+Never show bare UTC times to Bill without the local equivalent.
 
 === BEHAVIOR RULES ===
 {rules}
@@ -439,16 +494,19 @@ def handle_message(user_id, chat_id, text):
     glucose_history = get_recent_glucose(2)
     recent_logs = get_recent_logs()
 
+    now_utc = datetime.now(timezone.utc)
+    now_local_str = utc_to_local_str(now_utc.strftime("%Y-%m-%dT%H:%M:%SZ"))
+
     if glucose_data:
-        now_utc = datetime.now(timezone.utc)
         trend_str = f", trend: {glucose_data.get('trend', 'unknown')}" if glucose_data.get('trend') else ""
+        glucose_local_str = utc_to_local_str(glucose_data.get('ts', ''))
         context = (
             f"\n\n[GLUCOSE DATA] Latest: {glucose_data.get('val')} mg/dL "
-            f"at {glucose_data.get('ts')} UTC{trend_str}. "
-            f"Current UTC time: {now_utc.strftime('%Y-%m-%d %H:%M')}."
+            f"at {glucose_data.get('ts')} UTC ({glucose_local_str}){trend_str}. "
+            f"Current time: {now_utc.strftime('%Y-%m-%d %H:%M')} UTC ({now_local_str})."
         )
     else:
-        context = "\n\n[GLUCOSE DATA] Unable to fetch latest reading."
+        context = f"\n\n[GLUCOSE DATA] Unable to fetch latest reading. Current time: {now_utc.strftime('%Y-%m-%d %H:%M')} UTC ({now_local_str})."
 
     # Use compact summary instead of raw JSON dump for CGM history
     if glucose_history:
@@ -456,6 +514,9 @@ def handle_message(user_id, chat_id, text):
 
     if recent_logs:
         context += f"\n\n[RECENT LOGS] {json.dumps(recent_logs)}"
+        # Pre-compute IOB in Python to prevent LLM clock arithmetic errors
+        iob_summary = compute_iob_from_logs(recent_logs)
+        context += f"\n\n[PRE-COMPUTED IOB] {iob_summary}"
 
     full_input = text + context
     session["history"].append({"role": "user", "content": full_input})
@@ -490,7 +551,17 @@ def handle_message(user_id, chat_id, text):
         pending = extract_log_entry(assistant_message, glucose_data)
         if pending:
             session["pending_log"] = pending
-            print(f"Pending log set: {pending.get('type')} - {pending.get('food') or pending.get('note') or str(pending.get('units','')) + 'u'}")
+            entry_type = pending.get("type", "entry")
+            units = pending.get("units")
+            food = pending.get("food")
+            carbs = pending.get("carbs_g")
+            if entry_type == "insulin" and units:
+                summary = f"{units}u insulin"
+            elif entry_type == "meal" and food:
+                summary = f"{food} ({carbs}g carbs)" if carbs else food
+            else:
+                summary = entry_type
+            tg_send(chat_id, f"Ready to save: {summary}\nReply yes/sure/ok to confirm, or keep talking to cancel.")
 
 # === MAIN POLLING LOOP ===
 
