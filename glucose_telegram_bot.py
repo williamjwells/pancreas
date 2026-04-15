@@ -24,12 +24,15 @@ def utc_to_local_str(utc_ts_str):
     except Exception:
         return utc_ts_str
 
-def compute_iob_from_logs(recent_logs):
+def compute_iob_from_logs(recent_logs, iob_total_minutes=150, fast_phase_minutes=90):
     """
     Pre-compute total IOB in Python from recent insulin logs.
     Returns a plain-English string describing each dose's IOB and the total.
     This prevents Claude from doing clock arithmetic which has proven error-prone.
+    iob_total_minutes: total decay duration (from Gemini_Model_Parameters.json iob_decay_minutes)
+    fast_phase_minutes: duration of fast phase (fixed at 90 min, 60% of dose delivered here)
     """
+    slow_phase_duration = iob_total_minutes - fast_phase_minutes
     now_utc = datetime.now(timezone.utc)
     iob_lines = []
     total_iob = 0.0
@@ -39,12 +42,13 @@ def compute_iob_from_logs(recent_logs):
             dose_time = datetime.strptime(log["ts"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
             elapsed = (now_utc - dose_time).total_seconds() / 60.0
             units = float(log["units"])
-            if elapsed >= 220:
+            if elapsed >= iob_total_minutes:
                 remaining = 0.0
-            elif elapsed <= 90:
-                remaining = 1.0 - (0.60 * elapsed / 90)
+            elif elapsed <= fast_phase_minutes:
+                remaining = 1.0 - (0.60 * elapsed / fast_phase_minutes)
             else:
-                remaining = 0.40 * (1.0 - (elapsed - 90) / 130)
+                remaining = 0.40 * (1.0 - (elapsed - fast_phase_minutes) / slow_phase_duration)
+            remaining = max(0.0, remaining)
             iob = units * remaining
             total_iob += iob
             local_str = utc_to_local_str(log["ts"])
@@ -55,7 +59,7 @@ def compute_iob_from_logs(recent_logs):
             iob_lines.append(f"  (skipped log entry: {e})")
     if not iob_lines:
         return "No recent insulin logs found. IOB = 0u."
-    summary = "Pre-computed IOB (Python, use these values directly - do not recalculate elapsed time yourself):\n"
+    summary = f"Pre-computed IOB (Python, decay={iob_total_minutes}min total, fast 0-{fast_phase_minutes}min, slow {fast_phase_minutes}-{iob_total_minutes}min. Use these values directly - do not recalculate elapsed time yourself):\n"
     summary += "\n".join(iob_lines)
     summary += f"\nTOTAL IOB = {total_iob:.1f}u"
     return summary
@@ -264,7 +268,7 @@ def build_system_prompt():
     params_text = github_get_text("Gemini_Model_Parameters.json")
     rules_text = github_get_text("Gemini_Behavior_Rules.txt")
     if not params_text or not rules_text:
-        return None
+        return None, {}
     params = json.loads(params_text)
     rules = "\n".join(
         line for line in rules_text.splitlines()
@@ -274,12 +278,13 @@ def build_system_prompt():
     hsf_max = params.get("hsf_max", 0.30)
     sanity_abs = params.get("sanity_check_absolute_threshold_units", 60)
     sanity_rel = params.get("sanity_check_relative_multiplier", 2.0)
+    iob_total = params.get("iob_decay_minutes", 150)
     prompt = f"""You are a glucose monitoring assistant for Bill. Use the parameters and rules below.
 
 === CURRENT MODEL PARAMETERS (version {params.get('version', 'unknown')}) ===
 Baseline target: {params['baseline_target_mg_dl']} mg/dL
 Insulin type: {params['insulin_type']}
-IOB decay: {params['iob_decay_minutes']} minutes (bilinear: fast phase 0-90 min, slow phase 90-220 min)
+IOB decay: {iob_total} minutes (bilinear: fast phase 0-90 min, slow phase 90-{iob_total} min)
 GSF correction ratio: {params['gsf_correction_ratio']} base (glucose-dependent, see formula below)
 GSF sensitivity compression k: {gsf_k}
 HSF scaling factor: {params['hsf']} per 10 mg/dL above target
@@ -338,7 +343,7 @@ Never show bare UTC times to Bill without the local equivalent.
 === BEHAVIOR RULES ===
 {rules}
 """
-    return prompt
+    return prompt, params
 
 # === LOG ENTRY EXTRACTION ===
 
@@ -432,9 +437,10 @@ sessions = {}
 def get_session(user_id):
     if user_id not in sessions:
         print("Loading parameters...")
-        system_prompt = build_system_prompt()
+        system_prompt, params = build_system_prompt()
         sessions[user_id] = {
             "system_prompt": system_prompt,
+            "params": params,
             "history": [],
             "pending_log": None,
             "glucose_data": None,
@@ -455,7 +461,9 @@ def handle_message(user_id, chat_id, text):
         return
 
     if text.strip().lower() == "/reload":
-        session["system_prompt"] = build_system_prompt()
+        system_prompt, params = build_system_prompt()
+        session["system_prompt"] = system_prompt
+        session["params"] = params
         session["history"] = []
         session["pending_log"] = None
         tg_send(chat_id, "Parameters reloaded and conversation reset.")
@@ -515,7 +523,8 @@ def handle_message(user_id, chat_id, text):
     if recent_logs:
         context += f"\n\n[RECENT LOGS] {json.dumps(recent_logs)}"
         # Pre-compute IOB in Python to prevent LLM clock arithmetic errors
-        iob_summary = compute_iob_from_logs(recent_logs)
+        iob_decay = session.get("params", {}).get("iob_decay_minutes", 150)
+        iob_summary = compute_iob_from_logs(recent_logs, iob_total_minutes=iob_decay)
         context += f"\n\n[PRE-COMPUTED IOB] {iob_summary}"
 
     full_input = text + context
