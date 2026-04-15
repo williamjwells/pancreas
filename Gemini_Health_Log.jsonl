@@ -152,3 +152,4 @@
 {"ts": "2026-04-15T07:35:50Z", "type": "insulin", "units": 5, "glucose_at_time": 159, "note": "Humalog, fasting correction, Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-04-15T08:14:51Z", "type": "meal", "food": "pitufo con tomate y aceite de oliva", "carbs_g": 22, "insulin_units": null, "glucose_at_time": 143}
 {"ts": "2026-04-15T08:16:48Z", "type": "insulin", "units": 21, "glucose_at_time": 142, "note": "Humalog, meal bolus for pitufo con tomate y aceite de oliva, Mounjaro Day 5, Rc=1.325"}
+{"ts": "2026-04-15T10:21:37Z", "type": "insulin", "units": 20, "glucose_at_time": 193, "note": "Humalog, partial correction, model calculated 34u, Mounjaro Day 5, Rc=1.325"}
