@@ -1,7 +1,7 @@
 {
-  "version": "1.5",
-  "updated": "2026-04-09",
-  "change_note": "HSF_max cap added at 0.30 to prevent formula runaway at high glucose values. Observed 92u output at delta=133 was clinically dangerous and caused by uncapped HSF amplification. Sanity check threshold defined explicitly.",
+  "version": "1.6",
+  "updated": "2026-04-15",
+  "change_note": "iob_decay_minutes reduced from 220 to 150. Observed 2026-04-15: 20u at 12:21 local, glucose arrested around 14:00-14:15 local (~110-115 min), consistent with ~150 min total duration. At 138 min the 220-min model predicted 25% remaining (5u IOB) but clinically insulin appeared finished. 150-min model predicts 8% (1.6u) at that point, matching observation. Fast phase unchanged at 0-90 min; slow phase now spans 90-150 min.",
   "history": [
     {
       "version": "1.0",
@@ -32,6 +32,11 @@
       "version": "1.5",
       "date": "2026-04-09",
       "change": "HSF_max=0.30 added. Uncapped HSF at delta=133 produced (1+0.665)=1.665 multiplier causing 92u output - clearly wrong. Cap limits HSF amplification to 30% maximum regardless of delta. Sanity check threshold set: flag only if single bolus exceeds 60u OR dose is more than 2x the largest dose in the past 7 days."
+    },
+    {
+      "version": "1.6",
+      "date": "2026-04-15",
+      "change": "iob_decay_minutes 220->150. Clinical observation 2026-04-15: insulin action appeared complete ~110-115 min post-dose, inconsistent with 220-min model. 150-min bilinear (fast 0-90, slow 90-150) fits observed trajectory. Single data point - monitor and adjust if needed."
     }
   ],
   "baseline_target_mg_dl": 120,
@@ -40,7 +45,7 @@
   "hsf": 0.05,
   "hsf_max": 0.30,
   "icr_meal_ratio": 1.2,
-  "iob_decay_minutes": 220,
+  "iob_decay_minutes": 150,
   "insulin_type": "Humalog",
   "mounjaro_injection_day": "Friday",
   "mounjaro_injection_time": "08:00",
