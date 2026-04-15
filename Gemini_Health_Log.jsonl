@@ -155,3 +155,4 @@
 {"ts": "2026-04-15T10:21:37Z", "type": "insulin", "units": 20, "glucose_at_time": 193, "note": "Humalog, partial correction, model calculated 34u, Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-04-15T13:32:49Z", "type": "meal", "food": "Danone yogurt cremosa coco (1 container) + 60ml gazpacho", "carbs_g": 17, "insulin_units": null, "glucose_at_time": 99}
 {"ts": "2026-04-15T14:01:30Z", "type": "meal", "food": "1 kiwi fruit", "carbs_g": 8, "insulin_units": null, "glucose_at_time": 97}
+{"ts": "2026-04-15T16:35:56Z", "type": "meal", "food": "Greek salad (8 cherry tomatoes, 50g feta, 30g lean ham, \u00bd cucumber, 15ml olive oil, 15ml red wine vinegar)", "carbs_g": 9, "insulin_units": null, "glucose_at_time": 113}
