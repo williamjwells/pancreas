@@ -162,3 +162,4 @@
 {"ts": "2026-04-16T00:02:52Z", "type": "insulin", "units": 40, "glucose_at_time": 255, "note": "40u Humalog, fasting correction, Mounjaro Day 6, Rc=1.45, model calculated 85.8u staged (43u Tranche 1), Bill dosed 40u"}
 {"ts": "2026-04-16T01:00:04Z", "type": "insulin", "units": 10, "glucose_at_time": 223, "note": "Humalog, Tranche 2 of 3 staged fasting correction, Mounjaro Day 6, Rc=1.45"}
 {"ts": "2026-04-16T06:25:25Z", "type": "insulin", "units": 8, "glucose_at_time": 152, "note": "Humalog, Mounjaro Day 7, Rc=1.45, staged fasting correction Tranche 1 of 3, model net_dose 15.5u"}
+{"ts": "2026-04-16T08:36:44Z", "type": "meal", "food": "3 eggs scrambled with 30g ham and 10g Havarti, coffee with 30ml cream", "carbs_g": 4, "insulin_units": null, "glucose_at_time": 188}
