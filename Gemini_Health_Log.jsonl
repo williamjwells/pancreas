@@ -166,3 +166,4 @@
 {"ts": "2026-04-16T08:37:16Z", "type": "insulin", "units": 14, "glucose_at_time": 187, "note": "Humalog, glucose 154 at time of dose, Mounjaro Day 7, Rc=1.45, breakfast meal bolus + correction, eggs/ham/cheese/cream"}
 {"ts": "2026-04-16T08:37:41Z", "type": "insulin", "units": 40, "glucose_at_time": 187, "note": "Humalog, glucose 188, Mounjaro Day 7, Rc=1.45, post-breakfast top-off correction, model net_dose 40u"}
 {"ts": "2026-04-16T10:40:51Z", "type": "insulin", "units": 9, "glucose_at_time": 167, "note": "Humalog, fasting correction, Mounjaro Day 7, Rc=1.45"}
+{"ts": "2026-04-16T19:14:44Z", "type": "meal", "food": "black bean beef + bok choy (no rice)", "carbs_g": 25, "insulin_units": null, "glucose_at_time": 111}
