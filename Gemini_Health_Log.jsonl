@@ -160,3 +160,4 @@
 {"ts": "2026-04-15T19:34:46Z", "type": "meal", "food": "2 fried shrimp tempura", "carbs_g": 8, "insulin_units": null, "glucose_at_time": 145}
 {"ts": "2026-04-15T19:36:02Z", "type": "insulin", "units": 20, "glucose_at_time": 147, "note": "Humalog, meal bolus + correction for sashimi/Philly roll/tempura/harumaki dinner, Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-04-16T00:02:52Z", "type": "insulin", "units": 40, "glucose_at_time": 255, "note": "40u Humalog, fasting correction, Mounjaro Day 6, Rc=1.45, model calculated 85.8u staged (43u Tranche 1), Bill dosed 40u"}
+{"ts": "2026-04-16T01:00:04Z", "type": "insulin", "units": 10, "glucose_at_time": 223, "note": "Humalog, Tranche 2 of 3 staged fasting correction, Mounjaro Day 6, Rc=1.45"}
