@@ -182,3 +182,4 @@
 {"ts": "2026-04-17T16:22:49Z", "type": "meal", "food": "Danone Cremosa Coco yogurt 125g", "carbs_g": 17, "insulin_units": null, "glucose_at_time": 141}
 {"ts": "2026-04-17T16:23:27Z", "type": "insulin", "units": 6, "glucose_at_time": 141, "note": "Humalog, meal bolus for Danone Cremosa Coco yogurt, Mounjaro Day 0, Rc=1.0"}
 {"ts": "2026-04-17T17:24:19Z", "type": "meal", "food": "1 grape", "carbs_g": 1, "insulin_units": null, "glucose_at_time": 124}
+{"ts": "2026-04-17T17:24:36Z", "type": "insulin", "units": 1, "glucose_at_time": 124, "note": "Humalog, meal bolus for 1 grape, Mounjaro Day 0, Rc=1.0"}
