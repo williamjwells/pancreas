@@ -11,59 +11,6 @@ GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
 GITHUB_REPO = "williamjwells/pancreas"
 NIGHTSCOUT_URL = "https://billwells.ns.10be.de"
 
-LOCAL_TZ_OFFSET_HOURS = 2  # CEST (UTC+2). Update to 1 in winter (CET).
-
-def utc_to_local_str(utc_ts_str):
-    """Convert UTC ISO timestamp string to local time string for display."""
-    try:
-        dt = datetime.strptime(utc_ts_str, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
-        local_minutes = int(dt.timestamp() // 60) + LOCAL_TZ_OFFSET_HOURS * 60
-        local_h = (local_minutes // 60) % 24
-        local_m = local_minutes % 60
-        return f"{local_h:02d}:{local_m:02d} local"
-    except Exception:
-        return utc_ts_str
-
-def compute_iob_from_logs(recent_logs, iob_total_minutes=150, fast_phase_minutes=90):
-    """
-    Pre-compute total IOB in Python from recent insulin logs.
-    Returns a plain-English string describing each dose's IOB and the total.
-    This prevents Claude from doing clock arithmetic which has proven error-prone.
-    iob_total_minutes: total decay duration (from Gemini_Model_Parameters.json iob_decay_minutes)
-    fast_phase_minutes: duration of fast phase (fixed at 90 min, 60% of dose delivered here)
-    """
-    slow_phase_duration = iob_total_minutes - fast_phase_minutes
-    now_utc = datetime.now(timezone.utc)
-    iob_lines = []
-    total_iob = 0.0
-    insulin_logs = [l for l in recent_logs if l.get("type") == "insulin" and l.get("units") and l.get("ts")]
-    for log in insulin_logs:
-        try:
-            dose_time = datetime.strptime(log["ts"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
-            elapsed = (now_utc - dose_time).total_seconds() / 60.0
-            units = float(log["units"])
-            if elapsed >= iob_total_minutes:
-                remaining = 0.0
-            elif elapsed <= fast_phase_minutes:
-                remaining = 1.0 - (0.60 * elapsed / fast_phase_minutes)
-            else:
-                remaining = 0.40 * (1.0 - (elapsed - fast_phase_minutes) / slow_phase_duration)
-            remaining = max(0.0, remaining)
-            iob = units * remaining
-            total_iob += iob
-            local_str = utc_to_local_str(log["ts"])
-            iob_lines.append(
-                f"  {units}u at {log['ts']} ({local_str}): elapsed={elapsed:.0f}min, remaining={remaining:.3f}, IOB={iob:.1f}u"
-            )
-        except Exception as e:
-            iob_lines.append(f"  (skipped log entry: {e})")
-    if not iob_lines:
-        return "No recent insulin logs found. IOB = 0u."
-    summary = f"Pre-computed IOB (Python, decay={iob_total_minutes}min total, fast 0-{fast_phase_minutes}min, slow {fast_phase_minutes}-{iob_total_minutes}min. Use these values directly - do not recalculate elapsed time yourself):\n"
-    summary += "\n".join(iob_lines)
-    summary += f"\nTOTAL IOB = {total_iob:.1f}u"
-    return summary
-
 TREND_LABELS = {
     "DoubleUp": "rising fast (↑↑)",
     "SingleUp": "rising (↑)",
@@ -234,14 +181,12 @@ def summarise_glucose_history(entries):
     step = max(1, len(entries) // MAX_GLUCOSE_HISTORY)
     sampled = entries[::step][:MAX_GLUCOSE_HISTORY]
     sample_str = ", ".join(
-        f"{e['val']}@{utc_to_local_str(e['ts'])}" for e in reversed(sampled) if e.get("val")
+        f"{e['val']}@{e['ts'][11:16]}" for e in reversed(sampled) if e.get("val")
     )
-    oldest_local = utc_to_local_str(oldest['ts'])
-    newest_local = utc_to_local_str(newest['ts'])
     return (
         f"Range: {lo}-{hi} mg/dL over last 2h. "
-        f"Oldest: {oldest['val']}@{oldest_local}, "
-        f"Newest: {newest['val']}@{newest_local}. "
+        f"Oldest: {oldest['val']}@{oldest['ts'][11:16]}UTC, "
+        f"Newest: {newest['val']}@{newest['ts'][11:16]}UTC. "
         f"Sampled readings (old→new): {sample_str}"
     )
 
@@ -268,7 +213,7 @@ def build_system_prompt():
     params_text = github_get_text("Gemini_Model_Parameters.json")
     rules_text = github_get_text("Gemini_Behavior_Rules.txt")
     if not params_text or not rules_text:
-        return None, {}
+        return None
     params = json.loads(params_text)
     rules = "\n".join(
         line for line in rules_text.splitlines()
@@ -278,13 +223,12 @@ def build_system_prompt():
     hsf_max = params.get("hsf_max", 0.30)
     sanity_abs = params.get("sanity_check_absolute_threshold_units", 60)
     sanity_rel = params.get("sanity_check_relative_multiplier", 2.0)
-    iob_total = params.get("iob_decay_minutes", 150)
     prompt = f"""You are a glucose monitoring assistant for Bill. Use the parameters and rules below.
 
 === CURRENT MODEL PARAMETERS (version {params.get('version', 'unknown')}) ===
 Baseline target: {params['baseline_target_mg_dl']} mg/dL
 Insulin type: {params['insulin_type']}
-IOB decay: {iob_total} minutes (bilinear: fast phase 0-90 min, slow phase 90-{iob_total} min)
+IOB decay: {params['iob_decay_minutes']} minutes (bilinear: fast phase 0-90 min, slow phase 90-220 min)
 GSF correction ratio: {params['gsf_correction_ratio']} base (glucose-dependent, see formula below)
 GSF sensitivity compression k: {gsf_k}
 HSF scaling factor: {params['hsf']} per 10 mg/dL above target
@@ -330,20 +274,16 @@ Use bilinear decay for Humalog:
   if elapsed > 90:   remaining = 0.40 * (1.0 - (elapsed - 90) / 130)
   IOB = units * remaining
 
-RULE: Before ANY response that mentions IOB, use the [PRE-COMPUTED IOB] values provided in
-the context. These are calculated by Python using exact timestamp arithmetic and are always
-correct. Do NOT recalculate elapsed time yourself from timestamps - use the pre-computed
-elapsed minutes and IOB values directly. Show the pre-computed values in your working so
-Bill can verify them.
+RULE: Before ANY response that mentions IOB - including casual narrative - compute elapsed
+time from last insulin log timestamp to current UTC, then calculate IOB using the formula
+above. Never estimate IOB by intuition. State the computed value explicitly.
 
-Timezone: Bill is in CEST (UTC+{params['timezone_offset_utc']}). All times displayed to Bill must be in local time.
-The context provides both UTC and local time for all events. Always show local time in responses.
-Never show bare UTC times to Bill without the local equivalent.
+Timezone: Bill is UTC+{params['timezone_offset_utc']}. Glucose timestamps are UTC - add {params['timezone_offset_utc']} hours for local time.
 
 === BEHAVIOR RULES ===
 {rules}
 """
-    return prompt, params
+    return prompt
 
 # === LOG ENTRY EXTRACTION ===
 
@@ -379,6 +319,18 @@ def extract_log_entry(text, glucose_data):
         return entry
 
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+    # Determine entry type from the logging line prefix BEFORE calling the LLM.
+    # This is reliable and avoids the LLM misclassifying insulin lines that
+    # mention food names in the note field (e.g. "meal bolus for ham/havarti...").
+    if ": insulin" in line_lower:
+        forced_type = "insulin"
+    elif ": meal" in line_lower:
+        forced_type = "meal"
+    elif ": note" in line_lower:
+        forced_type = "note"
+    else:
+        forced_type = None  # Let LLM decide if prefix is ambiguous
+
     extraction_prompt = f"""Extract a log entry from this single line and return ONLY valid JSON, nothing else.
 
 Line: {logging_line}
@@ -386,13 +338,15 @@ Line: {logging_line}
 Current UTC time: {now_utc}
 Current glucose: {current_glucose}
 
-IMPORTANT: Only return type "insulin" if the line explicitly describes insulin units being injected.
-If the line describes food or a meal, return type "meal".
-If the line describes a note, correction, or annotation, return type "note" with no units field.
+CRITICAL TYPE RULE: The entry type is determined ONLY by the word immediately after "Logging:".
+- If the line says "Logging: insulin" → type MUST be "insulin", regardless of any food names mentioned later.
+- If the line says "Logging: meal" → type MUST be "meal".
+- If the line says "Logging: note" → type MUST be "note".
+Food names appearing in an insulin log's note field do NOT make it a meal entry.
 
 Return one of these formats:
 For insulin: {{"ts":"{now_utc}","type":"insulin","units":NUMBER,"glucose_at_time":{current_glucose},"note":"any extra info"}}
-For meal: {{"ts":"{now_utc}","type":"meal","food":"name","carbs_g":NUMBER,"insulin_units":NUMBER_OR_NULL,"glucose_at_time":{current_glucose}}}
+For meal: {{"ts":"{now_utc}","type":"meal","food":"name","carbs_g":NUMBER,"insulin_units":null,"glucose_at_time":{current_glucose}}}
 For note: {{"ts":"{now_utc}","type":"note","note":"text","glucose_at_time":{current_glucose}}}
 
 If no loggable event is described, return: {{"type":"none"}}
@@ -407,11 +361,18 @@ Return ONLY the JSON object, no explanation."""
         if result.get("type") == "none":
             print("extract_log_entry: extraction returned none")
             return None
-        if result.get("type") == "insulin" and "note" in line_lower and "insulin" not in line_lower:
-            print("extract_log_entry: overriding spurious insulin classification to note")
-            result["type"] = "note"
-            result["note"] = result.get("note", logging_line)
-            result.pop("units", None)
+        # Apply forced type override based on line prefix - this is ground truth
+        if forced_type and result.get("type") != forced_type:
+            print(f"extract_log_entry: overriding LLM type '{result.get('type')}' → '{forced_type}' (line prefix rule)")
+            result["type"] = forced_type
+            if forced_type == "insulin" and "units" not in result:
+                # Try to extract units from the line directly as fallback
+                import re
+                m = re.search(r'(\d+(?:\.\d+)?)\s*u\b', logging_line, re.IGNORECASE)
+                if m:
+                    result["units"] = float(m.group(1))
+            if forced_type != "insulin":
+                result.pop("units", None)
         print(f"extract_log_entry: extracted {result.get('type')} entry")
         return result
     except Exception as e:
@@ -437,10 +398,9 @@ sessions = {}
 def get_session(user_id):
     if user_id not in sessions:
         print("Loading parameters...")
-        system_prompt, params = build_system_prompt()
+        system_prompt = build_system_prompt()
         sessions[user_id] = {
             "system_prompt": system_prompt,
-            "params": params,
             "history": [],
             "pending_log": None,
             "glucose_data": None,
@@ -461,9 +421,7 @@ def handle_message(user_id, chat_id, text):
         return
 
     if text.strip().lower() == "/reload":
-        system_prompt, params = build_system_prompt()
-        session["system_prompt"] = system_prompt
-        session["params"] = params
+        session["system_prompt"] = build_system_prompt()
         session["history"] = []
         session["pending_log"] = None
         tg_send(chat_id, "Parameters reloaded and conversation reset.")
@@ -482,16 +440,26 @@ def handle_message(user_id, chat_id, text):
 
     if session["pending_log"]:
         if is_confirmation(text):
-            entry_summary = f"{session['pending_log'].get('type')} - {session['pending_log'].get('food') or session['pending_log'].get('note') or str(session['pending_log'].get('units','')) + 'u'}"
-            success = log_to_github(session["pending_log"])
+            entry = session["pending_log"]
+            entry_type = entry.get("type", "entry")
+            units = entry.get("units")
+            food = entry.get("food")
+            carbs = entry.get("carbs_g")
+            if entry_type == "insulin" and units:
+                entry_summary = f"insulin - {units}u Humalog"
+            elif entry_type == "meal" and food:
+                entry_summary = f"meal - {food}" + (f" ({carbs}g carbs)" if carbs else "")
+            else:
+                entry_summary = f"{entry_type} - {entry.get('note', '')[:60]}"
+            success = log_to_github(entry)
             if success:
                 print(f"Saved to GitHub: {entry_summary}")
                 tg_send(chat_id, f"Saved: {entry_summary}")
-                session["history"].append({"role": "assistant", "content": f"Saved to GitHub: {entry_summary}"})
+                session["history"].append({"role": "assistant", "content": f"Saved: {entry_summary}"})
             else:
                 tg_send(chat_id, "Save failed - check GitHub token and network.")
             session["pending_log"] = None
-            return
+            return  # CRITICAL: return here - do NOT fall through to Anthropic call
         else:
             print("Pending log cleared - user sent non-confirmation")
             session["pending_log"] = None
@@ -502,19 +470,16 @@ def handle_message(user_id, chat_id, text):
     glucose_history = get_recent_glucose(2)
     recent_logs = get_recent_logs()
 
-    now_utc = datetime.now(timezone.utc)
-    now_local_str = utc_to_local_str(now_utc.strftime("%Y-%m-%dT%H:%M:%SZ"))
-
     if glucose_data:
+        now_utc = datetime.now(timezone.utc)
         trend_str = f", trend: {glucose_data.get('trend', 'unknown')}" if glucose_data.get('trend') else ""
-        glucose_local_str = utc_to_local_str(glucose_data.get('ts', ''))
         context = (
             f"\n\n[GLUCOSE DATA] Latest: {glucose_data.get('val')} mg/dL "
-            f"at {glucose_data.get('ts')} UTC ({glucose_local_str}){trend_str}. "
-            f"Current time: {now_utc.strftime('%Y-%m-%d %H:%M')} UTC ({now_local_str})."
+            f"at {glucose_data.get('ts')} UTC{trend_str}. "
+            f"Current UTC time: {now_utc.strftime('%Y-%m-%d %H:%M')}."
         )
     else:
-        context = f"\n\n[GLUCOSE DATA] Unable to fetch latest reading. Current time: {now_utc.strftime('%Y-%m-%d %H:%M')} UTC ({now_local_str})."
+        context = "\n\n[GLUCOSE DATA] Unable to fetch latest reading."
 
     # Use compact summary instead of raw JSON dump for CGM history
     if glucose_history:
@@ -522,10 +487,6 @@ def handle_message(user_id, chat_id, text):
 
     if recent_logs:
         context += f"\n\n[RECENT LOGS] {json.dumps(recent_logs)}"
-        # Pre-compute IOB in Python to prevent LLM clock arithmetic errors
-        iob_decay = session.get("params", {}).get("iob_decay_minutes", 150)
-        iob_summary = compute_iob_from_logs(recent_logs, iob_total_minutes=iob_decay)
-        context += f"\n\n[PRE-COMPUTED IOB] {iob_summary}"
 
     full_input = text + context
     session["history"].append({"role": "user", "content": full_input})
@@ -560,17 +521,6 @@ def handle_message(user_id, chat_id, text):
         pending = extract_log_entry(assistant_message, glucose_data)
         if pending:
             session["pending_log"] = pending
-            entry_type = pending.get("type", "entry")
-            units = pending.get("units")
-            food = pending.get("food")
-            carbs = pending.get("carbs_g")
-            if entry_type == "insulin" and units:
-                summary = f"{units}u insulin"
-            elif entry_type == "meal" and food:
-                summary = f"{food} ({carbs}g carbs)" if carbs else food
-            else:
-                summary = entry_type
-            tg_send(chat_id, f"Ready to save: {summary}\nReply yes/sure/ok to confirm, or keep talking to cancel.")
 
 # === MAIN POLLING LOOP ===
 
