@@ -174,3 +174,4 @@
 {"ts": "2026-04-17T07:12:58Z", "type": "note", "note": "Mounjaro weekly injection, glucose 201, new cycle Day 0 begins Saturday 09:12 local", "glucose_at_time": 201}
 {"ts": "2026-04-17T08:48:16Z", "type": "meal", "food": "sucrose candy", "carbs_g": 25, "insulin_units": null, "glucose_at_time": 127}
 {"ts": "2026-04-17T13:16:56Z", "type": "meal", "food": "lean ham 150g, havarti 40g, gazpacho 120ml, lager 330ml", "carbs_g": 18, "insulin_units": null, "glucose_at_time": 103}
+{"ts": "2026-04-17T13:17:43Z", "type": "meal", "food": "ham/havarti/gazpacho/lager", "carbs_g": 18, "insulin_units": 15, "glucose_at_time": 103}
