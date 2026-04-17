@@ -171,6 +171,7 @@
 {"ts": "2026-04-16T20:31:56Z", "type": "insulin", "units": 12, "glucose_at_time": 185, "note": "Humalog, post-meal two-dose correction Dose 1 of 2, black bean carb leaching, Mounjaro Day 7, Rc=1.45"}
 {"ts": "2026-04-16T21:25:55Z", "type": "meal", "food": "black plum", "carbs_g": 8, "insulin_units": null, "glucose_at_time": 176}
 {"ts": "2026-04-17T06:30:00Z", "type": "meal", "food": "ice cream", "carbs_g": 15, "insulin_units": null, "glucose_at_time": 205}
+{"ts": "2026-04-17T07:01:00Z", "type": "insulin", "units": 50, "glucose_at_time": 206, "note": "Humalog, correction for post-ice-cream spike, Mounjaro Day 5, Rc=1.325, model recommended 59u, Bill took 50u by preference"}
 {"ts": "2026-04-17T07:12:58Z", "type": "note", "note": "Mounjaro weekly injection, glucose 201, new cycle Day 0 begins Saturday 09:12 local", "glucose_at_time": 201}
 {"ts": "2026-04-17T08:48:16Z", "type": "meal", "food": "sucrose candy", "carbs_g": 25, "insulin_units": null, "glucose_at_time": 127}
 {"ts": "2026-04-17T13:16:56Z", "type": "meal", "food": "lean ham 150g, havarti 40g, gazpacho 120ml, lager 330ml", "carbs_g": 18, "insulin_units": 18, "glucose_at_time": 103}
