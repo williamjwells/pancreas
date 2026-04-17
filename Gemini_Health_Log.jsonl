@@ -181,3 +181,4 @@
 {"ts": "2026-04-17T17:28:21Z", "type": "meal", "food": "1 grape", "carbs_g": 1, "insulin_units": null, "glucose_at_time": 127}
 {"ts": "2026-04-17T17:29:00Z", "type": "insulin", "units": 1, "glucose_at_time": 127, "note": "1u Humalog, meal bolus for 1 grape, Mounjaro Day 0, Rc=1.0"}
 {"ts": "2026-04-17T20:55:09Z", "type": "meal", "food": "San Miguel beer 33cl", "carbs_g": 10, "insulin_units": null, "glucose_at_time": 98}
+{"ts": "2026-04-17T23:18:41Z", "type": "insulin", "units": 30, "glucose_at_time": 193, "note": "Humalog, manual dose at 11:55pm local, Mounjaro Day 0, Rc=1.0"}
