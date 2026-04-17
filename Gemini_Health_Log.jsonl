@@ -180,3 +180,4 @@
 {"ts": "2026-04-17T13:20:10Z", "type": "meal", "food": "ham/havarti/gazpacho/lager", "carbs_g": 18, "insulin_units": 15, "glucose_at_time": 103}
 {"ts": "2026-04-17T16:22:14Z", "type": "insulin", "units": 8, "glucose_at_time": 141, "note": "Humalog, correction dose, Mounjaro Day 0, Rc=1.0"}
 {"ts": "2026-04-17T16:22:49Z", "type": "meal", "food": "Danone Cremosa Coco yogurt 125g", "carbs_g": 17, "insulin_units": null, "glucose_at_time": 141}
+{"ts": "2026-04-17T16:23:27Z", "type": "insulin", "units": 6, "glucose_at_time": 141, "note": "Humalog, meal bolus for Danone Cremosa Coco yogurt, Mounjaro Day 0, Rc=1.0"}
