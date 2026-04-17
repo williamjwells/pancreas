@@ -170,3 +170,4 @@
 {"ts": "2026-04-16T19:15:16Z", "type": "insulin", "units": 21, "glucose_at_time": 110, "note": "Humalog, meal bolus for black bean beef + bok choy, Mounjaro Day 7, Rc=1.45"}
 {"ts": "2026-04-16T20:31:56Z", "type": "insulin", "units": 12, "glucose_at_time": 185, "note": "Humalog, post-meal two-dose correction Dose 1 of 2, black bean carb leaching, Mounjaro Day 7, Rc=1.45"}
 {"ts": "2026-04-16T21:25:55Z", "type": "meal", "food": "black plum", "carbs_g": 8, "insulin_units": null, "glucose_at_time": 176}
+{"ts": "2026-04-17T06:30:00Z", "type": "meal", "food": "ice cream", "carbs_g": 15, "insulin_units": null, "glucose_at_time": 205}
