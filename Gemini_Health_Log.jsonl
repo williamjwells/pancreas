@@ -191,3 +191,4 @@
 {"ts": "2026-04-18T12:48:32Z", "type": "insulin", "units": 13, "glucose_at_time": 194, "note": "Humalog, Tranche 1 of 3 staged fasting correction, Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-04-18T19:17:44Z", "type": "meal", "food": "chicken breast stir-fry with red pepper, onion, broccoli, mung bean sprouts, corn starch sauce (half recipe)", "carbs_g": 31, "insulin_units": null, "glucose_at_time": 140}
 {"ts": "2026-04-18T19:18:23Z", "type": "insulin", "units": 32, "glucose_at_time": 142, "note": "Humalog, meal bolus for chicken stir-fry (31g carbs) + correction, Mounjaro Day 1, Rc=1.025"}
+{"ts": "2026-04-18T23:01:46Z", "type": "meal", "food": "egg drop soup (150ml portion): 1 egg, 2 mushrooms, 2 scallions, spices, ~1.5g cornstarch", "carbs_g": 4, "insulin_units": null, "glucose_at_time": 119}
