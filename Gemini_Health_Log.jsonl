@@ -189,3 +189,4 @@
 {"ts": "2026-04-18T09:34:03Z", "type": "insulin", "units": 18, "glucose_at_time": 118, "note": "18u Humalog, second part of churros bolus (20u pre-bolus + 18u = 38u total), Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-04-18T12:01:11Z", "type": "insulin", "units": 5, "glucose_at_time": 164, "note": "Humalog, Tranche 1 of 3 staged fasting correction, Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-04-18T12:48:32Z", "type": "insulin", "units": 13, "glucose_at_time": 194, "note": "Humalog, Tranche 1 of 3 staged fasting correction, Mounjaro Day 1, Rc=1.025"}
+{"ts": "2026-04-18T19:17:44Z", "type": "meal", "food": "chicken breast stir-fry with red pepper, onion, broccoli, mung bean sprouts, corn starch sauce (half recipe)", "carbs_g": 31, "insulin_units": null, "glucose_at_time": 140}
