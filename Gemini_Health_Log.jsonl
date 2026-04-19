@@ -194,3 +194,4 @@
 {"ts": "2026-04-18T23:01:46Z", "type": "meal", "food": "egg drop soup (150ml portion): 1 egg, 2 mushrooms, 2 scallions, spices, ~1.5g cornstarch", "carbs_g": 4, "insulin_units": null, "glucose_at_time": 119}
 {"ts": "2026-04-18T23:47:50Z", "type": "insulin", "units": 19, "glucose_at_time": 162, "note": "Humalog, post-meal correction for egg drop soup + rising trend, Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-04-19T05:35:40Z", "type": "meal", "food": "Danone yogurt (125g)", "carbs_g": 12, "insulin_units": null, "glucose_at_time": 92}
+{"ts": "2026-04-19T09:09:02Z", "type": "insulin", "units": 3, "glucose_at_time": 138, "note": "Humalog, glucose 138, Tranche 1 of 3 staged fasting correction, Mounjaro Day 2, Rc=1.07"}
