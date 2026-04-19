@@ -198,3 +198,4 @@
 {"ts": "2026-04-19T11:54:55Z", "type": "meal", "food": "caprese appetizer (40g mozzarella, ~5 cherry tomatoes, olive oil, vinegar, salt) + 33cl Cruzcampo pilsner", "carbs_g": 16, "insulin_units": null, "glucose_at_time": 104}
 {"ts": "2026-04-19T11:55:30Z", "type": "insulin", "units": 13, "glucose_at_time": 104, "note": "Humalog, meal bolus for caprese + Cruzcampo (16g carbs), Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-04-19T15:28:42Z", "type": "meal", "food": "Maestra Dunkel 33cl", "carbs_g": 14, "insulin_units": null, "glucose_at_time": 93}
+{"ts": "2026-04-19T15:29:30Z", "type": "insulin", "units": 10, "glucose_at_time": 94, "note": "Humalog, meal bolus for Maestra Dunkel (14g carbs, Bill's call to dose), Mounjaro Day 2, Rc=1.07"}
