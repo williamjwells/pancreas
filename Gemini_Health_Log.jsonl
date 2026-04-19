@@ -207,3 +207,4 @@
 {"ts": "2026-04-19T18:59:07Z", "type": "insulin", "units": 16, "glucose_at_time": 112, "note": "Humalog, meal bolus for 6\" flour tortilla with pulled pork (28g carbs), Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-04-19T19:24:47Z", "type": "meal", "food": "Haagen Dazs Belgian Chocolate ice cream", "carbs_g": 27, "insulin_units": null, "glucose_at_time": 103}
 {"ts": "2026-04-19T19:25:11Z", "type": "insulin", "units": 3, "glucose_at_time": 103, "note": "Humalog, meal bolus for Haagen Dazs Belgian Chocolate (27g carbs), Mounjaro Day 2, Rc=1.07"}
+{"ts": "2026-04-19T22:15:21Z", "type": "insulin", "units": 11, "glucose_at_time": 176, "note": "Humalog, glucose 176, fasting correction Tranche 1 of 3 (staged), Mounjaro Day 2, Rc=1.07"}
