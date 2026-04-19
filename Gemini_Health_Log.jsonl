@@ -203,3 +203,4 @@
 {"ts": "2026-04-19T16:02:24Z", "type": "insulin", "units": 15, "glucose_at_time": 139, "note": "Humalog, meal bolus for Paulaner Weissbier Dunkel 500ml (16g carbs), Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-04-19T17:28:08Z", "type": "meal", "food": "6\" flour tortilla with pulled pork and pickled onion", "carbs_g": 28, "insulin_units": null, "glucose_at_time": 123}
 {"ts": "2026-04-19T17:28:27Z", "type": "insulin", "units": 18, "glucose_at_time": 124, "note": "18u Humalog, meal bolus for 6\" flour tortilla with pulled pork and pickled onion (28g carbs), Mounjaro Day 2, Rc=1.07"}
+{"ts": "2026-04-19T18:58:50Z", "type": "meal", "food": "6\" flour tortilla with pulled pork", "carbs_g": 28, "insulin_units": null, "glucose_at_time": 111}
