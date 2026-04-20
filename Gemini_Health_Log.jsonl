@@ -210,3 +210,4 @@
 {"ts": "2026-04-19T22:15:21Z", "type": "insulin", "units": 11, "glucose_at_time": 176, "note": "Humalog, glucose 176, fasting correction Tranche 1 of 3 (staged), Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-04-19T23:13:05Z", "type": "insulin", "units": 5, "glucose_at_time": 194, "note": "Humalog, fasting correction Tranche 2 of 3 (staged), Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-04-20T16:17:42Z", "type": "meal", "food": "Swiss chard with shiitake & pistachios, tahini-sesame lemon dressing (\u00bc), lettuce", "carbs_g": 18, "insulin_units": null, "glucose_at_time": 116}
+{"ts": "2026-04-20T16:18:00Z", "type": "insulin", "units": 15, "glucose_at_time": 116, "note": "Humalog, meal bolus for Swiss chard with shiitake & pistachios, tahini-sesame lemon dressing (\u00bc), ~18g carbs, Mounjaro Day 3, Rc=1.135"}
