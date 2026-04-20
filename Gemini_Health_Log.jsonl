@@ -214,3 +214,4 @@
 {"ts": "2026-04-20T17:34:27Z", "type": "meal", "food": "Danone Cremosa Coco yogurt, 1 container (125g)", "carbs_g": 16, "insulin_units": null, "glucose_at_time": 105}
 {"ts": "2026-04-20T20:58:19Z", "type": "meal", "food": "Cruzcampo beer 33cl", "carbs_g": 10, "insulin_units": null, "glucose_at_time": 93}
 {"ts": "2026-04-20T21:34:31Z", "type": "meal", "food": "2 \u00d7 10\" flour tortillas with smoked braised pork, onion, cilantro & lime; roasted medium potato; Cruzcampo beer 33cl", "carbs_g": 115, "insulin_units": null, "glucose_at_time": 122}
+{"ts": "2026-04-20T21:36:08Z", "type": "insulin", "units": 40, "glucose_at_time": 124, "note": "Humalog, meal bolus for 2 \u00d7 10\" flour tortillas with smoked braised pork, onion, cilantro & lime; roasted medium potato; Cruzcampo beer 33cl (~115g carbs), Mounjaro Day 3, Rc=1.135"}
