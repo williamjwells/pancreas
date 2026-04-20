@@ -213,3 +213,4 @@
 {"ts": "2026-04-20T16:18:00Z", "type": "insulin", "units": 15, "glucose_at_time": 116, "note": "Humalog, meal bolus for Swiss chard with shiitake & pistachios, tahini-sesame lemon dressing (\u00bc), ~18g carbs, Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-04-20T17:34:27Z", "type": "meal", "food": "Danone Cremosa Coco yogurt, 1 container (125g)", "carbs_g": 16, "insulin_units": null, "glucose_at_time": 105}
 {"ts": "2026-04-20T20:58:19Z", "type": "meal", "food": "Cruzcampo beer 33cl", "carbs_g": 10, "insulin_units": null, "glucose_at_time": 93}
+{"ts": "2026-04-20T21:34:31Z", "type": "meal", "food": "2 \u00d7 10\" flour tortillas with smoked braised pork, onion, cilantro & lime; roasted medium potato; Cruzcampo beer 33cl", "carbs_g": 115, "insulin_units": null, "glucose_at_time": 122}
