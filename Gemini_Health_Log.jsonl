@@ -215,3 +215,4 @@
 {"ts": "2026-04-20T20:58:19Z", "type": "meal", "food": "Cruzcampo beer 33cl", "carbs_g": 10, "insulin_units": null, "glucose_at_time": 93}
 {"ts": "2026-04-20T21:34:31Z", "type": "meal", "food": "2 \u00d7 10\" flour tortillas with smoked braised pork, onion, cilantro & lime; roasted medium potato; Cruzcampo beer 33cl", "carbs_g": 115, "insulin_units": null, "glucose_at_time": 122}
 {"ts": "2026-04-20T21:36:08Z", "type": "insulin", "units": 40, "glucose_at_time": 124, "note": "Humalog, meal bolus for 2 \u00d7 10\" flour tortillas with smoked braised pork, onion, cilantro & lime; roasted medium potato; Cruzcampo beer 33cl (~115g carbs), Mounjaro Day 3, Rc=1.135"}
+{"ts": "2026-04-20T22:02:15Z", "type": "insulin", "units": 30, "glucose_at_time": 198, "note": "30u Humalog, additional bolus post-meal, rising trend, 33u IOB on board at time of injection, Mounjaro Day 3, Rc=1.135"}
