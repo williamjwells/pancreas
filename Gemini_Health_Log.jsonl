@@ -221,3 +221,4 @@
 {"ts": "2026-04-21T10:27:39Z", "type": "insulin", "units": 5, "glucose_at_time": 143, "note": "Humalog, fasting correction Tranche 1 of 3 (staged), Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-04-21T11:56:47Z", "type": "insulin", "units": 11, "glucose_at_time": 152, "note": "Humalog, fasting correction, Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-04-21T15:55:17Z", "type": "meal", "food": "San Miguel 33cl", "carbs_g": 11, "insulin_units": null, "glucose_at_time": 101}
+{"ts": "2026-04-21T16:59:23Z", "type": "meal", "food": "red tomato sauce with ~50g cooked pasta and 200g cannellini beans", "carbs_g": 45, "insulin_units": null, "glucose_at_time": 96}
