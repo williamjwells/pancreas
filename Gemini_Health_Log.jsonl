@@ -225,3 +225,4 @@
 {"ts": "2026-04-21T16:59:57Z", "type": "insulin", "units": 38, "glucose_at_time": 96, "note": "Humalog, meal bolus for red tomato sauce with ~50g cooked pasta and 200g cannellini beans (~45g carbs), Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-04-21T18:42:03Z", "type": "insulin", "units": 24, "glucose_at_time": 197, "note": "Humalog, post-meal correction, secondary rise after beans, Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-04-21T19:52:30Z", "type": "insulin", "units": 29, "glucose_at_time": 213, "note": "Humalog, correction for persistent elevation, slow bean absorption, Mounjaro Day 4, Rc=1.22"}
+{"ts": "2026-04-21T20:09:04Z", "type": "insulin", "units": 24, "glucose_at_time": 240, "note": "Humalog, correction for persistent elevation post-beans"}
