@@ -223,3 +223,4 @@
 {"ts": "2026-04-21T15:55:17Z", "type": "meal", "food": "San Miguel 33cl", "carbs_g": 11, "insulin_units": null, "glucose_at_time": 101}
 {"ts": "2026-04-21T16:59:23Z", "type": "meal", "food": "red tomato sauce with ~50g cooked pasta and 200g cannellini beans", "carbs_g": 45, "insulin_units": null, "glucose_at_time": 96}
 {"ts": "2026-04-21T16:59:57Z", "type": "insulin", "units": 38, "glucose_at_time": 96, "note": "Humalog, meal bolus for red tomato sauce with ~50g cooked pasta and 200g cannellini beans (~45g carbs), Mounjaro Day 4, Rc=1.22"}
+{"ts": "2026-04-21T18:42:03Z", "type": "insulin", "units": 24, "glucose_at_time": 197, "note": "Humalog, post-meal correction, secondary rise after beans, Mounjaro Day 4, Rc=1.22"}
