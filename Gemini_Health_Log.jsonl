@@ -219,3 +219,4 @@
 {"ts": "2026-04-20T22:03:30Z", "type": "insulin", "units": 30, "glucose_at_time": 200, "note": "30u Humalog, glucose 198, second partial bolus (70u total so far vs 96u model dose), rising trend, Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-04-21T07:33:47Z", "type": "meal", "food": "pulled pork 150g, 3 medium eggs, 25g Havarti, cortado", "carbs_g": 2, "insulin_units": null, "glucose_at_time": 110}
 {"ts": "2026-04-21T10:27:39Z", "type": "insulin", "units": 5, "glucose_at_time": 143, "note": "Humalog, fasting correction Tranche 1 of 3 (staged), Mounjaro Day 4, Rc=1.22"}
+{"ts": "2026-04-21T11:56:47Z", "type": "insulin", "units": 11, "glucose_at_time": 152, "note": "Humalog, fasting correction, Mounjaro Day 4, Rc=1.22"}
