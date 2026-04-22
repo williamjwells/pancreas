@@ -229,3 +229,4 @@
 {"ts": "2026-04-22T07:02:56Z", "type": "meal", "food": "1 kiwi", "carbs_g": 10, "insulin_units": null, "glucose_at_time": 114}
 {"ts": "2026-04-22T07:03:27Z", "type": "insulin", "units": 8, "glucose_at_time": 113, "note": "Humalog, meal bolus for 1 kiwi (10g carbs), Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-04-22T14:41:03Z", "type": "note", "note": "FSBG 99 mg/dL, new sensor applied, glucose 99", "glucose_at_time": 107}
+{"ts": "2026-04-22T16:18:55Z", "type": "meal", "food": "padr\u00f3n peppers 400g with salt, lemon juice and grated parmesan, 120ml Rioja", "carbs_g": 11, "insulin_units": null, "glucose_at_time": 109}
