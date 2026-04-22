@@ -232,3 +232,4 @@
 {"ts": "2026-04-22T16:18:55Z", "type": "meal", "food": "padr\u00f3n peppers 400g with salt, lemon juice and grated parmesan, 120ml Rioja", "carbs_g": 11, "insulin_units": null, "glucose_at_time": 109}
 {"ts": "2026-04-22T16:21:36Z", "type": "insulin", "units": 9, "glucose_at_time": 106, "note": "Humalog, meal bolus for padr\u00f3n peppers/parmesan/Rioja (11g carbs), Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-04-22T16:39:56Z", "type": "meal", "food": "salad with 100g lean ham, 25g Gouda, 1 tbsp homemade thousand island dressing", "carbs_g": 5, "insulin_units": null, "glucose_at_time": 101}
+{"ts": "2026-04-22T19:08:33Z", "type": "insulin", "units": 3, "glucose_at_time": 139, "note": "3u Humalog, staged correction Tranche 1 of 3, Mounjaro Day 5, Rc=1.325"}
