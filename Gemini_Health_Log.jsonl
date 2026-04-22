@@ -227,3 +227,4 @@
 {"ts": "2026-04-21T19:52:30Z", "type": "insulin", "units": 29, "glucose_at_time": 213, "note": "Humalog, correction for persistent elevation, slow bean absorption, Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-04-21T20:09:04Z", "type": "insulin", "units": 24, "glucose_at_time": 240, "note": "Humalog, correction for persistent elevation post-beans"}
 {"ts": "2026-04-22T07:02:56Z", "type": "meal", "food": "1 kiwi", "carbs_g": 10, "insulin_units": null, "glucose_at_time": 114}
+{"ts": "2026-04-22T07:03:27Z", "type": "insulin", "units": 8, "glucose_at_time": 113, "note": "Humalog, meal bolus for 1 kiwi (10g carbs), Mounjaro Day 3, Rc=1.135"}
