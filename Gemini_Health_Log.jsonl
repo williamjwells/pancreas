@@ -239,3 +239,4 @@
 {"ts": "2026-04-23T14:40:06Z", "type": "meal", "food": "homemade fries from 250g raw potato (parboiled, par-fried, frozen, finish-fried)", "carbs_g": 40, "insulin_units": null, "glucose_at_time": 100}
 {"ts": "2026-04-23T14:40:21Z", "type": "insulin", "units": 33, "glucose_at_time": 100, "note": "Humalog, meal bolus for homemade fries (40g carbs), Mounjaro Day 6, Rc=1.45"}
 {"ts": "2026-04-23T15:03:10Z", "type": "meal", "food": "Cruzcampo beer 33cl", "carbs_g": 10, "insulin_units": null, "glucose_at_time": 87}
+{"ts": "2026-04-23T15:22:18Z", "type": "meal", "food": "Asturian white bean stew, approx 2 cups", "carbs_g": 45, "insulin_units": null, "glucose_at_time": 110}
