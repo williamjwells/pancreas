@@ -243,3 +243,4 @@
 {"ts": "2026-04-23T19:17:33Z", "type": "insulin", "units": 21, "glucose_at_time": 192, "note": "Humalog, staged fasting correction Tranche 1 of 3, Mounjaro Day 6, Rc=1.45"}
 {"ts": "2026-04-23T21:46:58Z", "type": "insulin", "units": 46, "glucose_at_time": 155, "note": "Humalog, pre-bolus meal bolus for frozen gyoza (~46g carbs), Mounjaro Day 6, Rc=1.45"}
 {"ts": "2026-04-23T21:55:05Z", "type": "meal", "food": "frozen gyoza approximately 155g", "carbs_g": 46, "insulin_units": null, "glucose_at_time": 125}
+{"ts": "2026-04-23T23:40:28Z", "type": "meal", "food": "H\u00e4agen-Dazs Belgian Chocolate ice cream 100g", "carbs_g": 26, "insulin_units": null, "glucose_at_time": 86}
