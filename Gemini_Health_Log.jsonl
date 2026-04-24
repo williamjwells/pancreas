@@ -247,3 +247,4 @@
 {"ts": "2026-04-24T01:54:51Z", "type": "meal", "food": "sourdough bread 15g", "carbs_g": 8, "insulin_units": null, "glucose_at_time": 124}
 {"ts": "2026-04-24T01:55:50Z", "type": "insulin", "units": 8, "glucose_at_time": 130, "note": "Humalog, meal bolus for sourdough bread (8g carbs), Mounjaro Day 7, Rc=1.595"}
 {"ts": "2026-04-24T03:10:50Z", "type": "insulin", "units": 25, "glucose_at_time": 203, "note": "Humalog, staged fasting correction Tranche 1 of 3, Mounjaro Day 7, Rc=1.595"}
+{"ts": "2026-04-24T05:55:53Z", "type": "note", "note": "Mounjaro 15mg injected, glucose 255", "glucose_at_time": 255}
