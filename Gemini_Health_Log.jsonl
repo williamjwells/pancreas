@@ -251,3 +251,4 @@
 {"ts": "2026-04-24T05:57:12Z", "type": "insulin", "units": 46, "glucose_at_time": 256, "note": "Humalog, staged fasting correction Tranche 1 of 3, Mounjaro Day 7, Rc=1.595"}
 {"ts": "2026-04-24T08:15:56Z", "type": "insulin", "units": 23, "glucose_at_time": 179, "note": "Humalog, staged fasting correction Tranche 2 of 3, Mounjaro Day 7 / new cycle Day 0, Rc=1.595"}
 {"ts": "2026-04-24T11:46:09Z", "type": "meal", "food": "Cruzcampo lager 33cl", "carbs_g": 10, "insulin_units": null, "glucose_at_time": 107}
+{"ts": "2026-04-24T17:34:52Z", "type": "insulin", "units": 38, "glucose_at_time": 116, "note": "Humalog, pre-bolus meal bolus for frozen gyoza (45g carbs), Mounjaro Day 0, Rc=1.0"}
