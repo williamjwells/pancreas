@@ -258,3 +258,4 @@
 {"ts": "2026-04-25T05:41:08Z", "type": "meal", "food": "Danone Cremosa Coconut yogurt (single serve, ~150g)", "carbs_g": 18, "insulin_units": null, "glucose_at_time": 77}
 {"ts": "2026-04-25T08:41:57Z", "type": "insulin", "units": 10, "glucose_at_time": 141, "note": "10u Humalog, first partial dose of 28u calculated total (18u held pending trajectory check), post-meal bolus for sandwich + yogurt late absorption, Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-04-25T09:19:33Z", "type": "insulin", "units": 12, "glucose_at_time": 170, "note": "Humalog, second partial dose covering late carb absorption (sandwich + yogurt), IOB 7.5u from earlier 10u dose accounted for, Mounjaro Day 1, Rc=1.025"}
+{"ts": "2026-04-25T20:53:19Z", "type": "meal", "food": "Bill's pasta, 1 serving (~1/4 pot rigatoni bolognese)", "carbs_g": 34, "insulin_units": null, "glucose_at_time": 108}
