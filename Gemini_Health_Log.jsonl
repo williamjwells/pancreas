@@ -256,3 +256,4 @@
 {"ts": "2026-04-24T23:45:22Z", "type": "insulin", "units": 4, "glucose_at_time": 146, "note": "4u Humalog, staged fasting correction Tranche 1 of 3 (second correction this evening), Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-04-25T05:03:13Z", "type": "insulin", "units": 7, "glucose_at_time": 109, "note": "Humalog, meal bolus for sourdough half sandwich with ham and havarti (8g carbs), Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-04-25T05:41:08Z", "type": "meal", "food": "Danone Cremosa Coconut yogurt (single serve, ~150g)", "carbs_g": 18, "insulin_units": null, "glucose_at_time": 77}
+{"ts": "2026-04-25T08:41:57Z", "type": "insulin", "units": 10, "glucose_at_time": 141, "note": "10u Humalog, first partial dose of 28u calculated total (18u held pending trajectory check), post-meal bolus for sandwich + yogurt late absorption, Mounjaro Day 1, Rc=1.025"}
