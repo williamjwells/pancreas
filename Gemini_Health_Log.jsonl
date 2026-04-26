@@ -260,3 +260,4 @@
 {"ts": "2026-04-25T09:19:33Z", "type": "insulin", "units": 12, "glucose_at_time": 170, "note": "Humalog, second partial dose covering late carb absorption (sandwich + yogurt), IOB 7.5u from earlier 10u dose accounted for, Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-04-25T20:53:19Z", "type": "meal", "food": "Bill's pasta, 1 serving (~1/4 pot rigatoni bolognese)", "carbs_g": 34, "insulin_units": null, "glucose_at_time": 108}
 {"ts": "2026-04-25T23:11:54Z", "type": "insulin", "units": 20, "glucose_at_time": 189, "note": "20u Humalog, post-meal correction after pasta bolus (28u taken at 23:09 local), Mounjaro Day 1, Rc=1.025"}
+{"ts": "2026-04-26T01:33:56Z", "type": "insulin", "units": 14, "glucose_at_time": 193, "note": "14u Humalog, staged fasting correction Tranche 1 of 3, full model net_dose 27u (Tranche 2: 7u at ~03:33 local, Tranche 3: 6u at ~04:33 local), Mounjaro Day 2, Rc=1.07"}
