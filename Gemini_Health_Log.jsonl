@@ -263,3 +263,4 @@
 {"ts": "2026-04-26T01:33:56Z", "type": "insulin", "units": 14, "glucose_at_time": 193, "note": "14u Humalog, staged fasting correction Tranche 1 of 3, full model net_dose 27u (Tranche 2: 7u at ~03:33 local, Tranche 3: 6u at ~04:33 local), Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-04-26T03:57:23Z", "type": "insulin", "units": 7, "glucose_at_time": 176, "note": "7u Humalog, staged fasting correction Tranche 2 of 3, Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-04-26T04:12:57Z", "type": "insulin", "units": 14, "glucose_at_time": 202, "note": "14u Humalog, staged fasting correction Tranche 1 of 3, full model net_dose 27u (Tranche 2: 7u at ~06:12 local, Tranche 3: 6u at ~07:12 local), Mounjaro Day 2, Rc=1.07"}
+{"ts": "2026-04-26T04:14:41Z", "type": "insulin", "units": 7, "glucose_at_time": 201, "note": "7u Humalog, additional top-up bringing total to 14u this correction block, Mounjaro Day 2, Rc=1.07"}
