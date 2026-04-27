@@ -270,3 +270,4 @@
 {"ts": "2026-04-26T21:30:45Z", "type": "insulin", "units": 5, "glucose_at_time": 121, "note": "Humalog, meal bolus for pasta soup (~1/3 serving, 11g carbs), IOB 4.1u accounted for, Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-04-27T12:50:43Z", "type": "meal", "food": "Bill's Pasta soup (1 large bowl, ~2/3 serving rigatoni bolognese thinned with water and chicken powder)", "carbs_g": 23, "insulin_units": null, "glucose_at_time": 132}
 {"ts": "2026-04-27T12:51:31Z", "type": "insulin", "units": 23, "glucose_at_time": 131, "note": "Humalog, meal bolus for pasta soup (1 large bowl, ~2/3 serving, 23g carbs), Mounjaro Day 2, Rc=1.07"}
+{"ts": "2026-04-27T16:44:42Z", "type": "insulin", "units": 16, "glucose_at_time": 162, "note": "Humalog, post-meal correction (pasta soup still absorbing, IOB 0u), Mounjaro Day 2, Rc=1.07"}
