@@ -272,3 +272,4 @@
 {"ts": "2026-04-27T12:51:31Z", "type": "insulin", "units": 23, "glucose_at_time": 131, "note": "Humalog, meal bolus for pasta soup (1 large bowl, ~2/3 serving, 23g carbs), Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-04-27T16:44:42Z", "type": "insulin", "units": 16, "glucose_at_time": 162, "note": "Humalog, post-meal correction (pasta soup still absorbing, IOB 0u), Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-04-27T22:12:25Z", "type": "meal", "food": "sourdough bread with butter", "carbs_g": 30, "insulin_units": null, "glucose_at_time": 103}
+{"ts": "2026-04-27T22:18:51Z", "type": "insulin", "units": 12, "glucose_at_time": 106, "note": "Humalog, meal bolus Dose 1 of 2 for sourdough bread (30g carbs), GI symptoms present, Mounjaro Day 2, Rc=1.07"}
