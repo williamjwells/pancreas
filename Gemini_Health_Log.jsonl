@@ -273,3 +273,4 @@
 {"ts": "2026-04-27T16:44:42Z", "type": "insulin", "units": 16, "glucose_at_time": 162, "note": "Humalog, post-meal correction (pasta soup still absorbing, IOB 0u), Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-04-27T22:12:25Z", "type": "meal", "food": "sourdough bread with butter", "carbs_g": 30, "insulin_units": null, "glucose_at_time": 103}
 {"ts": "2026-04-27T22:18:51Z", "type": "insulin", "units": 12, "glucose_at_time": 106, "note": "Humalog, meal bolus Dose 1 of 2 for sourdough bread (30g carbs), GI symptoms present, Mounjaro Day 2, Rc=1.07"}
+{"ts": "2026-04-28T01:45:44Z", "type": "insulin", "units": 8, "glucose_at_time": 159, "note": "8u Humalog, staged fasting correction Tranche 1 of 3 (full model dose 15u), Mounjaro Day 3, Rc=1.135"}
