@@ -278,3 +278,4 @@
 {"ts": "2026-04-28T15:57:11Z", "type": "insulin", "units": 25, "glucose_at_time": 113, "note": "25u Humalog, meal bolus for chicken croquettes (30g carbs), Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-04-28T16:01:18Z", "type": "meal", "food": "Cruz Campo beer (1 can, 330ml)", "carbs_g": 10, "insulin_units": null, "glucose_at_time": 116}
 {"ts": "2026-04-28T16:24:20Z", "type": "meal", "food": "chicken croquettes (4 pieces, 124g), parboiled then fried potatoes (150g), Cruz Campo beer x2 (660ml total)", "carbs_g": 75, "insulin_units": null, "glucose_at_time": 116}
+{"ts": "2026-04-28T16:25:10Z", "type": "insulin", "units": 50, "glucose_at_time": 114, "note": "Humalog, meal bolus top-up for combined meal (croquettes, potatoes, Cruz Campo x2, 75g carbs total), 25u already taken at 15:57, Mounjaro Day 3, Rc=1.135"}
