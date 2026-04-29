@@ -284,3 +284,4 @@
 {"ts": "2026-04-29T01:59:54Z", "type": "insulin", "units": 20, "glucose_at_time": 218, "note": "Humalog, staged fasting correction Tranche 1 of 3 (full model net dose 39u), Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-04-29T15:04:59Z", "type": "meal", "food": "chef's salad (lettuce, vegetables, tomato, Gouda, lean ham, homemade Thousand Island dressing)", "carbs_g": 12, "insulin_units": null, "glucose_at_time": 104}
 {"ts": "2026-04-29T16:07:21Z", "type": "insulin", "units": 10, "glucose_at_time": 113, "note": "Humalog, meal bolus for chef's salad (12g carbs), Mounjaro Day 5, Rc=1.325"}
+{"ts": "2026-04-29T17:54:31Z", "type": "meal", "food": "patatas bravas (150g fried potatoes), gyoza (150g), standard lager x2 (660ml total)", "carbs_g": 78, "insulin_units": null, "glucose_at_time": 94}
