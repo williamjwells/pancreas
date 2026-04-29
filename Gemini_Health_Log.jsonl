@@ -279,3 +279,4 @@
 {"ts": "2026-04-28T16:25:10Z", "type": "insulin", "units": 50, "glucose_at_time": 114, "note": "Humalog, meal bolus top-up for combined meal (croquettes, potatoes, Cruz Campo x2, 75g carbs total), 25u already taken at 15:57, Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-04-28T18:20:03Z", "type": "insulin", "units": 38, "glucose_at_time": 164, "note": "Humalog, meal bolus + correction for pizza and red wine (54g carbs), IOB 24.5u deducted, Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-04-28T22:21:16Z", "type": "insulin", "units": 21, "glucose_at_time": 250, "note": "21u Humalog, fasting correction (model suggested 65u staged, Bill took 21u as Tranche 1), Mounjaro Day 3, Rc=1.135"}
+{"ts": "2026-04-29T00:12:19Z", "type": "insulin", "units": 16, "glucose_at_time": 192, "note": "16u Humalog, staged fasting correction Tranche 1 of 3 (full model dose 21u), Mounjaro Day 3, Rc=1.135"}
