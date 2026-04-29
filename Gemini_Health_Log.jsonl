@@ -287,3 +287,4 @@
 {"ts": "2026-04-29T17:54:31Z", "type": "meal", "food": "patatas bravas (150g fried potatoes), gyoza (150g), standard lager x2 (660ml total)", "carbs_g": 78, "insulin_units": null, "glucose_at_time": 94}
 {"ts": "2026-04-29T17:54:55Z", "type": "insulin", "units": 18, "glucose_at_time": 94, "note": "Humalog, first split dose for patatas bravas/gyoza/beer meal (78g carbs, full model dose 62u), Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-04-29T18:43:10Z", "type": "insulin", "units": 22, "glucose_at_time": 118, "note": "Humalog, second split dose for patatas bravas/gyoza/beer meal (78g carbs, full model dose 62u, 18u already taken at 19:54 local), Mounjaro Day 5, Rc=1.325"}
+{"ts": "2026-04-29T18:50:33Z", "type": "insulin", "units": 20, "glucose_at_time": 138, "note": "Humalog, third split dose for patatas bravas/gyoza/beer meal (78g carbs, total now 60u of planned 62u), Mounjaro Day 5, Rc=1.325"}
