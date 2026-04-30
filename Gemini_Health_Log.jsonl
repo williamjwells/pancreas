@@ -294,3 +294,4 @@
 {"ts": "2026-04-30T12:14:01Z", "type": "meal", "food": "beef & rigatoni bolognese (1/8 pot)", "carbs_g": 31, "insulin_units": null, "glucose_at_time": 92}
 {"ts": "2026-04-30T12:53:40Z", "type": "insulin", "units": 26, "glucose_at_time": 97, "note": "Humalog, meal bolus for beef & rigatoni bolognese (31g carbs), Mounjaro Day 6, Rc=1.45"}
 {"ts": "2026-04-30T14:36:02Z", "type": "insulin", "units": 10, "glucose_at_time": 155, "note": "Humalog, correction post-bolognese meal bolus, Mounjaro Day 6, Rc=1.45"}
+{"ts": "2026-04-30T19:26:58Z", "type": "insulin", "units": 10, "glucose_at_time": 155, "note": "10u Humalog, staged fasting correction Tranche 1 of 3 (full model net dose 17u, Bill's discretion to round to 10u), Mounjaro Day 6, Rc=1.45"}
