@@ -291,3 +291,4 @@
 {"ts": "2026-04-29T20:36:39Z", "type": "insulin", "units": 20, "glucose_at_time": 243, "note": "20u Humalog, fourth split dose for patatas bravas/gyoza/beer meal (alcohol-delayed rebound, total now 80u across session), Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-04-29T22:53:35Z", "type": "insulin", "units": 23, "glucose_at_time": 212, "note": "Humalog, staged fasting correction Tranche 1 of 3 (full model net dose 46u), Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-04-30T06:59:34Z", "type": "insulin", "units": 24, "glucose_at_time": 169, "note": "Humalog, fasting correction (full single dose, Bill's discretion over staged plan), Mounjaro Day 6, Rc=1.45"}
+{"ts": "2026-04-30T12:14:01Z", "type": "meal", "food": "beef & rigatoni bolognese (1/8 pot)", "carbs_g": 31, "insulin_units": null, "glucose_at_time": 92}
