@@ -297,3 +297,4 @@
 {"ts": "2026-04-30T19:26:58Z", "type": "insulin", "units": 10, "glucose_at_time": 155, "note": "10u Humalog, staged fasting correction Tranche 1 of 3 (full model net dose 17u, Bill's discretion to round to 10u), Mounjaro Day 6, Rc=1.45"}
 {"ts": "2026-04-30T20:18:47Z", "type": "meal", "food": "Padr\u00f3n peppers (400g)", "carbs_g": 8, "insulin_units": null, "glucose_at_time": 161}
 {"ts": "2026-04-30T20:19:16Z", "type": "insulin", "units": 21, "glucose_at_time": 163, "note": "Humalog, meal bolus + correction for Padr\u00f3n peppers (8g carbs), Mounjaro Day 6, Rc=1.45"}
+{"ts": "2026-04-30T20:49:55Z", "type": "meal", "food": "Greek salad (cherry tomatoes, cucumber, feta, olive oil)", "carbs_g": 11, "insulin_units": null, "glucose_at_time": 166}
