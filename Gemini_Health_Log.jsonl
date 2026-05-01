@@ -304,3 +304,4 @@
 {"ts": "2026-05-01T06:43:07Z", "type": "insulin", "units": 11, "glucose_at_time": 167, "note": "Humalog, staged fasting correction Tranche 1 of 3 (full model net dose 22u), Mounjaro Day 7, Rc=1.45"}
 {"ts": "2026-05-01T06:47:19Z", "type": "note", "note": "ng: note \u2014 Mounjaro 15mg injected, glucose 172", "glucose_at_time": 172}
 {"ts": "2026-05-01T07:53:55Z", "type": "insulin", "units": 18, "glucose_at_time": 192, "note": "18u Humalog, staged fasting correction Tranche 1 of 3 (full model net dose 36u), Mounjaro Day 7, Rc=1.45"}
+{"ts": "2026-05-01T07:54:25Z", "type": "insulin", "units": 20, "glucose_at_time": 192, "note": "20u Humalog, staged fasting correction Tranche 1 of 3 (full model net dose 36u, Bill's discretion to round to 20u), Mounjaro Day 7, Rc=1.45"}
