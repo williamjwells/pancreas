@@ -302,3 +302,4 @@
 {"ts": "2026-05-01T00:18:45Z", "type": "meal", "food": "bocadillo with sourdough bread (40g), lean ham (100g), Gouda (30g), mustard", "carbs_g": 23, "insulin_units": null, "glucose_at_time": 99}
 {"ts": "2026-05-01T00:43:52Z", "type": "insulin", "units": 19, "glucose_at_time": 108, "note": "glucose 99, meal bolus for bocadillo (23g carbs, sourdough), Mounjaro Day 6, Rc=1.45"}
 {"ts": "2026-05-01T06:43:07Z", "type": "insulin", "units": 11, "glucose_at_time": 167, "note": "Humalog, staged fasting correction Tranche 1 of 3 (full model net dose 22u), Mounjaro Day 7, Rc=1.45"}
+{"ts": "2026-05-01T06:47:19Z", "type": "note", "note": "ng: note \u2014 Mounjaro 15mg injected, glucose 172", "glucose_at_time": 172}
