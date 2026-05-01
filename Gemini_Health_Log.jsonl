@@ -307,3 +307,4 @@
 {"ts": "2026-05-01T07:54:25Z", "type": "insulin", "units": 20, "glucose_at_time": 192, "note": "20u Humalog, staged fasting correction Tranche 1 of 3 (full model net dose 36u, Bill's discretion to round to 20u), Mounjaro Day 7, Rc=1.45"}
 {"ts": "2026-05-01T09:13:35Z", "type": "insulin", "units": 15, "glucose_at_time": 179, "note": "15u Humalog, staged fasting correction Tranche 2 of 3 (full model net dose 36u, Bill's discretion), Mounjaro Day 7, Rc=1.45"}
 {"ts": "2026-05-01T09:24:13Z", "type": "meal", "food": "2 scrambled eggs, 25g Gouda cheese", "carbs_g": 2, "insulin_units": null, "glucose_at_time": 181}
+{"ts": "2026-05-01T14:59:00Z", "type": "meal", "food": "boiled and fried potatoes", "carbs_g": 34, "insulin_units": null, "glucose_at_time": 101}
