@@ -310,3 +310,4 @@
 {"ts": "2026-05-01T14:59:00Z", "type": "meal", "food": "boiled and fried potatoes", "carbs_g": 34, "insulin_units": null, "glucose_at_time": 101}
 {"ts": "2026-05-01T17:31:23Z", "type": "meal", "food": "Cruzcampo 33cl beer", "carbs_g": 10, "insulin_units": null, "glucose_at_time": 96}
 {"ts": "2026-05-02T15:16:47Z", "type": "meal", "food": "Cremosa Coco yogurt", "carbs_g": 14, "insulin_units": null, "glucose_at_time": 99}
+{"ts": "2026-05-02T16:20:08Z", "type": "insulin", "units": 8, "glucose_at_time": 96, "note": "8u Humalog, meal bolus for Cremosa Coco yogurt (14g carbs), Bill's discretion 8u (model 12u), Mounjaro Day 2, Rc=1.02"}
