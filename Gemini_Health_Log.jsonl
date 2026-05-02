@@ -313,3 +313,4 @@
 {"ts": "2026-05-02T16:20:08Z", "type": "insulin", "units": 8, "glucose_at_time": 96, "note": "8u Humalog, meal bolus for Cremosa Coco yogurt (14g carbs), Bill's discretion 8u (model 12u), Mounjaro Day 2, Rc=1.02"}
 {"ts": "2026-05-02T19:55:01Z", "type": "meal", "food": "French fries (150g) and Taiwanese-style salted crispy chicken (200g)", "carbs_g": 56, "insulin_units": null, "glucose_at_time": 87}
 {"ts": "2026-05-02T20:06:18Z", "type": "insulin", "units": 20, "glucose_at_time": 90, "note": "20u Humalog, meal bolus Dose 1 of 2 for French fries and Taiwanese crispy chicken (56g carbs, full model 47u), Mounjaro Day 2, Rc=1.02"}
+{"ts": "2026-05-02T21:18:52Z", "type": "insulin", "units": 10, "glucose_at_time": 141, "note": "Humalog, meal bolus Dose 2 of 2 for French fries and Taiwanese crispy chicken (full model 47u, 30u total taken), Mounjaro Day 2, Rc=1.02"}
