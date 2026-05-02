@@ -315,3 +315,4 @@
 {"ts": "2026-05-02T20:06:18Z", "type": "insulin", "units": 20, "glucose_at_time": 90, "note": "20u Humalog, meal bolus Dose 1 of 2 for French fries and Taiwanese crispy chicken (56g carbs, full model 47u), Mounjaro Day 2, Rc=1.02"}
 {"ts": "2026-05-02T21:18:52Z", "type": "insulin", "units": 10, "glucose_at_time": 141, "note": "Humalog, meal bolus Dose 2 of 2 for French fries and Taiwanese crispy chicken (full model 47u, 30u total taken), Mounjaro Day 2, Rc=1.02"}
 {"ts": "2026-05-02T23:08:05Z", "type": "insulin", "units": 7, "glucose_at_time": 167, "note": "Humalog, meal bolus Dose 3 for French fries and Taiwanese crispy chicken (37u total taken vs model 47u), Mounjaro Day 2, Rc=1.02"}
+{"ts": "2026-05-02T23:39:12Z", "type": "insulin", "units": 10, "glucose_at_time": 200, "note": "Humalog, glucose 200, completing model dose (47u total), Dose 4 of 4 for French fries and Taiwanese crispy chicken, Mounjaro Day 2, Rc=1.02"}
