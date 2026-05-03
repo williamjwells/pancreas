@@ -318,3 +318,4 @@
 {"ts": "2026-05-02T23:39:12Z", "type": "insulin", "units": 10, "glucose_at_time": 200, "note": "Humalog, glucose 200, completing model dose (47u total), Dose 4 of 4 for French fries and Taiwanese crispy chicken, Mounjaro Day 2, Rc=1.02"}
 {"ts": "2026-05-03T01:48:59Z", "type": "insulin", "units": 20, "glucose_at_time": 213, "note": "20u Humalog, staged fasting correction Tranche 1 of 3 (full model net dose 40u), Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-05-03T04:27:05Z", "type": "insulin", "units": 8, "glucose_at_time": 165, "note": "Humalog, glucose 165, staged fasting correction Tranche 1 of 3 (full model net dose 15u), Mounjaro Day 3, Rc=1.135"}
+{"ts": "2026-05-03T07:16:16Z", "type": "insulin", "units": 6, "glucose_at_time": 153, "note": "6u Humalog, staged fasting correction Tranche 1 of 3 (full model net dose 11u), Mounjaro Day 3, Rc=1.135"}
