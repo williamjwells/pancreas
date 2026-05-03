@@ -321,3 +321,4 @@
 {"ts": "2026-05-03T07:16:16Z", "type": "insulin", "units": 6, "glucose_at_time": 153, "note": "6u Humalog, staged fasting correction Tranche 1 of 3 (full model net dose 11u), Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-05-03T13:25:23Z", "type": "insulin", "units": 32, "glucose_at_time": 204, "note": "Humalog, post-meal correction (pork, ~2h ago, no carbs), Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-05-03T15:13:21Z", "type": "meal", "food": "salad with gouda and thousand island dressing", "carbs_g": 8, "insulin_units": null, "glucose_at_time": 166}
+{"ts": "2026-05-03T15:13:51Z", "type": "insulin", "units": 15, "glucose_at_time": 166, "note": "Humalog, meal bolus for salad with gouda and thousand island dressing (~8g carbs), model dose, Mounjaro Day 3, Rc=1.135"}
