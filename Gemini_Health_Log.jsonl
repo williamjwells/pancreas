@@ -325,3 +325,4 @@
 {"ts": "2026-05-04T00:41:00Z", "type": "meal", "food": "pasta soup (ziti, homemade tomato sauce, chicken broth, ~\u00bc serving)", "carbs_g": 25, "insulin_units": null, "glucose_at_time": 102}
 {"ts": "2026-05-04T01:10:25Z", "type": "insulin", "units": 23, "glucose_at_time": 111, "note": "Humalog, meal bolus for pasta soup (ziti, tomato sauce, chicken broth, ~\u00bc serving, 25g carbs), Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-05-04T02:25:17Z", "type": "insulin", "units": 22, "glucose_at_time": 181, "note": "Humalog, post-meal correction for pasta soup, Mounjaro Day 4, Rc=1.22"}
+{"ts": "2026-05-04T04:33:48Z", "type": "insulin", "units": 18, "glucose_at_time": 208, "note": "18u Humalog, staged fasting correction Tranche 1 of 3 (full model net dose 36u), Mounjaro Day 4, Rc=1.22"}
