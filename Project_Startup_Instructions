@@ -1,0 +1,333 @@
+# PROJECT STARTUP INSTRUCTIONS
+## Bill's AI Glucose Management Bot ("Gemini")
+### Everything you need to rebuild from scratch
+
+---
+
+## WHAT THIS PROJECT IS
+
+A personal AI-powered diabetes management assistant that runs as a Telegram chatbot. Bill texts it naturally ("just ate pasta, about 60g carbs, glucose is 145"), and it calculates insulin doses using a pharmacokinetic model tuned to his specific biology, logs everything to GitHub, and pulls live CGM data from Nightscout. The AI (Claude) is stateless — all memory is externalized into files on GitHub and fetched fresh on every message.
+
+**The bot is named "Gemini" in conversation but runs on Claude claude-sonnet-4-6.**
+
+---
+
+## THE FIVE FILES THAT DEFINE THE SYSTEM
+
+Every parameter, every rule, every piece of logged history lives in these five files in the GitHub repo `williamjwells/pancreas`. There is no database, no server-side state.
+
+| File | Purpose |
+|---|---|
+| `Gemini_Model_Parameters.json` | All numeric dosing parameters (GSF, ICR, targets, IOB decay, etc.) |
+| `Gemini_Behavior_Rules.txt` | Claude's complete instruction set — how to calculate, format, respond |
+| `Gemini_Health_Log.jsonl` | Append-only log of every meal, insulin dose, and note |
+| `glucose_telegram_bot.py` | The Python bot that wires everything together |
+| `timeseries.jsonl` | CGM time series (historical reference, not used at runtime) |
+
+Additionally:
+- `Procfile` — tells Railway how to start the bot: `worker: python glucose_telegram_bot.py`
+- `railway.toml` — watchPatterns so Railway auto-redeploys when config files change
+
+---
+
+## ENVIRONMENT VARIABLES (Required — set in Railway dashboard)
+
+```
+ANTHROPIC_API_KEY   = sk-ant-...        # Claude API key
+TELEGRAM_TOKEN      = ...               # BotFather token
+GITHUB_TOKEN        = ghp_...          # GitHub personal access token (repo read+write)
+```
+
+The bot will crash on startup if any of these are missing. They are never stored in code.
+
+**Hardcoded constants in glucose_telegram_bot.py (not env vars):**
+```python
+GITHUB_REPO      = "williamjwells/pancreas"
+NIGHTSCOUT_URL   = "https://billwells.ns.10be.de"
+ALLOWED_USER_ID  = 8753341324    # Bill's Telegram user ID — only he can use the bot
+MODEL            = "claude-sonnet-4-6"
+LOCAL_TZ_OFFSET_HOURS = 2        # CEST (UTC+2) — change to 1 in winter (CET)
+```
+
+---
+
+## DEPLOYMENT: RAILWAY
+
+The bot runs as a **worker** (not a web server) on Railway. Long-polling Telegram — no webhooks.
+
+**To deploy:**
+1. Connect the `williamjwells/pancreas` GitHub repo to a Railway project
+2. Railway auto-detects `Procfile` and runs `python glucose_telegram_bot.py`
+3. Set the three environment variables in Railway's Variables tab
+4. Push any change to watched files → Railway auto-redeploys (per `railway.toml`)
+
+**No port needed. No web service. Worker process only.**
+
+**To restart without a code change:** Redeploy manually from Railway dashboard.
+
+**To reload parameters mid-session without restarting:** Text `/reload` to the bot.
+
+---
+
+## HOW THE BOT WORKS (Message Flow)
+
+```
+Bill sends Telegram message
+        ↓
+Bot checks ALLOWED_USER_ID — reject if not Bill
+        ↓
+Is there a pending_log and is the message a confirmation word?
+  → YES: write entry to GitHub (Gemini_Health_Log.jsonl), reply "Saved."
+  → NO: clear any pending log, continue
+        ↓
+Fetch live data (in parallel):
+  - get_latest_glucose()     ← Nightscout /api/v1/entries.json?count=1
+  - get_recent_glucose(2h)   ← Nightscout last 2 hours
+  - get_recent_logs()        ← Last 10 lines of Gemini_Health_Log.jsonl from GitHub
+        ↓
+Build system prompt:
+  - Fetch Gemini_Model_Parameters.json from GitHub
+  - Fetch Gemini_Behavior_Rules.txt from GitHub
+  - Strip comment lines (starting with #) from rules
+  - Inject pre-computed IOB from Python (not Claude) using bilinear decay
+  - Inject current glucose, trend, local time, recent log summary
+        ↓
+Call Claude API (claude-sonnet-4-6) with rolling conversation history (last 4 exchanges)
+        ↓
+Parse Claude's response for a log proposal (looks for "Logging:" + "Confirm?" pattern)
+  → If found: store in session["pending_log"], wait for Bill's confirmation
+  → If not: send response directly
+        ↓
+Send response to Telegram (Markdown, fallback to plain text)
+```
+
+---
+
+## THE DOSING MODEL
+
+The model lives in `Gemini_Model_Parameters.json` and is interpreted by Claude per `Gemini_Behavior_Rules.txt`.
+
+### Core Formula
+
+```
+net_dose = (correction_dose × Rc) + meal_bolus - IOB
+
+correction_dose = (current_glucose - baseline_target) / GSF × HSF_multiplier
+meal_bolus      = carbs_g / ICR
+IOB             = pre-computed by Python using bilinear decay (never by Claude)
+Rc              = Mounjaro resistance coefficient (from quadratic equation, time-since-injection)
+HSF_multiplier  = 1 + min(HSF × delta, HSF_max)    where delta = current_glucose - baseline_target
+```
+
+### Current Parameters (v1.5 as of 2026-04-09)
+
+```json
+baseline_target_mg_dl:  120
+gsf_correction_ratio:   3.7       (units of insulin per mg/dL above target)
+icr_meal_ratio:         1.2       (grams of carbs per unit of insulin)
+hsf:                    0.05      (high-sugar sensitivity factor)
+hsf_max:                0.30      (cap — prevents runaway at very high glucose)
+iob_decay_minutes:      220       (total IOB window)
+fast_phase_minutes:     90        (first 90 min = fast phase, 60% of dose)
+slow_phase_minutes:     130       (next 130 min = slow phase, 40% of dose)
+```
+
+**CRITICAL: Rc applies to correction only, NEVER to meal bolus.**
+
+### Mounjaro Resistance (Rc)
+
+```
+Rc = 0.01d² + 0.015d + 1.0
+  where d = days since last Friday 08:00 injection (injection day)
+  peak_resistance_baseline: 1.45
+  glp_activation_delay_hours: 24 (Rc=1.0 for first 24h post-injection)
+```
+
+Resistance states: low / medium / high — tracked qualitatively.
+
+### Sanity Check Thresholds
+
+Flag (do not refuse) if single bolus exceeds **60 units** OR is **>2× the largest dose in the past 7 days**.
+
+### IOB Decay (Bilinear — computed in Python, not Claude)
+
+```python
+if elapsed >= 220:      remaining = 0.0
+elif elapsed <= 90:     remaining = 1.0 - (0.60 × elapsed / 90)
+else:                   remaining = 0.40 × (1.0 - (elapsed - 90) / 130)
+IOB = units × remaining
+```
+
+This was moved to Python because Claude made arithmetic errors with UTC time subtraction. The Python-computed `[PRE-COMPUTED IOB]` block is injected into the system prompt. **Claude must trust these values and never recalculate.**
+
+---
+
+## LOGGING FORMAT
+
+All log entries are JSON appended to `Gemini_Health_Log.jsonl` in GitHub. Meals and insulin are ALWAYS separate entries.
+
+```json
+// Meal entry
+{"ts": "2026-04-12T01:26:27Z", "type": "meal", "food": "pasta", "carbs_g": 45, "insulin_units": null, "glucose_at_time": 144}
+
+// Insulin entry
+{"ts": "2026-04-12T01:26:48Z", "type": "insulin", "units": 22, "glucose_at_time": 144, "note": "Humalog, meal bolus, Mounjaro Day 2, Rc=1.07"}
+
+// Note entry
+{"ts": "2026-04-12T10:00:00Z", "type": "note", "note": "felt hypo at 3am, treated with juice", "glucose_at_time": 72}
+```
+
+**Log proposal format Claude must use:**
+```
+Logging: meal - pasta, 45g carbs, glucose 144. Confirm?
+Logging: insulin - 22u Humalog, glucose 144, meal bolus Mounjaro Day 2. Confirm?
+```
+
+Confirmation words: yes, yep, sure, go ahead, ok, correct, yeah, y, confirm, go, yup, k, sounds good, proceed, affirmative, do it, save it, log it, yers, yrs, yea
+
+**Bot replies "Saved." — Claude never claims to have logged anything itself.**
+
+---
+
+## NIGHTSCOUT INTEGRATION
+
+```
+Base URL: https://billwells.ns.10be.de
+Endpoints used:
+  /api/v1/entries.json?count=1           ← latest reading
+  /api/v1/entries.json?count=200&find[date][$gte]={since_ms}  ← 2h history
+```
+
+No Nightscout API key required (public instance). Readings are `sgv` field (mg/dL). Trend directions mapped to human-readable arrows (↑↑, ↑, ↗, →, ↘, ↓, ↓↓).
+
+The bot summarizes CGM history into a compact string before sending to Claude (max 24 sampled points) to control token usage.
+
+---
+
+## CONVERSATION MANAGEMENT
+
+- Rolling window: **last 4 exchanges** (user + assistant pairs) sent to Claude
+- System prompt rebuilt fresh on every message (fetches GitHub files each time)
+- No persistent session — if the process restarts, conversation history resets
+- `/reset` — clears conversation history, keeps parameters
+- `/reload` — rebuilds system prompt from GitHub, clears conversation
+- `/cancel` — cancels any pending log entry
+
+**MAX_HISTORY_EXCHANGES = 4** (reduced from 6 to control payload size)
+**MAX_GLUCOSE_HISTORY = 24** (one reading per 5 min ≈ 2 hours of samples)
+
+---
+
+## TIMEZONE
+
+- Bill is in **Europe/Madrid** (CEST = UTC+2 in summer, CET = UTC+1 in winter)
+- All Nightscout and log timestamps are stored in UTC
+- `LOCAL_TZ_OFFSET_HOURS = 2` in `glucose_telegram_bot.py` — **update to 1 when clocks go back**
+- All times displayed to Bill are converted to local time by Python before being sent to Claude
+- When Bill states a time verbally, it is always local — no conversion needed
+
+---
+
+## ERROR HANDLING
+
+- **Anthropic 529 overload:** Automatic retry with 15s / 30s backoff (3 attempts max)
+- **Telegram Markdown failures:** Fallback to plain text send
+- **GitHub GET timeout:** 10s timeout, prints error, returns None (bot will tell Bill it can't fetch params)
+- **GitHub write failure:** Returns False, bot tells Bill "Save failed - check GitHub token and network"
+- **Nightscout timeout:** 10s timeout, returns None/empty list, bot continues without glucose data
+
+---
+
+## CLINICAL RULES (Critical — understand before changing anything)
+
+These are hardcoded in `Gemini_Behavior_Rules.txt` and reflect hard-won lessons:
+
+1. **Never apply Rc to meal bolus** — only to the correction component
+2. **HSF_max = 0.30** — Without this cap, a glucose of 253 (delta=133) generated a 92-unit dose that was nearly administered. This cap is non-negotiable.
+3. **IOB must always be subtracted** — Claude must show its working
+4. **Staged dosing for fasting corrections** — 50% now, 25% at 60 min, 25% at 120 min — only when Bill is not eating
+5. **Meal and insulin logs are always separate** — never combine them in one entry
+6. **Sanity check = warn, not refuse** — Claude always produces an ACTION line; Bill decides
+7. **No bare UTC times to Bill** — always convert to local time
+
+---
+
+## PARAMETER VERSIONING
+
+`Gemini_Model_Parameters.json` has a `version`, `updated`, `change_note`, and `history` array. When Bill asks to change a parameter:
+- Claude confirms the change with old and new values
+- The parameter is updated in the file (Bill or developer edits manually in GitHub or via a tool)
+- The `change_note` and `history` entry should be updated too
+
+Current version: **1.5** (2026-04-09)
+
+---
+
+## MODEL DESIGN PHILOSOPHY
+
+This is a **man-in-the-middle system**. The AI recommends; the physician decides. This distinction shapes every design choice.
+
+**Bill is a physician.** Every dose recommendation passes through his clinical judgment before anything happens. The bot is a pharmacokinetic calculator with memory and natural language input — not an autonomous dosing system. A recommendation is just that. Nothing is ever "almost administered."
+
+**Implications for how the bot should behave:**
+
+- **Always produce an ACTION line.** Refusing to recommend a dose because it looks large is paternalistic and clinically useless. Bill can evaluate a 60-unit recommendation. He cannot evaluate a refusal. The sanity check exists to flag unusual outputs for review, not to substitute the bot's judgment for his.
+
+- **Show all working.** Every dose response should show the full calculation: correction component, meal bolus, Rc applied, IOB subtracted, final net dose. This lets Bill spot a bad input assumption (wrong carb estimate, stale Rc) and override it. A black-box answer is not useful to a physician.
+
+- **Never soften or hedge dose recommendations uninvited.** Qualifiers like "you may want to consider" or "perhaps a smaller dose" are noise. State the number. If there's a clinical reason to flag something (e.g. rapid downward trend, recent large IOB), state it plainly and let Bill weigh it.
+
+- **Parameters are recursive by design.** Bill observes outcomes and adjusts GSF, ICR, and other parameters based on real results. The model is not static. When Bill says "change GSF to 4.0," the correct response is to confirm the change with old and new values — not to ask why or suggest caution.
+
+- **Hard limits exist to protect model integrity, not to override clinical judgment.** HSF_max=0.30 and the sanity check thresholds exist because uncapped formulas produce outputs that are obviously wrong (92 units for a moderate high). These limits keep the math honest. They are not safety interlocks substituting for physician oversight — that oversight is always present.
+
+**What this means for anyone modifying the bot:**
+Do not add dose refusals, hard upper limits on ACTION lines, or unsolicited safety warnings. Do not reduce the bot to a hedging machine. The clinical gate is Bill, and he is more than capable of exercising it.
+
+---
+
+
+
+- [ ] Create GitHub repo `williamjwells/pancreas` (or whatever name, update `GITHUB_REPO` in bot)
+- [ ] Upload all 5 project files to the repo
+- [ ] Create a Telegram bot via BotFather, copy the token
+- [ ] Get Bill's Telegram user ID (send `/start` to `@userinfobot`), update `ALLOWED_USER_ID`
+- [ ] Create Railway project, connect the GitHub repo
+- [ ] Set `ANTHROPIC_API_KEY`, `TELEGRAM_TOKEN`, `GITHUB_TOKEN` in Railway Variables
+- [ ] Verify `Procfile` contains `worker: python glucose_telegram_bot.py`
+- [ ] Deploy and watch Railway logs for startup confirmation
+- [ ] Text `/reload` to the bot to confirm it fetches params successfully
+- [ ] Send a test message: "glucose is 120, what's my status?" — should return a reading
+- [ ] Verify a log entry works: say "just had coffee, glucose 110" → confirm → check GitHub for new line in `Gemini_Health_Log.jsonl`
+- [ ] Check `LOCAL_TZ_OFFSET_HOURS` matches current season (2 = summer, 1 = winter)
+
+---
+
+## KNOWN ISSUES AND DESIGN DECISIONS
+
+| Issue | Decision |
+|---|---|
+| Claude made UTC arithmetic errors in IOB calculation | Moved IOB to Python, injected as pre-computed block |
+| Claude sometimes applied Rc to full dose | Explicit rule in Behavior Rules + marked CRITICAL |
+| High glucose (delta 133) produced 92-unit dose recommendation | Added HSF_max=0.30 cap in v1.5 — Bill (a physician) caught it; the cap prevents the formula from producing absurd outputs that erode trust |
+| Context payload too large | Reduced history to 4 exchanges, CGM to 24 samples, summarized glucose history |
+| API 529 errors under load | Retry logic with exponential backoff added |
+| Telegram Markdown rendering failures | Fallback to plain text implemented |
+| Claude claimed to save logs it hadn't written | Bot owns all write confirmations; Claude only proposes |
+
+---
+
+*Last updated: April 2026 | Model: claude-sonnet-4-6 | Parameters: v1.5*
+
+---
+
+## IF CLAUDE DESKTOP DOESN'T RECOGNIZE YOUR PROJECTS
+
+The Claude Desktop app has three tabs at the top: **Chat**, **Cowork**, and **Code**.
+
+Projects live in the **Chat** tab — same as claude.ai in a browser.
+
+If you open the app and it doesn't know your projects, you are on the Cowork or Code tab.
+Click **Chat** and your projects will be there exactly as before. Nothing is lost.
+
+Cowork is a separate autonomous agent mode for local file tasks. It is not relevant to this project.
