@@ -1,0 +1,42 @@
+# NOTES.md — Gemini Glucose Bot Project
+
+> **Purpose:** Running capture of anything worth keeping across sessions.
+> Updated at the end of each working session.
+
+---
+
+## Key Conclusions
+
+*Settled decisions, validated findings, and clinical/design principles worth preserving.*
+
+<!-- Add entries here: what was learned, what was decided, and why. -->
+
+---
+
+## Research & Analysis
+
+*Investigations, experiments, data reviews, and their outcomes.*
+
+<!-- Add entries here: what was studied, methodology, results, and implications. -->
+
+---
+
+## Working Notes
+
+*In-progress thoughts, open questions, hypotheses, and ideas not yet resolved.*
+
+<!-- Add entries here: half-baked ideas, things to revisit, threads to pull. -->
+
+---
+
+## Session Log
+
+*Chronological record of sessions — what was worked on and any notable outcomes.*
+
+| Date | Summary | Key Outcome |
+|------|---------|-------------|
+| <!-- YYYY-MM-DD --> | <!-- What was worked on --> | <!-- Result or next step --> |
+
+---
+
+*Last updated: <!-- date -->*
