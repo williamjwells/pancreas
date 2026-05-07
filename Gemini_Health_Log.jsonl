@@ -335,3 +335,4 @@
 {"ts": "2026-05-06T08:54:24Z", "type": "insulin", "units": 9, "glucose_at_time": 125, "note": "Humalog, meal bolus for salad with ham, gouda, thousand island dressing (8g carbs), Mounjaro Day 6, Rc=1.45"}
 {"ts": "2026-05-07T17:30:00Z", "type": "meal", "food": "San Miguel beer 33cl", "carbs_g": 11, "insulin_units": null, "glucose_at_time": null}
 {"ts": "2026-05-07T17:54:25Z", "type": "insulin", "units": 15, "glucose_at_time": 122, "note": "Humalog, glucose not recorded, meal bolus for two beers (22g carbs total), Mounjaro Day 5, Rc=1.325, approx 18:30 local"}
+{"ts": "2026-05-07T19:23:01Z", "type": "meal", "food": "fried squid rings (~7-8 rings, half portion of 15)", "carbs_g": 25, "insulin_units": null, "glucose_at_time": 95}
