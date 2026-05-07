@@ -336,3 +336,4 @@
 {"ts": "2026-05-07T17:30:00Z", "type": "meal", "food": "San Miguel beer 33cl", "carbs_g": 11, "insulin_units": null, "glucose_at_time": null}
 {"ts": "2026-05-07T17:54:25Z", "type": "insulin", "units": 15, "glucose_at_time": 122, "note": "Humalog, glucose not recorded, meal bolus for two beers (22g carbs total), Mounjaro Day 5, Rc=1.325, approx 18:30 local"}
 {"ts": "2026-05-07T19:23:01Z", "type": "meal", "food": "fried squid rings (~7-8 rings, half portion of 15)", "carbs_g": 25, "insulin_units": null, "glucose_at_time": 95}
+{"ts": "2026-05-07T20:07:44Z", "type": "meal", "food": "patatas bravas (tapas order)", "carbs_g": 45, "insulin_units": null, "glucose_at_time": 112}
