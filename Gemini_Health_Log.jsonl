@@ -338,3 +338,4 @@
 {"ts": "2026-05-07T19:23:01Z", "type": "meal", "food": "fried squid rings (~7-8 rings, half portion of 15)", "carbs_g": 25, "insulin_units": null, "glucose_at_time": 95}
 {"ts": "2026-05-07T20:07:44Z", "type": "meal", "food": "patatas bravas (tapas order)", "carbs_g": 45, "insulin_units": null, "glucose_at_time": 112}
 {"ts": "2026-05-07T20:08:09Z", "type": "insulin", "units": 30, "glucose_at_time": 114, "note": "Humalog, glucose 112, meal bolus for patatas bravas + squid coverage, Mounjaro Day 5, Rc=1.325"}
+{"ts": "2026-05-08T04:07:21Z", "type": "insulin", "units": 20, "glucose_at_time": 165, "note": "Humalog, Mounjaro Day 6, Rc=1.45"}
