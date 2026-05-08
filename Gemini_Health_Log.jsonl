@@ -340,3 +340,4 @@
 {"ts": "2026-05-07T20:08:09Z", "type": "insulin", "units": 30, "glucose_at_time": 114, "note": "Humalog, glucose 112, meal bolus for patatas bravas + squid coverage, Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-05-08T04:07:21Z", "type": "insulin", "units": 20, "glucose_at_time": 165, "note": "Humalog, Mounjaro Day 6, Rc=1.45"}
 {"ts": "2026-05-08T06:11:49Z", "type": "note", "note": "Mounjaro 15mg injected, glucose 149", "glucose_at_time": 149}
+{"ts": "2026-05-08T08:43:04Z", "type": "insulin", "units": 15, "glucose_at_time": 142, "note": "Humalog, meal bolus + correction for scrambled eggs with tomatoes and pepper (7g carbs), Mounjaro Day 7/new cycle Day 0, Rc=1.45"}
