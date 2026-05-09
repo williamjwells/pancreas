@@ -343,3 +343,4 @@
 {"ts": "2026-05-08T08:43:04Z", "type": "insulin", "units": 15, "glucose_at_time": 142, "note": "Humalog, meal bolus + correction for scrambled eggs with tomatoes and pepper (7g carbs), Mounjaro Day 7/new cycle Day 0, Rc=1.45"}
 {"ts": "2026-05-08T12:31:31Z", "type": "meal", "food": "Danone creamy coconut yogurt (125g)", "carbs_g": 19, "insulin_units": null, "glucose_at_time": 100}
 {"ts": "2026-05-09T21:37:35Z", "type": "meal", "food": "NY style pizza 12\", pepperoni and veggies, 5 of 8 slices", "carbs_g": 125, "insulin_units": null, "glucose_at_time": 141}
+{"ts": "2026-05-09T21:40:37Z", "type": "insulin", "units": 30, "glucose_at_time": 142, "note": "Humalog, second bolus for NY pizza, Mounjaro Day 1, Rc=1.025"}
