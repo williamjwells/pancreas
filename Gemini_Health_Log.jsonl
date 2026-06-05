@@ -345,3 +345,4 @@
 {"ts": "2026-05-09T21:37:35Z", "type": "meal", "food": "NY style pizza 12\", pepperoni and veggies, 5 of 8 slices", "carbs_g": 125, "insulin_units": null, "glucose_at_time": 141}
 {"ts": "2026-05-09T21:40:37Z", "type": "insulin", "units": 30, "glucose_at_time": 142, "note": "Humalog, second bolus for NY pizza, Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-06-05T17:33:41Z", "type": "insulin", "units": 15, "glucose_at_time": 174, "note": "Humalog, correction dose, recalibration day, Rc TBD"}
+{"ts": "2026-06-05T18:32:27Z", "type": "meal", "food": "saut\u00e9ed squash, 10 meatballs, marinara sauce", "carbs_g": 32, "insulin_units": null, "glucose_at_time": 172}
