@@ -348,3 +348,4 @@
 {"ts": "2026-06-05T18:32:27Z", "type": "meal", "food": "saut\u00e9ed squash, 10 meatballs, marinara sauce", "carbs_g": 32, "insulin_units": null, "glucose_at_time": 172}
 {"ts": "2026-06-05T21:58:03Z", "type": "insulin", "units": 8, "glucose_at_time": 140, "note": "Humalog, override correction, Mounjaro Day 6, Rc=1.45"}
 {"ts": "2026-06-05T23:07:47Z", "type": "insulin", "units": 15, "glucose_at_time": 147, "note": "Humalog, meal bolus for Sam Adams Boston Lager (18g carbs), Mounjaro Day 6, Rc=1.45"}
+{"ts": "2026-06-05T23:08:36Z", "type": "meal", "food": "Sam Adams Boston Lager", "carbs_g": 18, "insulin_units": null, "glucose_at_time": 149}
