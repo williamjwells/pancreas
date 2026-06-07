@@ -359,3 +359,4 @@
 {"ts": "2026-06-06T17:16:21Z", "type": "insulin", "units": 7, "glucose_at_time": 150, "note": "Humalog, Mounjaro Day 1, Rc=1.025, staged fasting correction Tranche 3 of 3"}
 {"ts": "2026-06-06T19:19:08Z", "type": "meal", "food": "large dinner salad with cheese and Thousand Island dressing", "carbs_g": 8, "insulin_units": null, "glucose_at_time": 117}
 {"ts": "2026-06-07T07:17:26Z", "type": "meal", "food": "8 gyoza and 4oz Pinot Grigio", "carbs_g": 29, "insulin_units": null, "glucose_at_time": 98}
+{"ts": "2026-06-07T07:57:36Z", "type": "meal", "food": "turkey sandwich with 2 slices reduced-carb bread, American cheese, 3oz turkey", "carbs_g": 19, "insulin_units": null, "glucose_at_time": 93}
