@@ -363,3 +363,4 @@
 {"ts": "2026-06-07T07:58:10Z", "type": "insulin", "units": 20, "glucose_at_time": 93, "note": "Humalog, Mounjaro Day 2, meal bolus covering gyoza/wine (29g) + turkey sandwich (19g), 48g total carbs"}
 {"ts": "2026-06-07T08:14:42Z", "type": "insulin", "units": 15, "glucose_at_time": 106, "note": "Humalog, Mounjaro Day 2"}
 {"ts": "2026-06-07T16:43:09Z", "type": "insulin", "units": 16, "glucose_at_time": 163, "note": "Humalog, Mounjaro Day 2, Rc=1.045, staged fasting correction Tranche 1 of 3"}
+{"ts": "2026-06-07T18:33:48Z", "type": "insulin", "units": 10, "glucose_at_time": 161, "note": "Humalog, Mounjaro Day 2, Rc=1.045, staged fasting correction Tranche 2 of 3"}
