@@ -367,3 +367,4 @@
 {"ts": "2026-06-08T09:22:02Z", "type": "insulin", "units": 5, "glucose_at_time": 150, "note": "Humalog, Mounjaro Day 3, manual dose"}
 {"ts": "2026-06-08T16:43:55Z", "type": "insulin", "units": 10, "glucose_at_time": 184, "note": "Humalog, Mounjaro Day 3, Rc=1.065, fasting correction"}
 {"ts": "2026-06-08T20:59:49Z", "type": "meal", "food": "3 cups popcorn", "carbs_g": 18, "insulin_units": null, "glucose_at_time": 124}
+{"ts": "2026-06-08T21:00:11Z", "type": "insulin", "units": 10, "glucose_at_time": 125, "note": "10u Humalog, Mounjaro Day 1, Rc=1.025, meal bolus for 3 cups popcorn (18g carbs), model recommended 16u"}
