@@ -364,3 +364,4 @@
 {"ts": "2026-06-07T08:14:42Z", "type": "insulin", "units": 15, "glucose_at_time": 106, "note": "Humalog, Mounjaro Day 2"}
 {"ts": "2026-06-07T16:43:09Z", "type": "insulin", "units": 16, "glucose_at_time": 163, "note": "Humalog, Mounjaro Day 2, Rc=1.045, staged fasting correction Tranche 1 of 3"}
 {"ts": "2026-06-07T18:33:48Z", "type": "insulin", "units": 10, "glucose_at_time": 161, "note": "Humalog, Mounjaro Day 2, Rc=1.045, staged fasting correction Tranche 2 of 3"}
+{"ts": "2026-06-08T09:22:02Z", "type": "insulin", "units": 5, "glucose_at_time": 150, "note": "Humalog, Mounjaro Day 3, manual dose"}
