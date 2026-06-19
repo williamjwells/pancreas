@@ -371,3 +371,4 @@
 {"ts": "2026-06-09T20:04:21Z", "type": "meal", "food": "salami, olives, 2oz Dubliner cheese, 4oz Pinot Noir", "carbs_g": 6, "insulin_units": null, "glucose_at_time": 155}
 {"ts": "2026-06-09T20:04:41Z", "type": "insulin", "units": 20, "glucose_at_time": 155, "note": "Humalog, Mounjaro Day 2, Rc=1.07, meal bolus for salami/olives/Dubliner/Pinot Noir (6g carbs) + correction, model recommended 18u"}
 {"ts": "2026-06-19T19:10:33Z", "type": "insulin", "units": 10, "glucose_at_time": 153, "note": "10u Humalog, Mounjaro Day 0, Rc=1.0, fasting correction, model recommended 12u staged"}
+{"ts": "2026-06-19T19:49:37Z", "type": "meal", "food": "shishito/Padr\u00f3n peppers, 8oz", "carbs_g": 9, "insulin_units": null, "glucose_at_time": 144}
