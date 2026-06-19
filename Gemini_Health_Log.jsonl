@@ -373,3 +373,4 @@
 {"ts": "2026-06-19T19:10:33Z", "type": "insulin", "units": 10, "glucose_at_time": 153, "note": "10u Humalog, Mounjaro Day 0, Rc=1.0, fasting correction, model recommended 12u staged"}
 {"ts": "2026-06-19T19:49:37Z", "type": "meal", "food": "shishito/Padr\u00f3n peppers, 8oz", "carbs_g": 9, "insulin_units": null, "glucose_at_time": 144}
 {"ts": "2026-06-19T20:49:21Z", "type": "insulin", "units": 3, "glucose_at_time": 150, "note": "3u Humalog, Mounjaro Day 0, Rc=1.0, staged fasting correction Tranche 1 of 3, model net dose 6u"}
+{"ts": "2026-06-19T20:50:10Z", "type": "insulin", "units": 3, "glucose_at_time": 150, "note": "Humalog, Mounjaro Day 0, Rc=1.0, remainder of 6u fasting correction (full dose taken)"}
