@@ -380,3 +380,4 @@
 {"ts": "2026-06-20T07:32:53Z", "type": "insulin", "units": 16, "glucose_at_time": 124, "note": "16u Humalog, Mounjaro Day 1, Rc=1.025, meal bolus tranche 2 of 2 for chuck pot roast/fries (36g carbs total, 36u model recommended, 20+16=36u delivered)"}
 {"ts": "2026-06-20T13:21:58Z", "type": "meal", "food": "Lender's plain bagel, 2oz cream cheese", "carbs_g": 58, "insulin_units": null, "glucose_at_time": 89}
 {"ts": "2026-06-20T13:22:19Z", "type": "insulin", "units": 25, "glucose_at_time": 88, "note": "25u Humalog, glucose 89, meal bolus for Lender's plain bagel/cream cheese (58g carbs), model recommended 48u, Mounjaro Day 1, Rc=1.025"}
+{"ts": "2026-06-20T13:51:41Z", "type": "insulin", "units": 21, "glucose_at_time": 91, "note": "Humalog, second tranche for Lender's plain bagel/cream cheese (58g carbs, 25+21=46u delivered of 48u model recommended), Mounjaro Day 1, Rc=1.025"}
