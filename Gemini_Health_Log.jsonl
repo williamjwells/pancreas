@@ -387,3 +387,4 @@
 {"ts": "2026-06-21T04:19:48Z", "type": "meal", "food": "6oz red wine", "carbs_g": 6, "insulin_units": null, "glucose_at_time": 107}
 {"ts": "2026-06-21T08:08:04Z", "type": "insulin", "units": 25, "glucose_at_time": 173, "note": "Humalog, new sensor insertion, fasting correction, Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-06-21T17:27:23Z", "type": "insulin", "units": 6, "glucose_at_time": 151, "note": "6u Humalog, staged fasting correction Tranche 1 of 3 (model 11u total), Mounjaro Day 2, Rc=1.07"}
+{"ts": "2026-06-21T19:07:58Z", "type": "insulin", "units": 3, "glucose_at_time": 156, "note": "3u Humalog, staged fasting correction Tranche 2 of 3 (model 11u total, 6u+3u=9u delivered), Mounjaro Day 2, Rc=1.07"}
