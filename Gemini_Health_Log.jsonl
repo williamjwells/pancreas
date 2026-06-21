@@ -384,3 +384,4 @@
 {"ts": "2026-06-21T00:59:41Z", "type": "insulin", "units": 20, "glucose_at_time": 195, "note": "Humalog, correction + pre-meal lead dose, food TBD, Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-06-21T02:13:30Z", "type": "insulin", "units": 20, "glucose_at_time": 230, "note": "Humalog, second correction dose, Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-06-21T04:19:19Z", "type": "meal", "food": "beef 300g, sausage 150g, cabbage half head, chicken stock stew (1 of 3 servings)", "carbs_g": 8, "insulin_units": null, "glucose_at_time": 107}
+{"ts": "2026-06-21T04:19:48Z", "type": "meal", "food": "6oz red wine", "carbs_g": 6, "insulin_units": null, "glucose_at_time": 107}
