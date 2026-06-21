@@ -389,3 +389,4 @@
 {"ts": "2026-06-21T17:27:23Z", "type": "insulin", "units": 6, "glucose_at_time": 151, "note": "6u Humalog, staged fasting correction Tranche 1 of 3 (model 11u total), Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-06-21T19:07:58Z", "type": "insulin", "units": 3, "glucose_at_time": 156, "note": "3u Humalog, staged fasting correction Tranche 2 of 3 (model 11u total, 6u+3u=9u delivered), Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-06-21T20:38:01Z", "type": "meal", "food": "3-egg omelet, bacon, cheese, peppers, coffee", "carbs_g": 4, "insulin_units": null, "glucose_at_time": 126}
+{"ts": "2026-06-21T20:38:25Z", "type": "insulin", "units": 3, "glucose_at_time": 126, "note": "Humalog, meal bolus for 3-egg omelet/bacon/cheese/peppers (4g carbs, model recommended 2u, 3u taken), Mounjaro Day 2, Rc=1.07"}
