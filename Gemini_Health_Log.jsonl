@@ -391,3 +391,4 @@
 {"ts": "2026-06-21T20:38:01Z", "type": "meal", "food": "3-egg omelet, bacon, cheese, peppers, coffee", "carbs_g": 4, "insulin_units": null, "glucose_at_time": 126}
 {"ts": "2026-06-21T20:38:25Z", "type": "insulin", "units": 3, "glucose_at_time": 126, "note": "Humalog, meal bolus for 3-egg omelet/bacon/cheese/peppers (4g carbs, model recommended 2u, 3u taken), Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-06-22T03:14:47Z", "type": "meal", "food": "Caprese salad (tomato, fresh mozzarella, basil, olive oil, vinegar)", "carbs_g": 7, "insulin_units": null, "glucose_at_time": 123}
+{"ts": "2026-06-22T04:56:07Z", "type": "insulin", "units": 10, "glucose_at_time": 147, "note": "Humalog, correction for post-Caprese rise, Mounjaro Day 3, Rc=1.135"}
