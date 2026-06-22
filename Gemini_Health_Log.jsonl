@@ -394,3 +394,4 @@
 {"ts": "2026-06-22T04:56:07Z", "type": "insulin", "units": 10, "glucose_at_time": 147, "note": "Humalog, correction for post-Caprese rise, Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-06-22T15:24:45Z", "type": "meal", "food": "H\u00e4agen-Dazs chocolate ice cream (1/3 serving)", "carbs_g": 11, "insulin_units": null, "glucose_at_time": 165}
 {"ts": "2026-06-22T15:25:17Z", "type": "insulin", "units": 20, "glucose_at_time": 166, "note": "20u Humalog, post-hypo rebound + ice cream bolus (model recommended 28u, 20u taken), Mounjaro Day 3, Rc=1.135"}
+{"ts": "2026-06-22T21:07:49Z", "type": "meal", "food": "Stella Artois (1 bottle), tequila (1 shot), tomato juice (3oz) with lime juice (\u00bd lime)", "carbs_g": 17, "insulin_units": null, "glucose_at_time": 138}
