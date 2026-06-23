@@ -408,3 +408,4 @@
 {"ts": "2026-06-23T12:27:57Z", "type": "meal", "food": "saut\u00e9ed zucchini in meat-based tomato sauce (2 cups)", "carbs_g": 22, "insulin_units": null, "glucose_at_time": 98}
 {"ts": "2026-06-23T20:12:27Z", "type": "insulin", "units": 6, "glucose_at_time": 148, "note": "Humalog, staged fasting correction Tranche 1 of 3, Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-06-23T21:19:49Z", "type": "insulin", "units": 13, "glucose_at_time": 138, "note": "Humalog, meal bolus + correction for Stella Artois, Mounjaro Day 4, Rc=1.22"}
+{"ts": "2026-06-23T21:31:01Z", "type": "insulin", "units": 10, "glucose_at_time": 134, "note": "Humalog, meal bolus second Stella Artois, physician override, Mounjaro Day 4, Rc=1.22"}
