@@ -404,3 +404,4 @@
 {"ts": "2026-06-23T03:44:00Z", "type": "insulin", "units": 11, "glucose_at_time": 210, "note": "Humalog, top-up correction, pizza carbs still absorbing, Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-06-23T08:50:05Z", "type": "insulin", "units": 26, "glucose_at_time": 227, "note": "Humalog, staged fasting correction Tranche 1 of 3, Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-06-23T10:06:30Z", "type": "insulin", "units": 13, "glucose_at_time": 235, "note": "Humalog, staged fasting correction Tranche 2 of 3, Mounjaro Day 3, Rc=1.135"}
+{"ts": "2026-06-23T12:04:41Z", "type": "meal", "food": "1 slice low carb bread + 2 eggs", "carbs_g": 6, "insulin_units": null, "glucose_at_time": 139}
