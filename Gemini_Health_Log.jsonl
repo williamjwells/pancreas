@@ -399,3 +399,4 @@
 {"ts": "2026-06-22T22:18:30Z", "type": "insulin", "units": 14, "glucose_at_time": 149, "note": "14u Humalog, meal bolus for Padr\u00f3n peppers (10g carbs) + correction, Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-06-22T22:56:03Z", "type": "insulin", "units": 12, "glucose_at_time": 227, "note": "Humalog, correction for rapid post-pepper rise (still rising \u2197), Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-06-22T22:59:05Z", "type": "insulin", "units": 16, "glucose_at_time": 223, "note": "Humalog, correction top-up (still rising \u2197), Mounjaro Day 3, Rc=1.135"}
+{"ts": "2026-06-23T03:08:27Z", "type": "meal", "food": "4 slices 14\" pizza + 1 lager", "carbs_g": 133, "insulin_units": null, "glucose_at_time": 205}
