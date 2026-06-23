@@ -405,3 +405,4 @@
 {"ts": "2026-06-23T08:50:05Z", "type": "insulin", "units": 26, "glucose_at_time": 227, "note": "Humalog, staged fasting correction Tranche 1 of 3, Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-06-23T10:06:30Z", "type": "insulin", "units": 13, "glucose_at_time": 235, "note": "Humalog, staged fasting correction Tranche 2 of 3, Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-06-23T12:04:41Z", "type": "meal", "food": "1 slice low carb bread + 2 eggs", "carbs_g": 6, "insulin_units": null, "glucose_at_time": 139}
+{"ts": "2026-06-23T12:27:57Z", "type": "meal", "food": "saut\u00e9ed zucchini in meat-based tomato sauce (2 cups)", "carbs_g": 22, "insulin_units": null, "glucose_at_time": 98}
