@@ -409,3 +409,4 @@
 {"ts": "2026-06-23T20:12:27Z", "type": "insulin", "units": 6, "glucose_at_time": 148, "note": "Humalog, staged fasting correction Tranche 1 of 3, Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-06-23T21:19:49Z", "type": "insulin", "units": 13, "glucose_at_time": 138, "note": "Humalog, meal bolus + correction for Stella Artois, Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-06-23T21:31:01Z", "type": "insulin", "units": 10, "glucose_at_time": 134, "note": "Humalog, meal bolus second Stella Artois, physician override, Mounjaro Day 4, Rc=1.22"}
+{"ts": "2026-06-24T02:09:42Z", "type": "meal", "food": "L'Argent russet baked potato, cheese, butter, salsa", "carbs_g": 68, "insulin_units": null, "glucose_at_time": 140}
