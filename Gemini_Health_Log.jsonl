@@ -417,3 +417,4 @@
 {"ts": "2026-06-25T07:33:16Z", "type": "insulin", "units": 4, "glucose_at_time": 171, "note": "4u Humalog, staged fasting correction Tranche 2 of 3, Mounjaro Day 4, Rc=1.22"}
 {"ts": "2026-06-25T17:49:38Z", "type": "insulin", "units": 8, "glucose_at_time": 154, "note": "8u Humalog, staged fasting correction Tranche 1 of 3, Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-06-25T23:09:51Z", "type": "meal", "food": "Sam Adams Boston Lager (12 oz)", "carbs_g": 18, "insulin_units": null, "glucose_at_time": 138}
+{"ts": "2026-06-25T23:10:07Z", "type": "insulin", "units": 22, "glucose_at_time": 137, "note": "Humalog, meal bolus + correction for Sam Adams Boston Lager, Mounjaro Day 5, Rc=1.325"}
