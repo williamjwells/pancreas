@@ -429,3 +429,4 @@
 {"ts": "2026-06-26T10:19:55Z", "type": "insulin", "units": 28, "glucose_at_time": 221, "note": "Humalog, staged fasting correction Tranche 1 of 3, Mounjaro Day 6, Rc=1.45"}
 {"ts": "2026-06-26T17:27:19Z", "type": "insulin", "units": 20, "glucose_at_time": 133, "note": "Humalog, meal bolus + correction for Sam Adams Boston Lager, Mounjaro Day 6, Rc=1.45"}
 {"ts": "2026-06-26T17:43:12Z", "type": "meal", "food": "tortellini pasta soup (tomato broth, \u00bd cup cheese tortellini per serving)", "carbs_g": 36, "insulin_units": null, "glucose_at_time": 166}
+{"ts": "2026-06-26T21:39:57Z", "type": "insulin", "units": 20, "glucose_at_time": 187, "note": "20u Humalog, staged fasting correction Tranche 1 of 3, Mounjaro Day 6, Rc=1.45"}
