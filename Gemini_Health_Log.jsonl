@@ -424,3 +424,4 @@
 {"ts": "2026-06-26T03:19:20Z", "type": "insulin", "units": 20, "glucose_at_time": 162, "note": "Humalog, additional pizza coverage, physician override, Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-06-26T05:52:45Z", "type": "insulin", "units": 25, "glucose_at_time": 205, "note": "Humalog, glucose 204, additional pizza coverage, physician override, Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-06-26T07:40:10Z", "type": "meal", "food": "beef and bean soup (1 serving)", "carbs_g": 30, "insulin_units": null, "glucose_at_time": 159}
+{"ts": "2026-06-26T07:41:01Z", "type": "insulin", "units": 15, "glucose_at_time": 160, "note": "Humalog, meal bolus for beef and bean soup, physician override, Mounjaro Day 6, Rc=1.45"}
