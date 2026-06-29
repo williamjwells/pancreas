@@ -433,3 +433,4 @@
 {"ts": "2026-06-27T06:43:17Z", "type": "insulin", "units": 30, "glucose_at_time": 189, "note": "30u Humalog, meal bolus + correction for turkey sandwich on low-carb bread, physician override, Mounjaro Day 7, Rc=1.595"}
 {"ts": "2026-06-27T06:43:39Z", "type": "meal", "food": "lean turkey sandwich (4 oz turkey, 2 slices low-carb bread)", "carbs_g": 8, "insulin_units": null, "glucose_at_time": 189}
 {"ts": "2026-06-28T23:24:28Z", "type": "insulin", "units": 24, "glucose_at_time": 231, "note": "Humalog, staged fasting correction Tranche 1 of 3, Mounjaro Day 1, Rc=1.025"}
+{"ts": "2026-06-29T00:39:48Z", "type": "meal", "food": "no-pasta pasta sauce (zucchini, ground beef, tomatoes, tomato sauce, ~1.5 cups)", "carbs_g": 18, "insulin_units": null, "glucose_at_time": 125}
