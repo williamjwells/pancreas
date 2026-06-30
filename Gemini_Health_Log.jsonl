@@ -437,3 +437,4 @@
 {"ts": "2026-06-29T01:00:09Z", "type": "insulin", "units": 5, "glucose_at_time": 125, "note": "Humalog, meal bolus for no-pasta pasta sauce, physician override, Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-06-30T16:12:04Z", "type": "insulin", "units": 8, "glucose_at_time": 159, "note": "Humalog, staged fasting correction Tranche 1 of 3, Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-06-30T21:07:31Z", "type": "meal", "food": "Stella Artois (1 bottle, 330ml)", "carbs_g": 11, "insulin_units": null, "glucose_at_time": 152}
+{"ts": "2026-06-30T21:07:45Z", "type": "insulin", "units": 25, "glucose_at_time": 152, "note": "Humalog, meal bolus + correction for Stella Artois, physician override, Mounjaro Day 2, Rc=1.07"}
