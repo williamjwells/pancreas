@@ -443,3 +443,4 @@
 {"ts": "2026-07-20T22:07:28Z", "type": "insulin", "units": 14, "glucose_at_time": 100, "note": "14u Humalog, top-up meal bolus for homemade meat pasta sauce (physician override, completing full 44u meal bolus), Mounjaro Day 2, Rc=1.07"}
 {"ts": "2026-07-20T22:31:15Z", "type": "meal", "food": "H\u00e4agen-Dazs Belgian Chocolate ice cream", "carbs_g": 28, "insulin_units": null, "glucose_at_time": 104}
 {"ts": "2026-07-21T14:41:19Z", "type": "meal", "food": "San Miguel beer (1 can, 330ml)", "carbs_g": 13, "insulin_units": null, "glucose_at_time": 135}
+{"ts": "2026-07-21T14:41:38Z", "type": "insulin", "units": 16, "glucose_at_time": 135, "note": "Humalog, meal bolus + correction for San Miguel beer, Mounjaro Day 3, Rc=1.135"}
