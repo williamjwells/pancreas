@@ -444,3 +444,4 @@
 {"ts": "2026-07-20T22:31:15Z", "type": "meal", "food": "H\u00e4agen-Dazs Belgian Chocolate ice cream", "carbs_g": 28, "insulin_units": null, "glucose_at_time": 104}
 {"ts": "2026-07-21T14:41:19Z", "type": "meal", "food": "San Miguel beer (1 can, 330ml)", "carbs_g": 13, "insulin_units": null, "glucose_at_time": 135}
 {"ts": "2026-07-21T14:41:38Z", "type": "insulin", "units": 16, "glucose_at_time": 135, "note": "Humalog, meal bolus + correction for San Miguel beer, Mounjaro Day 3, Rc=1.135"}
+{"ts": "2026-07-21T14:51:16Z", "type": "meal", "food": "San Miguel beer (1 can, 330ml)", "carbs_g": 13, "insulin_units": null, "glucose_at_time": 129}
