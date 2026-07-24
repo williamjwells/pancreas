@@ -446,3 +446,4 @@
 {"ts": "2026-07-21T14:41:38Z", "type": "insulin", "units": 16, "glucose_at_time": 135, "note": "Humalog, meal bolus + correction for San Miguel beer, Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-07-21T14:51:16Z", "type": "meal", "food": "San Miguel beer (1 can, 330ml)", "carbs_g": 13, "insulin_units": null, "glucose_at_time": 129}
 {"ts": "2026-07-21T15:26:33Z", "type": "insulin", "units": 16, "glucose_at_time": 161, "note": "16u Humalog, meal bolus for 2nd San Miguel + correction, Mounjaro Day 3, Rc=1.135"}
+{"ts": "2026-07-24T12:31:27Z", "type": "meal", "food": "squash, smoked pork (150g), onion, garlic, Heinz BBQ sauce stir fry", "carbs_g": 41, "insulin_units": null, "glucose_at_time": 140}
