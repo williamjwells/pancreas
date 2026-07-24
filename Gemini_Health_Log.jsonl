@@ -449,3 +449,4 @@
 {"ts": "2026-07-24T12:31:27Z", "type": "meal", "food": "squash, smoked pork (150g), onion, garlic, Heinz BBQ sauce stir fry", "carbs_g": 41, "insulin_units": null, "glucose_at_time": 140}
 {"ts": "2026-07-24T12:34:16Z", "type": "meal", "food": "squash, smoked pork (150g), onion, garlic, Heinz BBQ sauce (1 tbsp) stir fry", "carbs_g": 34, "insulin_units": null, "glucose_at_time": 141}
 {"ts": "2026-07-24T17:23:25Z", "type": "meal", "food": "fries (250g)", "carbs_g": 88, "insulin_units": null, "glucose_at_time": 133}
+{"ts": "2026-07-24T18:02:03Z", "type": "insulin", "units": 35, "glucose_at_time": 133, "note": "Humalog, meal bolus top-up for fries 250g (pre-bolus already logged), physician override, Mounjaro Day 5, Rc=1.325"}
