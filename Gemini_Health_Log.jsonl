@@ -452,3 +452,4 @@
 {"ts": "2026-07-24T18:02:03Z", "type": "insulin", "units": 35, "glucose_at_time": 133, "note": "Humalog, meal bolus top-up for fries 250g (pre-bolus already logged), physician override, Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-07-24T18:08:19Z", "type": "insulin", "units": 35, "glucose_at_time": 142, "note": "Humalog, glucose 133, pre-bolus for fries 250g (88g carbs), Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-07-24T21:41:50Z", "type": "insulin", "units": 30, "glucose_at_time": 240, "note": "Humalog, correction for post-fries hyperglycemia, Mounjaro Day 5, Rc=1.325"}
+{"ts": "2026-07-25T03:02:51Z", "type": "insulin", "units": 20, "glucose_at_time": 191, "note": "Humalog, glucose 191, Tranche 1 of 3 staged fasting correction, Mounjaro Day 6, Rc=1.45"}
