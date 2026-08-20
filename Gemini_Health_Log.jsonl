@@ -457,3 +457,4 @@
 {"ts": "2026-08-20T14:48:18Z", "type": "insulin", "units": 10, "glucose_at_time": 142, "note": "Humalog, meal bolus for sourdough/cheese/ham/olives/Rioja (47g carbs), physician override partial dose with planned top-up, Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-08-20T15:40:36Z", "type": "insulin", "units": 12, "glucose_at_time": 171, "note": "Humalog, top-up dose (physician override, model recommended 19u), post-meal correction sourdough/ham/cheese meal, Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-08-20T18:12:31Z", "type": "insulin", "units": 5, "glucose_at_time": 191, "note": "Humalog, physician override (model recommended 35u), fasting correction pre-evening meal, Mounjaro Day 5, Rc=1.325"}
+{"ts": "2026-08-20T18:15:58Z", "type": "note", "note": "Model updated to v1.7: GSF_base changed 3.7\u21924.0, resistance equation changed to 0.007d\u00b2+0.012d+1.0, peak Rc at Day 6 revised 1.45\u21921.324, effective immediately", "glucose_at_time": 187}
