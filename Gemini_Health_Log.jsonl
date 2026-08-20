@@ -454,3 +454,4 @@
 {"ts": "2026-07-24T21:41:50Z", "type": "insulin", "units": 30, "glucose_at_time": 240, "note": "Humalog, correction for post-fries hyperglycemia, Mounjaro Day 5, Rc=1.325"}
 {"ts": "2026-07-25T03:02:51Z", "type": "insulin", "units": 20, "glucose_at_time": 191, "note": "Humalog, glucose 191, Tranche 1 of 3 staged fasting correction, Mounjaro Day 6, Rc=1.45"}
 {"ts": "2026-08-20T14:48:01Z", "type": "meal", "food": "sourdough bread (100g), aged cheddar (50g), olives and pickles (75g), lean ham (100g), Rioja (120ml)", "carbs_g": 47, "insulin_units": null, "glucose_at_time": 145}
+{"ts": "2026-08-20T14:48:18Z", "type": "insulin", "units": 10, "glucose_at_time": 142, "note": "Humalog, meal bolus for sourdough/cheese/ham/olives/Rioja (47g carbs), physician override partial dose with planned top-up, Mounjaro Day 5, Rc=1.325"}
