@@ -460,3 +460,4 @@
 {"ts": "2026-08-20T18:15:58Z", "type": "note", "note": "Model updated to v1.7: GSF_base changed 3.7\u21924.0, resistance equation changed to 0.007d\u00b2+0.012d+1.0, peak Rc at Day 6 revised 1.45\u21921.324, effective immediately", "glucose_at_time": 187}
 {"ts": "2026-08-20T18:31:05Z", "type": "meal", "food": "Freixenet Semi Seco cava (100ml)", "carbs_g": 9, "insulin_units": null, "glucose_at_time": 188}
 {"ts": "2026-08-20T19:28:30Z", "type": "meal", "food": "San Miguel 330ml", "carbs_g": 11, "insulin_units": null, "glucose_at_time": 193}
+{"ts": "2026-08-20T19:29:13Z", "type": "insulin", "units": 3, "glucose_at_time": 193, "note": "Humalog, meal bolus for San Miguel beer + evening drinks carbs, Mounjaro Day 5, Rc=1.235"}
