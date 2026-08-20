@@ -462,3 +462,4 @@
 {"ts": "2026-08-20T19:28:30Z", "type": "meal", "food": "San Miguel 330ml", "carbs_g": 11, "insulin_units": null, "glucose_at_time": 193}
 {"ts": "2026-08-20T19:29:13Z", "type": "insulin", "units": 3, "glucose_at_time": 193, "note": "Humalog, meal bolus for San Miguel beer + evening drinks carbs, Mounjaro Day 5, Rc=1.235"}
 {"ts": "2026-08-20T20:08:03Z", "type": "meal", "food": "chicken wings fried (8 pieces, light cornstarch dusting, buffalo dipping sauce)", "carbs_g": 12, "insulin_units": null, "glucose_at_time": 185}
+{"ts": "2026-08-20T20:19:24Z", "type": "insulin", "units": 12, "glucose_at_time": 178, "note": "Humalog, meal bolus for chicken wings (physician plan), Mounjaro Day 5, Rc=1.235"}
