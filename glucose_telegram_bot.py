@@ -127,8 +127,15 @@ def github_get_text(filename):
         print(f"GitHub GET {filename}: ERROR {e}")
         return None
 
-def log_to_github(entry):
-    url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/Gemini_Health_Log.jsonl"
+LOG_FILENAME_BY_TYPE = {
+    "basal": "basal_log.jsonl",
+    "environment": "environment_log.jsonl",
+}
+
+def log_to_github(entry, filename=None):
+    if filename is None:
+        filename = LOG_FILENAME_BY_TYPE.get(entry.get("type"), "Gemini_Health_Log.jsonl")
+    url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{filename}"
     headers = {"Authorization": f"token {GITHUB_TOKEN}"}
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
@@ -163,6 +170,71 @@ def get_recent_logs():
         except Exception:
             pass
     return recent
+
+# === BASAL / ENVIRONMENT TREND CONTEXT (informational only - never affects dose math) ===
+
+def compute_basal_trend_context(basal_logs, environment_logs, now_utc=None):
+    now_utc = now_utc or datetime.now(timezone.utc)
+
+    if not environment_logs:
+        return "[BASAL TREND CONTEXT]\nNo environment log entries - context unavailable."
+
+    current_env = max(environment_logs, key=lambda e: e["ts"])
+    env_start = datetime.strptime(current_env["ts"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    days_in_env = (now_utc - env_start).days
+
+    relevant = sorted(
+        [b for b in basal_logs if b["ts"] >= current_env["ts"]],
+        key=lambda b: b["ts"],
+    )
+
+    lines = [
+        "[BASAL TREND CONTEXT] - informational only, does not affect dose calculations",
+        f"Current environment: {current_env['location']} (day {days_in_env})",
+    ]
+
+    if not relevant:
+        lines.append("No basal changes logged in this environment yet.")
+    else:
+        first = relevant[0]
+        last = relevant[-1]
+        net_change = last["units"] - first["previous_units"]
+        pct = 100 * net_change / first["previous_units"] if first["previous_units"] else 0
+        history_str = " -> ".join(f"{b['units']:g}u" for b in relevant)
+        lines.append(
+            f"Basal history this environment: {first['previous_units']:g}u -> "
+            f"{history_str} ({net_change:+.0f}u, {pct:+.1f}%)"
+        )
+        lines.append(
+            f"Most recent: {last['units']:g}u as of {last['ts']}, "
+            f"fasting test result: {last['fasting_test_result']}"
+        )
+        if last["fasting_test_result"] == "stable":
+            last_ts = datetime.strptime(last["ts"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+            days_stable = (now_utc - last_ts).days
+            lines.append(f"Stable for {days_stable} day(s) since last change.")
+
+    prior = find_prior_analogous_transition(environment_logs, current_env)
+    if prior:
+        lines.append(f"Prior analog: {prior}")
+
+    lines.append(
+        "RULE: This block is background only. Never use it to modify GSF, Rc, "
+        "ICR, or suggest a basal change - Bill manages basal exclusively via "
+        "his own fasting-glucose steady-state test."
+    )
+    return "\n".join(lines)
+
+
+def find_prior_analogous_transition(environment_logs, current_env):
+    same_location = [
+        e for e in environment_logs
+        if e["location"] == current_env["location"] and e["ts"] != current_env["ts"]
+    ]
+    if not same_location:
+        return None
+    most_recent = max(same_location, key=lambda e: e["ts"])
+    return f"Previously stayed in {most_recent['location']} starting {most_recent['ts']}"
 
 def summarise_glucose_history(entries):
     """Convert raw CGM list into a compact summary to reduce payload size.
@@ -223,6 +295,26 @@ def build_system_prompt():
     hsf_max = params.get("hsf_max", 0.30)
     sanity_abs = params.get("sanity_check_absolute_threshold_units", 60)
     sanity_rel = params.get("sanity_check_relative_multiplier", 2.0)
+
+    basal_text = github_get_text("basal_log.jsonl") or ""
+    environment_text = github_get_text("environment_log.jsonl") or ""
+    basal_logs = []
+    for line in basal_text.strip().split("\n"):
+        if line.strip():
+            try:
+                basal_logs.append(json.loads(line))
+            except Exception:
+                pass
+    environment_logs = []
+    for line in environment_text.strip().split("\n"):
+        if line.strip():
+            try:
+                environment_logs.append(json.loads(line))
+            except Exception:
+                pass
+    basal_context = compute_basal_trend_context(basal_logs, environment_logs)
+    print(f"Basal trend context:\n{basal_context}")
+
     prompt = f"""You are a glucose monitoring assistant for Bill. Use the parameters and rules below.
 
 === CURRENT MODEL PARAMETERS (version {params.get('version', 'unknown')}) ===
@@ -280,6 +372,8 @@ above. Never estimate IOB by intuition. State the computed value explicitly.
 
 Timezone: Bill is UTC+{params['timezone_offset_utc']}. Glucose timestamps are UTC - add {params['timezone_offset_utc']} hours for local time.
 
+{basal_context}
+
 === BEHAVIOR RULES ===
 {rules}
 """
@@ -319,18 +413,6 @@ def extract_log_entry(text, glucose_data):
         return entry
 
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-    # Determine entry type from the logging line prefix BEFORE calling the LLM.
-    # This is reliable and avoids the LLM misclassifying insulin lines that
-    # mention food names in the note field (e.g. "meal bolus for ham/havarti...").
-    if ": insulin" in line_lower:
-        forced_type = "insulin"
-    elif ": meal" in line_lower:
-        forced_type = "meal"
-    elif ": note" in line_lower:
-        forced_type = "note"
-    else:
-        forced_type = None  # Let LLM decide if prefix is ambiguous
-
     extraction_prompt = f"""Extract a log entry from this single line and return ONLY valid JSON, nothing else.
 
 Line: {logging_line}
@@ -338,15 +420,17 @@ Line: {logging_line}
 Current UTC time: {now_utc}
 Current glucose: {current_glucose}
 
-CRITICAL TYPE RULE: The entry type is determined ONLY by the word immediately after "Logging:".
-- If the line says "Logging: insulin" → type MUST be "insulin", regardless of any food names mentioned later.
-- If the line says "Logging: meal" → type MUST be "meal".
-- If the line says "Logging: note" → type MUST be "note".
-Food names appearing in an insulin log's note field do NOT make it a meal entry.
+IMPORTANT: Only return type "insulin" if the line explicitly describes insulin units being injected.
+If the line describes food or a meal, return type "meal".
+If the line explicitly describes a basal or long-acting insulin dose change, return type "basal".
+If the line explicitly describes an environment or location change, return type "environment".
+If the line describes a note, correction, or annotation, return type "note" with no units field.
 
 Return one of these formats:
 For insulin: {{"ts":"{now_utc}","type":"insulin","units":NUMBER,"glucose_at_time":{current_glucose},"note":"any extra info"}}
-For meal: {{"ts":"{now_utc}","type":"meal","food":"name","carbs_g":NUMBER,"insulin_units":null,"glucose_at_time":{current_glucose}}}
+For meal: {{"ts":"{now_utc}","type":"meal","food":"name","carbs_g":NUMBER,"insulin_units":NUMBER_OR_NULL,"glucose_at_time":{current_glucose}}}
+For basal: {{"ts":"{now_utc}","type":"basal","units":NUMBER,"previous_units":NUMBER,"fasting_test_result":"stable_OR_trending_down_OR_trending_up_OR_not_yet_tested","note":"any extra info"}}
+For environment: {{"ts":"{now_utc}","type":"environment","location":"name","note":"any extra info"}}
 For note: {{"ts":"{now_utc}","type":"note","note":"text","glucose_at_time":{current_glucose}}}
 
 If no loggable event is described, return: {{"type":"none"}}
@@ -361,18 +445,11 @@ Return ONLY the JSON object, no explanation."""
         if result.get("type") == "none":
             print("extract_log_entry: extraction returned none")
             return None
-        # Apply forced type override based on line prefix - this is ground truth
-        if forced_type and result.get("type") != forced_type:
-            print(f"extract_log_entry: overriding LLM type '{result.get('type')}' → '{forced_type}' (line prefix rule)")
-            result["type"] = forced_type
-            if forced_type == "insulin" and "units" not in result:
-                # Try to extract units from the line directly as fallback
-                import re
-                m = re.search(r'(\d+(?:\.\d+)?)\s*u\b', logging_line, re.IGNORECASE)
-                if m:
-                    result["units"] = float(m.group(1))
-            if forced_type != "insulin":
-                result.pop("units", None)
+        if result.get("type") == "insulin" and "note" in line_lower and "insulin" not in line_lower:
+            print("extract_log_entry: overriding spurious insulin classification to note")
+            result["type"] = "note"
+            result["note"] = result.get("note", logging_line)
+            result.pop("units", None)
         print(f"extract_log_entry: extracted {result.get('type')} entry")
         return result
     except Exception as e:
@@ -440,26 +517,16 @@ def handle_message(user_id, chat_id, text):
 
     if session["pending_log"]:
         if is_confirmation(text):
-            entry = session["pending_log"]
-            entry_type = entry.get("type", "entry")
-            units = entry.get("units")
-            food = entry.get("food")
-            carbs = entry.get("carbs_g")
-            if entry_type == "insulin" and units:
-                entry_summary = f"insulin - {units}u Humalog"
-            elif entry_type == "meal" and food:
-                entry_summary = f"meal - {food}" + (f" ({carbs}g carbs)" if carbs else "")
-            else:
-                entry_summary = f"{entry_type} - {entry.get('note', '')[:60]}"
-            success = log_to_github(entry)
+            entry_summary = f"{session['pending_log'].get('type')} - {session['pending_log'].get('food') or session['pending_log'].get('note') or str(session['pending_log'].get('units','')) + 'u'}"
+            success = log_to_github(session["pending_log"])
             if success:
                 print(f"Saved to GitHub: {entry_summary}")
                 tg_send(chat_id, f"Saved: {entry_summary}")
-                session["history"].append({"role": "assistant", "content": f"Saved: {entry_summary}"})
+                session["history"].append({"role": "assistant", "content": f"Saved to GitHub: {entry_summary}"})
             else:
                 tg_send(chat_id, "Save failed - check GitHub token and network.")
             session["pending_log"] = None
-            return  # CRITICAL: return here - do NOT fall through to Anthropic call
+            return
         else:
             print("Pending log cleared - user sent non-confirmation")
             session["pending_log"] = None
@@ -521,6 +588,22 @@ def handle_message(user_id, chat_id, text):
         pending = extract_log_entry(assistant_message, glucose_data)
         if pending:
             session["pending_log"] = pending
+            entry_type = pending.get("type", "entry")
+            units = pending.get("units")
+            food = pending.get("food")
+            carbs = pending.get("carbs_g")
+            if entry_type == "insulin" and units:
+                summary = f"{units}u insulin"
+            elif entry_type == "meal" and food:
+                summary = f"{food} ({carbs}g carbs)" if carbs else food
+            elif entry_type == "basal" and units:
+                prev = pending.get("previous_units")
+                summary = f"{units}u basal (was {prev}u)" if prev else f"{units}u basal"
+            elif entry_type == "environment":
+                summary = pending.get("location") or "environment change"
+            else:
+                summary = entry_type
+            tg_send(chat_id, f"Ready to save: {summary}\nReply yes/sure/ok to confirm, or keep talking to cancel.")
 
 # === MAIN POLLING LOOP ===
 
