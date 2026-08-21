@@ -472,3 +472,4 @@
 {"ts": "2026-08-21T09:55:34Z", "type": "insulin", "units": 5, "glucose_at_time": 165, "note": "Humalog, physician override, Mounjaro Day 0, Rc=1.0"}
 {"ts": "2026-08-21T18:39:56Z", "type": "meal", "food": "2x rum (1.5oz each) with sugar-free mixers", "carbs_g": 0, "insulin_units": null, "glucose_at_time": 104}
 {"ts": "2026-08-21T19:33:16Z", "type": "meal", "food": "large salad (lettuce, mild cheddar, olives, raisins, cherry tomatoes, homemade 1000 island dressing)", "carbs_g": 40, "insulin_units": null, "glucose_at_time": 108}
+{"ts": "2026-08-21T19:36:43Z", "type": "meal", "food": "large salad (lettuce, mild cheddar, olives, raisins, cherry tomatoes, homemade 1000 island dressing)", "carbs_g": 16, "insulin_units": null, "glucose_at_time": 108}
