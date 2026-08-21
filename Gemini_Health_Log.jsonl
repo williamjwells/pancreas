@@ -468,3 +468,4 @@
 {"ts": "2026-08-20T23:38:59Z", "type": "insulin", "units": 10, "glucose_at_time": 146, "note": "Humalog, glucose 148, top-up bolus for potato chips (physician override), Mounjaro Day 5, Rc=1.235"}
 {"ts": "2026-08-21T02:12:40Z", "type": "insulin", "units": 20, "glucose_at_time": 256, "note": "Humalog, correction for post-chips spike, physician override, Mounjaro Day 5, Rc=1.235"}
 {"ts": "2026-08-21T05:30:36Z", "type": "insulin", "units": 30, "glucose_at_time": 283, "note": "Humalog, fasting correction overnight spike, physician override, Mounjaro Day 5, Rc=1.235"}
+{"ts": "2026-08-21T05:31:24Z", "type": "note", "note": "Mounjaro injected, glucose 285, weekly shot - cycle resets to Day 0", "glucose_at_time": 285}
