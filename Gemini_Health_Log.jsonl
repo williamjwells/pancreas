@@ -470,3 +470,4 @@
 {"ts": "2026-08-21T05:30:36Z", "type": "insulin", "units": 30, "glucose_at_time": 283, "note": "Humalog, fasting correction overnight spike, physician override, Mounjaro Day 5, Rc=1.235"}
 {"ts": "2026-08-21T05:31:24Z", "type": "note", "note": "Mounjaro injected, glucose 285, weekly shot - cycle resets to Day 0", "glucose_at_time": 285}
 {"ts": "2026-08-21T09:55:34Z", "type": "insulin", "units": 5, "glucose_at_time": 165, "note": "Humalog, physician override, Mounjaro Day 0, Rc=1.0"}
+{"ts": "2026-08-21T18:39:56Z", "type": "meal", "food": "2x rum (1.5oz each) with sugar-free mixers", "carbs_g": 0, "insulin_units": null, "glucose_at_time": 104}
