@@ -4,7 +4,7 @@ import json
 import base64
 import os
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 # === CREDENTIALS - read from environment variables ===
 GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
@@ -130,6 +130,7 @@ def github_get_text(filename):
 LOG_FILENAME_BY_TYPE = {
     "basal": "basal_log.jsonl",
     "environment": "environment_log.jsonl",
+    "mounjaro": "mounjaro_log.jsonl",
 }
 
 def log_to_github(entry, filename=None):
@@ -236,6 +237,61 @@ def find_prior_analogous_transition(environment_logs, current_env):
     most_recent = max(same_location, key=lambda e: e["ts"])
     return f"Previously stayed in {most_recent['location']} starting {most_recent['ts']}"
 
+# === MOUNJARO DAY / RC PRECOMPUTE (fixes LLM date-arithmetic drift) ===
+
+MOUNJARO_RC_A = 0.01
+MOUNJARO_RC_B = 0.015
+MOUNJARO_RC_C = 1.0
+
+def compute_mounjaro_rc(day):
+    return MOUNJARO_RC_A * (day ** 2) + MOUNJARO_RC_B * day + MOUNJARO_RC_C
+
+def compute_mounjaro_context(mounjaro_logs, params, now_utc=None):
+    now_utc = now_utc or datetime.now(timezone.utc)
+    activation_hours = params.get("mounjaro_glp_activation_delay_hours", 24)
+
+    if not mounjaro_logs:
+        return (
+            "[PRE-COMPUTED MOUNJARO]\n"
+            "No injection logged - Day/Rc cannot be computed reliably.\n"
+            "RULE: Do not guess a Mounjaro day or Rc. Tell Bill no injection is logged "
+            "and ask him to log it (Logging: mounjaro - injected)."
+        )
+
+    last = max(mounjaro_logs, key=lambda e: e["ts"])
+    injection_ts = datetime.strptime(last["ts"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    activation_ts = injection_ts + timedelta(hours=activation_hours)
+
+    if now_utc < activation_ts:
+        day = 6
+        status = "PENDING ACTIVATION - still on previous cycle's tail day"
+    else:
+        days_since_activation = int((now_utc - activation_ts).total_seconds() // 86400)
+        day = min(days_since_activation, 6)
+        status = "ACTIVE"
+
+    rc = compute_mounjaro_rc(day)
+
+    days_since_injection = (now_utc - injection_ts).total_seconds() / 86400
+    overdue_note = ""
+    if days_since_injection > 8:
+        overdue_note = (
+            f"\nWARNING: {days_since_injection:.1f} days since last logged injection - "
+            "check whether a dose was missed or simply not logged."
+        )
+
+    return (
+        "[PRE-COMPUTED MOUNJARO]\n"
+        f"Last injection: {last['ts']}\n"
+        f"Activation time (+{activation_hours}h): {activation_ts.strftime('%Y-%m-%dT%H:%M:%SZ')}\n"
+        f"Status: {status}\n"
+        f"Day: {day}\n"
+        f"Rc = {MOUNJARO_RC_A}*{day}^2 + {MOUNJARO_RC_B}*{day} + {MOUNJARO_RC_C} = {rc:.3f}\n"
+        "RULE: Use this Day and Rc value exactly as given. Never calculate Mounjaro day "
+        "or Rc yourself, even as a sanity check."
+        f"{overdue_note}"
+    )
+
 def summarise_glucose_history(entries):
     """Convert raw CGM list into a compact summary to reduce payload size.
     Instead of sending up to 200 raw JSON objects, send a small readable summary."""
@@ -315,6 +371,17 @@ def build_system_prompt():
     basal_context = compute_basal_trend_context(basal_logs, environment_logs)
     print(f"Basal trend context:\n{basal_context}")
 
+    mounjaro_text = github_get_text("mounjaro_log.jsonl") or ""
+    mounjaro_logs = []
+    for line in mounjaro_text.strip().split("\n"):
+        if line.strip():
+            try:
+                mounjaro_logs.append(json.loads(line))
+            except Exception:
+                pass
+    mounjaro_context = compute_mounjaro_context(mounjaro_logs, params)
+    print(f"Mounjaro context:\n{mounjaro_context}")
+
     prompt = f"""You are a glucose monitoring assistant for Bill. Use the parameters and rules below.
 
 === CURRENT MODEL PARAMETERS (version {params.get('version', 'unknown')}) ===
@@ -333,6 +400,8 @@ Mounjaro injection: {params['mounjaro_injection_day']} at {params['mounjaro_inje
 GLP activation delay: {params['mounjaro_glp_activation_delay_hours']} hours (Day 0 = Saturday after Friday shot)
 Resistance equation: Rc = {params['mounjaro_rc_equation']}
 Peak resistance baseline: {params['mounjaro_peak_resistance_baseline']} (day 6, Friday before next shot)
+
+{mounjaro_context}
 
 === DOSE FORMULA (CRITICAL - follow exactly) ===
 
@@ -424,6 +493,7 @@ IMPORTANT: Only return type "insulin" if the line explicitly describes insulin u
 If the line describes food or a meal, return type "meal".
 If the line explicitly describes a basal or long-acting insulin dose change, return type "basal".
 If the line explicitly describes an environment or location change, return type "environment".
+If the line explicitly describes a Mounjaro or GLP-1 injection being given, return type "mounjaro".
 If the line describes a note, correction, or annotation, return type "note" with no units field.
 
 Return one of these formats:
@@ -431,6 +501,7 @@ For insulin: {{"ts":"{now_utc}","type":"insulin","units":NUMBER,"glucose_at_time
 For meal: {{"ts":"{now_utc}","type":"meal","food":"name","carbs_g":NUMBER,"insulin_units":NUMBER_OR_NULL,"glucose_at_time":{current_glucose}}}
 For basal: {{"ts":"{now_utc}","type":"basal","units":NUMBER,"previous_units":NUMBER,"fasting_test_result":"stable_OR_trending_down_OR_trending_up_OR_not_yet_tested","note":"any extra info"}}
 For environment: {{"ts":"{now_utc}","type":"environment","location":"name","note":"any extra info"}}
+For mounjaro: {{"ts":"{now_utc}","type":"mounjaro","note":"any extra info"}}
 For note: {{"ts":"{now_utc}","type":"note","note":"text","glucose_at_time":{current_glucose}}}
 
 If no loggable event is described, return: {{"type":"none"}}
@@ -601,6 +672,10 @@ def handle_message(user_id, chat_id, text):
                 summary = f"{units}u basal (was {prev}u)" if prev else f"{units}u basal"
             elif entry_type == "environment":
                 summary = pending.get("location") or "environment change"
+            elif entry_type == "mounjaro":
+                summary = "Mounjaro injection"
+                if pending.get("note"):
+                    summary += f" - {pending['note']}"
             else:
                 summary = entry_type
             tg_send(chat_id, f"Ready to save: {summary}\nReply yes/sure/ok to confirm, or keep talking to cancel.")
