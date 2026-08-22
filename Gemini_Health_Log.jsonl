@@ -477,3 +477,4 @@
 {"ts": "2026-08-22T00:35:08Z", "type": "meal", "food": "pinto beans (~1 cup cooked), 200g ground beef, veggies, chicken broth, spices", "carbs_g": 45, "insulin_units": null, "glucose_at_time": 129}
 {"ts": "2026-08-22T00:36:49Z", "type": "insulin", "units": 8, "glucose_at_time": 129, "note": "Humalog meal bolus for pinto bean/beef stew (45g carbs), physician override, Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-08-22T13:11:21Z", "type": "meal", "food": "caprese salad (100g mozzarella, 6 cherry tomatoes)", "carbs_g": 7, "insulin_units": null, "glucose_at_time": 164}
+{"ts": "2026-08-22T13:11:37Z", "type": "meal", "food": "caprese salad", "carbs_g": null, "insulin_units": 3, "glucose_at_time": 164}
