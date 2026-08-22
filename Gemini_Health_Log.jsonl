@@ -474,3 +474,4 @@
 {"ts": "2026-08-21T19:33:16Z", "type": "meal", "food": "large salad (lettuce, mild cheddar, olives, raisins, cherry tomatoes, homemade 1000 island dressing)", "carbs_g": 40, "insulin_units": null, "glucose_at_time": 108}
 {"ts": "2026-08-21T19:36:43Z", "type": "meal", "food": "large salad (lettuce, mild cheddar, olives, raisins, cherry tomatoes, homemade 1000 island dressing)", "carbs_g": 16, "insulin_units": null, "glucose_at_time": 108}
 {"ts": "2026-08-21T20:50:21Z", "type": "meal", "food": "Guinness Draught (440ml can)", "carbs_g": 10, "insulin_units": null, "glucose_at_time": 94}
+{"ts": "2026-08-22T00:35:08Z", "type": "meal", "food": "pinto beans (~1 cup cooked), 200g ground beef, veggies, chicken broth, spices", "carbs_g": 45, "insulin_units": null, "glucose_at_time": 129}
