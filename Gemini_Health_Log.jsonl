@@ -480,3 +480,4 @@
 {"ts": "2026-08-22T13:11:37Z", "type": "meal", "food": "caprese salad", "carbs_g": null, "insulin_units": 3, "glucose_at_time": 164}
 {"ts": "2026-08-22T15:49:14Z", "type": "insulin", "units": 3, "glucose_at_time": 176, "note": "Humalog, physician override, Mounjaro Day 0, Rc=1.000"}
 {"ts": "2026-08-25T09:51:28Z", "type": "insulin", "units": 5, "glucose_at_time": 184, "note": "Humalog, GSF_base updated to 17.4 (Option A), Mounjaro Day 0, Rc=1.000"}
+{"ts": "2026-08-25T14:41:45Z", "type": "meal", "food": "2 beef ribs, boiled then fried yellow potatoes (130g)", "carbs_g": 22, "insulin_units": null, "glucose_at_time": 99}
