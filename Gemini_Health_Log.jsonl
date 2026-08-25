@@ -484,3 +484,4 @@
 {"ts": "2026-08-25T14:43:02Z", "type": "meal", "food": "beef ribs + fried yellow potatoes", "carbs_g": 22, "insulin_units": 18, "glucose_at_time": 99}
 {"ts": "2026-08-25T17:18:22Z", "type": "insulin", "units": 4, "glucose_at_time": 151, "note": "Humalog, physician override (model suggested 8u), post-meal correction, Mounjaro Day 3, Rc=1.135"}
 {"ts": "2026-08-25T21:21:56Z", "type": "meal", "food": "parboiled + twice-fried yellow potatoes (150g) and San Miguel beer (33cl)", "carbs_g": 36, "insulin_units": null, "glucose_at_time": 101}
+{"ts": "2026-08-25T21:41:03Z", "type": "insulin", "units": 7, "glucose_at_time": 106, "note": "Humalog. Physician override: model suggested 30u, taking 15u split into 2 doses, this is dose 1 of 2. Mounjaro Day 3. Rc=1.135."}
