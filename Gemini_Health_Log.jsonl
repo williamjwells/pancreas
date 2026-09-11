@@ -493,3 +493,4 @@
 {"ts": "2026-09-11T12:59:33Z", "type": "meal", "food": "black coffee with 2 tbsp cream", "carbs_g": 1, "insulin_units": null, "glucose_at_time": 159}
 {"ts": "2026-09-11T13:00:44Z", "type": "insulin", "units": 7, "glucose_at_time": 158, "note": "Tranche 1 of 3 staged fasting correction (model net_dose 14u), Mounjaro Day 0, Rc=1.000"}
 {"ts": "2026-09-11T19:10:20Z", "type": "meal", "food": "Yuengling lager 12oz", "carbs_g": 13, "insulin_units": null, "glucose_at_time": 124}
+{"ts": "2026-09-11T21:15:36Z", "type": "meal", "food": "beef & macaroni soup (leftover stew broth, elbow macaroni, carrots, onions, green beans, ~1L)", "carbs_g": 50, "insulin_units": null, "glucose_at_time": 123}
