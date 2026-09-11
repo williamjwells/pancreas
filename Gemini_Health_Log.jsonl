@@ -486,3 +486,4 @@
 {"ts": "2026-08-25T21:21:56Z", "type": "meal", "food": "parboiled + twice-fried yellow potatoes (150g) and San Miguel beer (33cl)", "carbs_g": 36, "insulin_units": null, "glucose_at_time": 101}
 {"ts": "2026-08-25T21:41:03Z", "type": "insulin", "units": 7, "glucose_at_time": 106, "note": "Humalog. Physician override: model suggested 30u, taking 15u split into 2 doses, this is dose 1 of 2. Mounjaro Day 3. Rc=1.135."}
 {"ts": "2026-09-10T23:39:20Z", "type": "insulin", "units": 30, "glucose_at_time": 237, "note": "Humalog, dinner pre-bolus/correction, Mounjaro Day 5, Rc=1.325"}
+{"ts": "2026-09-11T00:42:38Z", "type": "meal", "food": "beef stew with carrots and potatoes (home-cooked, 2 cups)", "carbs_g": 50, "insulin_units": null, "glucose_at_time": 223}
