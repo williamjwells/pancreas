@@ -489,3 +489,4 @@
 {"ts": "2026-09-11T00:42:38Z", "type": "meal", "food": "beef stew with carrots and potatoes (home-cooked, 2 cups)", "carbs_g": 50, "insulin_units": null, "glucose_at_time": 223}
 {"ts": "2026-09-11T04:33:10Z", "type": "insulin", "units": 27, "glucose_at_time": 239, "note": "Humalog, Tranche 1 of 3 staged fasting correction (model net_dose 53u), Mounjaro Day 0, Rc=1.000"}
 {"ts": "2026-09-11T05:36:19Z", "type": "insulin", "units": 20, "glucose_at_time": 204, "note": "Humalog, physician override - resistance higher than model reflects, staging insufficient. Mounjaro Day 0. Rc=1.000."}
+{"ts": "2026-09-11T06:34:47Z", "type": "meal", "food": "Yuengling lager 12oz", "carbs_g": 13, "insulin_units": null, "glucose_at_time": 181}
