@@ -503,3 +503,4 @@
 {"ts": "2026-09-12T20:29:04Z", "type": "meal", "food": "Yuengling lager 12oz", "carbs_g": 13, "insulin_units": null, "glucose_at_time": 122}
 {"ts": "2026-09-12T21:01:55Z", "type": "meal", "food": "Yuengling lager 12oz", "carbs_g": 13, "insulin_units": null, "glucose_at_time": 142}
 {"ts": "2026-09-12T21:02:26Z", "type": "insulin", "units": 5, "glucose_at_time": 143, "note": "Humalog meal bolus for 3rd Yuengling; IOB 5.5u from prior dose deducted; Mounjaro Day 0; Rc=1.000"}
+{"ts": "2026-09-12T23:04:02Z", "type": "insulin", "units": 13, "glucose_at_time": 161, "note": "Humalog, fasting correction, Mounjaro Day 0, Rc=1.000"}
