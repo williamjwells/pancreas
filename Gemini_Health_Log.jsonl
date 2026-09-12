@@ -497,3 +497,4 @@
 {"ts": "2026-09-11T21:16:19Z", "type": "meal", "food": "beef & macaroni soup", "carbs_g": 50, "insulin_units": 38, "glucose_at_time": 123}
 {"ts": "2026-09-12T00:24:52Z", "type": "insulin", "units": 32, "glucose_at_time": 206, "note": "Humalog, correction for post-meal overshoot (soup carbs underestimated), Mounjaro Day 0, Rc=1.000"}
 {"ts": "2026-09-12T10:05:59Z", "type": "meal", "food": "2 hot dogs with buns", "carbs_g": 46, "insulin_units": null, "glucose_at_time": 103}
+{"ts": "2026-09-12T11:18:09Z", "type": "insulin", "units": 9, "glucose_at_time": 119, "note": "Second split of hot dog meal bolus (19u taken at 12:06 local), Mounjaro Day 0, Rc=1.000"}
