@@ -495,3 +495,4 @@
 {"ts": "2026-09-11T19:10:20Z", "type": "meal", "food": "Yuengling lager 12oz", "carbs_g": 13, "insulin_units": null, "glucose_at_time": 124}
 {"ts": "2026-09-11T21:15:36Z", "type": "meal", "food": "beef & macaroni soup (leftover stew broth, elbow macaroni, carrots, onions, green beans, ~1L)", "carbs_g": 50, "insulin_units": null, "glucose_at_time": 123}
 {"ts": "2026-09-11T21:16:19Z", "type": "meal", "food": "beef & macaroni soup", "carbs_g": 50, "insulin_units": 38, "glucose_at_time": 123}
+{"ts": "2026-09-12T00:24:52Z", "type": "insulin", "units": 32, "glucose_at_time": 206, "note": "Humalog, correction for post-meal overshoot (soup carbs underestimated), Mounjaro Day 0, Rc=1.000"}
