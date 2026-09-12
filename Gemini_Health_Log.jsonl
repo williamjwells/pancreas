@@ -501,3 +501,4 @@
 {"ts": "2026-09-12T15:07:58Z", "type": "insulin", "units": 18, "glucose_at_time": 151, "note": "Humalog, pre-emptive dose for postural carb dump from prior meal/sleep, eating if no rise, Mounjaro Day 0, Rc=1.000"}
 {"ts": "2026-09-12T20:16:50Z", "type": "meal", "food": "Yuengling lager 12oz", "carbs_g": 13, "insulin_units": null, "glucose_at_time": 124}
 {"ts": "2026-09-12T20:29:04Z", "type": "meal", "food": "Yuengling lager 12oz", "carbs_g": 13, "insulin_units": null, "glucose_at_time": 122}
+{"ts": "2026-09-12T21:01:55Z", "type": "meal", "food": "Yuengling lager 12oz", "carbs_g": 13, "insulin_units": null, "glucose_at_time": 142}
