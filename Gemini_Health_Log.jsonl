@@ -496,3 +496,4 @@
 {"ts": "2026-09-11T21:15:36Z", "type": "meal", "food": "beef & macaroni soup (leftover stew broth, elbow macaroni, carrots, onions, green beans, ~1L)", "carbs_g": 50, "insulin_units": null, "glucose_at_time": 123}
 {"ts": "2026-09-11T21:16:19Z", "type": "meal", "food": "beef & macaroni soup", "carbs_g": 50, "insulin_units": 38, "glucose_at_time": 123}
 {"ts": "2026-09-12T00:24:52Z", "type": "insulin", "units": 32, "glucose_at_time": 206, "note": "Humalog, correction for post-meal overshoot (soup carbs underestimated), Mounjaro Day 0, Rc=1.000"}
+{"ts": "2026-09-12T10:05:59Z", "type": "meal", "food": "2 hot dogs with buns", "carbs_g": 46, "insulin_units": null, "glucose_at_time": 103}
