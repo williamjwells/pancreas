@@ -506,3 +506,4 @@
 {"ts": "2026-09-12T23:04:02Z", "type": "insulin", "units": 13, "glucose_at_time": 161, "note": "Humalog, fasting correction, Mounjaro Day 0, Rc=1.000"}
 {"ts": "2026-09-13T02:36:44Z", "type": "meal", "food": "minestrone-style bean and macaroni soup (\u00bc portion: Great Northern beans, pinto beans, macaroni, yellow squash, red onion, garlic, bacon/ground beef)", "carbs_g": 55, "insulin_units": null, "glucose_at_time": 94}
 {"ts": "2026-09-13T03:28:59Z", "type": "meal", "food": "minestrone-style bean and macaroni soup (~20% of 1.5L recipe, ~300ml)", "carbs_g": 44, "insulin_units": null, "glucose_at_time": 124}
+{"ts": "2026-09-13T03:29:58Z", "type": "insulin", "units": 20, "glucose_at_time": 125, "note": "First split of soup meal bolus (model dose 38u, splitting due to low starting glucose; 18u remaining for second dose). Mounjaro Day 0, Rc=1.000."}
