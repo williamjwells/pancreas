@@ -510,3 +510,4 @@
 {"ts": "2026-09-13T09:03:16Z", "type": "meal", "food": "Golden Grahams cereal (1 large bowl ~60g) and 6oz 2% milk", "carbs_g": 63, "insulin_units": null, "glucose_at_time": 100}
 {"ts": "2026-09-13T10:23:40Z", "type": "insulin", "units": 30, "glucose_at_time": 152, "note": "Meal bolus for Golden Grahams + milk (63g carbs), partial dose per Bill's discretion (model dose 63u), Mounjaro Day 0, Rc=1.000"}
 {"ts": "2026-09-13T18:03:53Z", "type": "meal", "food": "2 bacon/egg/potato/bean/cheese soft tacos", "carbs_g": 53, "insulin_units": 44, "glucose_at_time": 97}
+{"ts": "2026-09-13T18:38:13Z", "type": "meal", "food": "2 bacon/egg/potato/bean/cheese soft tacos", "carbs_g": 53, "insulin_units": 22, "glucose_at_time": 120}
