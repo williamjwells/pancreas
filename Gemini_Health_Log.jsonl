@@ -514,3 +514,4 @@
 {"ts": "2026-09-13T20:13:19Z", "type": "meal", "food": "corn chips", "carbs_g": 75, "insulin_units": null, "glucose_at_time": 160}
 {"ts": "2026-09-13T20:13:59Z", "type": "meal", "food": "corn chips", "carbs_g": 75, "insulin_units": 58, "glucose_at_time": 161}
 {"ts": "2026-09-13T20:14:35Z", "type": "insulin", "units": 25, "glucose_at_time": 162, "note": "Humalog, meal bolus for corn chips (75g carbs) plus correction, Bill's discretion (model dose 58u), Mounjaro Day 0, Rc=1.000"}
+{"ts": "2026-09-13T22:03:41Z", "type": "insulin", "units": 14, "glucose_at_time": 211, "note": "Humalog, fasting correction Tranche 1 of 3 (model net dose 28u staged), Mounjaro Day 0, Rc=1.000"}
