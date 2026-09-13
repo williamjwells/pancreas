@@ -512,3 +512,4 @@
 {"ts": "2026-09-13T18:03:53Z", "type": "meal", "food": "2 bacon/egg/potato/bean/cheese soft tacos", "carbs_g": 53, "insulin_units": 44, "glucose_at_time": 97}
 {"ts": "2026-09-13T18:38:13Z", "type": "meal", "food": "2 bacon/egg/potato/bean/cheese soft tacos", "carbs_g": 53, "insulin_units": 22, "glucose_at_time": 120}
 {"ts": "2026-09-13T20:13:19Z", "type": "meal", "food": "corn chips", "carbs_g": 75, "insulin_units": null, "glucose_at_time": 160}
+{"ts": "2026-09-13T20:13:59Z", "type": "meal", "food": "corn chips", "carbs_g": 75, "insulin_units": 58, "glucose_at_time": 161}
