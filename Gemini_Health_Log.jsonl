@@ -522,3 +522,4 @@
 {"ts": "2026-09-14T18:26:30Z", "type": "insulin", "units": 16, "glucose_at_time": 196, "note": "Humalog, fasting correction Tranche 1 of 3 (model net dose 31u staged), Mounjaro Day 0, Rc=1.000"}
 {"ts": "2026-09-14T23:11:24Z", "type": "meal", "food": "ground beef & pinto bean skillet with onion and beer deglaze (2 of 4 servings)", "carbs_g": 72, "insulin_units": null, "glucose_at_time": 140}
 {"ts": "2026-09-14T23:12:00Z", "type": "meal", "food": "ground beef & pinto bean skillet", "carbs_g": null, "insulin_units": 30, "glucose_at_time": 140}
+{"ts": "2026-09-14T23:12:27Z", "type": "insulin", "units": 30, "glucose_at_time": 141, "note": "Humalog, meal bolus for ground beef & pinto bean skillet. Model dose 66u, Bill's discretion. Mounjaro Day 0. Rc=1.000. Glucose at injection: 140."}
