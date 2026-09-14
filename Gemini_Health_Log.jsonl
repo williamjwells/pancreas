@@ -519,3 +519,4 @@
 {"ts": "2026-09-14T01:55:55Z", "type": "insulin", "units": 30, "glucose_at_time": 109, "note": "Meal bolus for diluted minestrone leftovers. Model dose was 38u, reduced to 30u at Bill's discretion. Mounjaro Day 0. Rc=1.000."}
 {"ts": "2026-09-14T09:39:26Z", "type": "meal", "food": "spaghetti with meat/tomato sauce", "carbs_g": 47, "insulin_units": null, "glucose_at_time": 130}
 {"ts": "2026-09-14T09:39:50Z", "type": "insulin", "units": 20, "glucose_at_time": 130, "note": "Humalog, meal bolus for spaghetti with meat sauce (model dose 42u, Bill's discretion), Mounjaro Day 0, Rc=1.000"}
+{"ts": "2026-09-14T18:26:30Z", "type": "insulin", "units": 16, "glucose_at_time": 196, "note": "Humalog, fasting correction Tranche 1 of 3 (model net dose 31u staged), Mounjaro Day 0, Rc=1.000"}
