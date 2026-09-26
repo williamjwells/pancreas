@@ -528,3 +528,4 @@
 {"ts": "2026-09-26T01:25:30Z", "type": "meal", "food": "3 slices 12-inch pub pizza with meat toppings", "carbs_g": 78, "insulin_units": null, "glucose_at_time": 193}
 {"ts": "2026-09-26T01:25:50Z", "type": "insulin", "units": 50, "glucose_at_time": 193, "note": "Meal bolus for 3 slices 12-inch pub pizza with meat toppings. Model dose 106u, Bill's discretion. Mounjaro Day 6, Rc=1.45."}
 {"ts": "2026-09-26T03:54:31Z", "type": "insulin", "units": 46, "glucose_at_time": 214, "note": "Post-meal correction for pizza, model dose 46u, Mounjaro Day 6, Rc=1.45"}
+{"ts": "2026-09-26T14:38:35Z", "type": "meal", "food": "2 breakfast burritos with egg, potato, bacon, beans, cheese", "carbs_g": 120, "insulin_units": null, "glucose_at_time": 143}
