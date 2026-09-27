@@ -532,3 +532,4 @@
 {"ts": "2026-09-27T06:32:01Z", "type": "meal", "food": "turkey sandwich on white wheat with turkey, 12oz lager", "carbs_g": 53, "insulin_units": null, "glucose_at_time": 92}
 {"ts": "2026-09-27T17:03:19Z", "type": "insulin", "units": 13, "glucose_at_time": 185, "note": "Humalog, fasting correction Tranche 1 of 3 (model net dose 26u staged), Mounjaro Day 1, Rc=1.000"}
 {"ts": "2026-09-27T18:22:41Z", "type": "insulin", "units": 7, "glucose_at_time": 188, "note": "Humalog, fasting correction Tranche 2 of 3 (model net dose 26u staged), Mounjaro Day 1, Rc=1.000"}
+{"ts": "2026-09-27T19:30:20Z", "type": "meal", "food": "12oz American lager", "carbs_g": 13, "insulin_units": null, "glucose_at_time": 173}
