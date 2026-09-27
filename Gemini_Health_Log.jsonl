@@ -534,3 +534,4 @@
 {"ts": "2026-09-27T18:22:41Z", "type": "insulin", "units": 7, "glucose_at_time": 188, "note": "Humalog, fasting correction Tranche 2 of 3 (model net dose 26u staged), Mounjaro Day 1, Rc=1.000"}
 {"ts": "2026-09-27T19:30:20Z", "type": "meal", "food": "12oz American lager", "carbs_g": 13, "insulin_units": null, "glucose_at_time": 173}
 {"ts": "2026-09-27T23:34:46Z", "type": "meal", "food": "taco salad (chips, salsa, cheese, sour cream)", "carbs_g": 42, "insulin_units": null, "glucose_at_time": 187}
+{"ts": "2026-09-27T23:35:19Z", "type": "insulin", "units": 59, "glucose_at_time": 187, "note": "Humalog, meal bolus for taco salad, Mounjaro Day 1, Rc=1.000"}
