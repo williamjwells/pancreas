@@ -535,3 +535,4 @@
 {"ts": "2026-09-27T19:30:20Z", "type": "meal", "food": "12oz American lager", "carbs_g": 13, "insulin_units": null, "glucose_at_time": 173}
 {"ts": "2026-09-27T23:34:46Z", "type": "meal", "food": "taco salad (chips, salsa, cheese, sour cream)", "carbs_g": 42, "insulin_units": null, "glucose_at_time": 187}
 {"ts": "2026-09-27T23:35:19Z", "type": "insulin", "units": 59, "glucose_at_time": 187, "note": "Humalog, meal bolus for taco salad, Mounjaro Day 1, Rc=1.000"}
+{"ts": "2026-09-28T07:23:47Z", "type": "meal", "food": "3 slices 12-inch pub pizza pepperoni", "carbs_g": 78, "insulin_units": null, "glucose_at_time": 186}
