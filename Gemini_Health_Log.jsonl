@@ -546,3 +546,4 @@
 {"ts": "2026-09-29T15:00:04Z", "type": "meal", "food": "3 soft breakfast tacos (flour tortilla, egg, refried beans, cheese, half strip bacon each)", "carbs_g": 93, "insulin_units": null, "glucose_at_time": 103}
 {"ts": "2026-09-29T15:10:04Z", "type": "meal", "food": "3 soft breakfast tacos", "carbs_g": 93, "insulin_units": 50, "glucose_at_time": 115}
 {"ts": "2026-09-29T18:22:22Z", "type": "insulin", "units": 20, "glucose_at_time": 181, "note": "Humalog, post-meal correction for taco spike, Mounjaro Day 1, Rc=1.025"}
+{"ts": "2026-09-29T22:35:02Z", "type": "insulin", "units": 20, "glucose_at_time": 173, "note": "Humalog, fasting correction. Bill overriding staged protocol due to persistent floor ~170. Mounjaro Day 1, Rc=1.025 per script."}
