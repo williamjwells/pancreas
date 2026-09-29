@@ -542,3 +542,4 @@
 {"ts": "2026-09-29T02:48:35Z", "type": "meal", "food": "beef & bean macaroni stew (ground beef, onion, garlic, green pepper, pinto beans, macaroni, chicken broth)", "carbs_g": 52, "insulin_units": null, "glucose_at_time": 145}
 {"ts": "2026-09-29T03:58:50Z", "type": "insulin", "units": 8, "glucose_at_time": 205, "note": "Humalog, post-meal correction for beef & bean stew spike, Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-09-29T07:23:33Z", "type": "insulin", "units": 20, "glucose_at_time": 219, "note": "Humalog, fasting correction Tranche 1 of 3 (model net dose 40u staged), Mounjaro Day 1, Rc=1.025"}
+{"ts": "2026-09-29T08:01:45Z", "type": "insulin", "units": 23, "glucose_at_time": 254, "note": "Humalog, fasting correction Tranche 1 of 3 (model net dose 46u staged, prior tranches superseded), Mounjaro Day 1, Rc=1.025"}
