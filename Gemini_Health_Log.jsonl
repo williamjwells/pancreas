@@ -548,3 +548,4 @@
 {"ts": "2026-09-29T18:22:22Z", "type": "insulin", "units": 20, "glucose_at_time": 181, "note": "Humalog, post-meal correction for taco spike, Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-09-29T22:35:02Z", "type": "insulin", "units": 20, "glucose_at_time": 173, "note": "Humalog, fasting correction. Bill overriding staged protocol due to persistent floor ~170. Mounjaro Day 1, Rc=1.025 per script."}
 {"ts": "2026-09-30T04:04:31Z", "type": "meal", "food": "3 small slices pepperoni pizza (10-inch pie)", "carbs_g": 75, "insulin_units": null, "glucose_at_time": 114}
+{"ts": "2026-09-30T04:04:48Z", "type": "insulin", "units": 40, "glucose_at_time": 114, "note": "Meal bolus for 3 slices pepperoni pizza (75g carbs). Full model dose 63u; taking 40u now with remainder to follow. Mounjaro Day 1. Rc=1.025."}
