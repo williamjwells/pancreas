@@ -552,3 +552,4 @@
 {"ts": "2026-09-30T07:37:55Z", "type": "insulin", "units": 16, "glucose_at_time": 197, "note": "Humalog, post-pizza delayed wave correction, Tranche 1 of 3 (model net dose 31u staged), Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-09-30T07:55:45Z", "type": "insulin", "units": 48, "glucose_at_time": 256, "note": "48u Humalog, rising rapidly post-pizza, full correction superseding staged plan, model net dose 48u after 14.2u IOB, Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-09-30T10:35:43Z", "type": "insulin", "units": 50, "glucose_at_time": 253, "note": "Humalog, flat trend, persistent post-pizza elevation, model net dose 50u after 11.1u IOB, Mounjaro Day 1, Rc=1.025"}
+{"ts": "2026-09-30T18:31:43Z", "type": "insulin", "units": 7, "glucose_at_time": 160, "note": "Humalog, rising trend post-trough, staged fasting correction Tranche 1 of 3 (model net dose 14u), Mounjaro Day 1, Rc=1.025"}
