@@ -557,3 +557,4 @@
 {"ts": "2026-10-01T01:53:29Z", "type": "meal", "food": "pasta with homemade meat sauce (2 standard servings)", "carbs_g": 90, "insulin_units": null, "glucose_at_time": 130}
 {"ts": "2026-10-01T01:53:55Z", "type": "meal", "food": "pasta with meat sauce", "carbs_g": 90, "insulin_units": 78, "glucose_at_time": 130}
 {"ts": "2026-10-01T06:16:09Z", "type": "insulin", "units": 60, "glucose_at_time": 231, "note": "Post-pasta correction. Bill override: model suggested 49u due to persistent underdosing pattern over 4-5 days. Mounjaro Day 2. Rc=1.025."}
+{"ts": "2026-10-01T08:36:52Z", "type": "insulin", "units": 45, "glucose_at_time": 248, "note": "Humalog, flat trend, Bill override (model net dose 44u, recommended hold due to 14.9u IOB, override based on persistent resistance pattern), Mounjaro Day 2, Rc=1.025"}
