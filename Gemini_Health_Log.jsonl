@@ -559,3 +559,4 @@
 {"ts": "2026-10-01T06:16:09Z", "type": "insulin", "units": 60, "glucose_at_time": 231, "note": "Post-pasta correction. Bill override: model suggested 49u due to persistent underdosing pattern over 4-5 days. Mounjaro Day 2. Rc=1.025."}
 {"ts": "2026-10-01T08:36:52Z", "type": "insulin", "units": 45, "glucose_at_time": 248, "note": "Humalog, flat trend, Bill override (model net dose 44u, recommended hold due to 14.9u IOB, override based on persistent resistance pattern), Mounjaro Day 2, Rc=1.025"}
 {"ts": "2026-10-01T13:17:52Z", "type": "insulin", "units": 17, "glucose_at_time": 201, "note": "Humalog, flat trend, staged fasting correction Tranche 1 of 3 (model net dose 34u), Mounjaro Day 2, Rc=1.025"}
+{"ts": "2026-10-01T14:29:36Z", "type": "insulin", "units": 9, "glucose_at_time": 193, "note": "Humalog, flat trend, staged fasting correction Tranche 2 of 3 (model net dose 34u, original Tranche 1 = 17u), Mounjaro Day 2, Rc=1.025"}
