@@ -566,3 +566,4 @@
 {"ts": "2026-10-02T18:51:45Z", "type": "insulin", "units": 20, "glucose_at_time": 221, "note": "Humalog, flat trend, Bill override (model held due to 11.5u IOB), fasting correction, Mounjaro Day 6, Rc=1.45"}
 {"ts": "2026-10-02T22:19:16Z", "type": "insulin", "units": 45, "glucose_at_time": 217, "note": "Humalog, flat trend, Bill override (model Tranche 1 = 30u, full net dose 60u), staged fasting correction, Mounjaro Day 6, Rc=1.45"}
 {"ts": "2026-10-02T23:18:22Z", "type": "insulin", "units": 30, "glucose_at_time": 237, "note": "Humalog, flat trend, Bill override (model Tranche 1 = 23u, full net dose 45u), staged fasting correction, Mounjaro Day 6, Rc=1.45"}
+{"ts": "2026-10-03T01:06:11Z", "type": "insulin", "units": 20, "glucose_at_time": 203, "note": "Humalog, flat trend, Bill override (model held 17.9u IOB, net dose 31u), fasting correction, Mounjaro Day 6, Rc=1.45"}
