@@ -573,3 +573,4 @@
 {"ts": "2026-10-04T17:02:30Z", "type": "meal", "food": "2 picadillo burritos", "carbs_g": 90, "insulin_units": null, "glucose_at_time": 179}
 {"ts": "2026-10-08T07:21:00Z", "type": "insulin", "units": 36, "glucose_at_time": 206, "note": "Humalog 36u, flat trend, Bill override (model net dose 36u, full dose taken instead of staged), fasting correction, Mounjaro Day 1, Rc=1.025"}
 {"ts": "2026-10-17T14:09:55Z", "type": "insulin", "units": 6, "glucose_at_time": 153, "note": "Humalog, flat trend, fasting correction, GSF_base updated to 7.0, Mounjaro Day 3, Rc=1.025"}
+{"ts": "2026-10-17T16:26:45Z", "type": "insulin", "units": 24, "glucose_at_time": 138, "note": "Humalog, flat trend, meal bolus + correction. Meal: Yuengling + Pringles, 27g carbs. Mounjaro Day 3. Rc=1.025."}
