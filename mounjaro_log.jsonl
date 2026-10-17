@@ -5,3 +5,4 @@
 {"ts": "2026-09-26T03:55:21Z", "type": "mounjaro", "note": "injected 15mg, glucose 215"}
 {"ts": "2026-10-02T17:15:39Z", "type": "mounjaro", "note": "15mg injected, glucose 222, Day 6 resets cycle, next activation +24h"}
 {"ts": "2026-10-08T15:43:26Z", "type": "mounjaro", "note": "15mg injected, switching injection day to Thursday"}
+{"ts": "2026-10-14T23:00:00Z", "type": "mounjaro", "dose_mg": 15, "note": "15mg Mounjaro injected, backdated entry logged at 17:00 CT (23:00 UTC) on 2026-10-14"}
